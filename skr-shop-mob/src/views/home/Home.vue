@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <p>请阅读规范最后两条</p>
+    <h1>lsa</h1>
   </div>
 </template>
 
