@@ -1,0 +1,76 @@
+<template>
+  <van-tabs v-model="active" :swipeable="true">
+    <van-tab
+      v-for="(item, index) in $store.state.home.typeOne"
+      :title="item"
+      :key="index"
+    >
+      <!-- {{ $store.state.home.typeOne_list[index] }} -->
+      <ul class="list">
+        <li
+          v-for="(items, indexs) in $store.state.home.typeOne_list[index]"
+          :key="indexs"
+        >
+          <img :src="items.img" alt="" />
+          {{items}}
+        </li>
+      </ul>
+    </van-tab>
+  </van-tabs>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      active: 0,
+    };
+  },
+  created() {
+    this.$store.dispatch("typeOne");
+  },
+  methods: {
+    click() {},
+  },
+};
+</script>
+
+<style lang="less" scoped>
+.van-tab__pane {
+  background-color: aqua;
+  
+}
+.list {
+//   width: 100vw;
+//   height: 100vh;
+//   display: flex;
+//   flex-flow: wrap;
+//  flex-flow:column wrap;
+//   justify-content: space-evenly;
+box-sizing: border-box;
+column-count: 2;
+padding: 10px;
+  li {
+//   width: calc(100% / 2 - 20px);
+// width: ;
+  height: 200px;
+  margin: 10px;
+    break-inside: avoid;
+  img {
+    width: 100%;
+    // height: 100%;
+   
+  }
+  
+}
+
+}
+li:nth-of-type(1){
+    margin-top: 0;
+    height: 250px;
+//    height: 200px;
+}
+// li:nth-last-of-type()
+
+
+</style>
