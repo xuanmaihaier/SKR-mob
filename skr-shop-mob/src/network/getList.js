@@ -1,4 +1,12 @@
-import axios from "utils/request.js";
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: stride
+ * @Date: 2021-04-21 11:14:41
+ * @LastEditors: stride
+ * @LastEditTime: 2021-04-21 11:46:36
+ */
+import axios from "utils/request";
 /**
  * 获取一级列表
  * url: /type/getproduct

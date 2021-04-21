@@ -1,8 +1,16 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: stride
+ * @Date: 2021-04-21 11:14:41
+ * @LastEditors: stride
+ * @LastEditTime: 2021-04-21 12:29:27
+-->
 <template>
   <!-- :autoplay="" -->
   <div class="my_swipe">
     <van-swipe>
-      <van-swipe-item v-for="(image, index) in images" :key="index">
+      <van-swipe-item v-for="(image, index) in imgList" :key="index">
         <img v-lazy="image" />
       </van-swipe-item>
     </van-swipe>
@@ -13,12 +21,15 @@
 export default {
   data() {
     return {
-      images: [
-        "https://img01.yzcdn.cn/vant/apple-1.jpg",
-        "https://img01.yzcdn.cn/vant/apple-2.jpg",
-      ],
+      
     };
   },
+  props:{
+    imgList:{
+      type:Array,
+      default:()=>[]
+    }
+  }
 };
 </script>
 
@@ -26,17 +37,18 @@ export default {
 .my-swipe .van-swipe-item {
   color: #fff;
   font-size: 20px;
-  height: 185px;
+  
   text-align: center;
   background-color: #39a9ed;
 }
 .my_swipe {
   /deep/.van-swipe {
-    height: 185px;
   }
   img {
     width: 100%;
-    height: 185px;
+  }
+  /deep/ .van-swipe__indicator{
+    background-color: black;
   }
 }
 </style>

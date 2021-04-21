@@ -8,6 +8,7 @@
     "build:stage": "vue-cli-service build --mode staging"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "babel-plugin-import": "^1.13.3",
     "core-js": "^3.6.5",
     "normalize.css": "^8.0.1",

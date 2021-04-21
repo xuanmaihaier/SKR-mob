@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: stride
+ * @Date: 2021-04-21 11:14:41
+ * @LastEditors: stride
+ * @LastEditTime: 2021-04-21 11:40:47
+-->
 <template>
   <van-tabs v-model="active" :swipeable="true">
     <van-tab
@@ -30,6 +38,7 @@ export default {
   },
   created() {
     this.$store.dispatch("typeOne");
+    console.log( this.$store);
   },
   methods: {
     handleDetail(id){
