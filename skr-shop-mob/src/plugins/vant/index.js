@@ -2,11 +2,11 @@
 
 import Vue from 'vue';
 import {
-    Button,NavBar,Icon,Swipe,SwipeItem,Lazyload,Tabs,Tab
+    Button,NavBar,Icon,Swipe,SwipeItem,Lazyload,Tabs,Tab 
 } from "vant"
 // use使用
 const vueUse = {
-    Button,NavBar,Icon,Swipe,SwipeItem,Tabs,Tab
+    Button,NavBar,Icon,Swipe,SwipeItem,Tabs,Tab 
 }
 Object.keys(vueUse).forEach(item => {
     Vue.use(vueUse[item])
