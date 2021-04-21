@@ -9,8 +9,8 @@
 <template>
   <!-- :autoplay="" -->
   <div class="my_swipe">
-    <van-swipe>
-      <van-swipe-item v-for="(image, index) in imgList" :key="index">
+    <van-swipe :style="imgStyle">
+      <van-swipe-item v-for="(image, index) in imgList" :key="index" @click="handleId(index)">
         <img v-lazy="image" />
       </van-swipe-item>
     </van-swipe>
@@ -28,8 +28,21 @@ export default {
     imgList:{
       type:Array,
       default:()=>[]
+    },
+     imgStyle:{
+      type:Object,
+      default:()=>{}
+    },
+    imgId:{
+      type:Array,
+      default:()=>[]
+    },
+  },
+  methods: {
+    handleId(index){
+        this.$router.push(`/details/${this.imgId[index]}`);
     }
-  }
+  },
 };
 </script>
 
@@ -43,9 +56,11 @@ export default {
 }
 .my_swipe {
   /deep/.van-swipe {
+   
   }
   img {
     width: 100%;
+    height: 100%;
   }
   /deep/ .van-swipe__indicator{
     background-color: black;

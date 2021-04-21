@@ -12,7 +12,9 @@
         <van-icon name="search" size="18" />
       </template>
     </van-nav-bar>
-    <my-swipe></my-swipe>
+    <my-swipe :imgList="$store.state.home.getSpuList" :imgStyle="{height: '20vh'}"
+      :imgId="$store.state.home.getSpuId"
+    ></my-swipe>
 
   </div>
 </template>
@@ -22,6 +24,15 @@ import MySwipe from 'components/common/myswipe/MySwipe.vue';
 export default {
   components: { MySwipe },
   name: "HomeTop",
+  data() {
+    return {  
+    }
+  },
+  created() {
+    // this.$store.dispatch("typeOne");
+     this.$store.dispatch('getSpu_','休闲上衣')
+  },
+ 
 };
 </script>
 
