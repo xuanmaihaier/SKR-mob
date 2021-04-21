@@ -1,14 +1,18 @@
 
-// import 'vant/lib/button/style';
+
 import Vue from 'vue';
 import {
-    Button,NavBar,Icon,Swipe, SwipeItem
+    Button,NavBar,Icon,Swipe,SwipeItem,Lazyload,Tabs,Tab
 } from "vant"
 // use使用
 const vueUse = {
-    Button,NavBar,Icon,Swipe, SwipeItem
+    Button,NavBar,Icon,Swipe,SwipeItem,Tabs,Tab
 }
 Object.keys(vueUse).forEach(item => {
     Vue.use(vueUse[item])
 })
+// 图片懒加载
+Vue.use(Lazyload, {
+    lazyComponent: true,
+  });
 

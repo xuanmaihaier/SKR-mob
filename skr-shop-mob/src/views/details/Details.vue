@@ -4,35 +4,57 @@
  * @Author: stride
  * @Date: 2021-04-20 21:37:36
  * @LastEditors: stride
- * @LastEditTime: 2021-04-21 10:32:28
+ * @LastEditTime: 2021-04-21 12:25:53
 -->
 <template>
   <div class="Details">
     <NavBar />
-    <Swiper v-if="Commodity.length>0" :Commodity="Commodity[0].imgs"/>
+    <Swiper :imgList = "imgList"/>
   </div>
 </template>
 
 <script>
 import NavBar from "./childComps/NavBar";
-import Swiper from "./childComps/Swiper";
+import Swiper from "components/common/myswipe/MySwipe";
 export default {
   name: "Details",
+  data() {
+    return {
+      imgList: [],
+    };
+  },
   components: {
     NavBar,
     Swiper,
   },
-  computed:{
-    Commodity(){
-     return this.$store.state.details.Commodity
-    }
+  computed: {
+    Commodity() {
+      return this.$store.state.details.Commodity;
+    },
+  },
+  methods: {
+    imgList_init() {
+      let arr = [];
+      let imgList = JSON.parse(this.Commodity[0].imgs);
+      imgList.forEach((item) => {
+        for (let x in item) {
+          arr.push(item[x]);
+        }
+      });
+      this.imgList = arr;
+      console.log(this.imgList);
+    },
   },
   created() {
     this.$store.dispatch("getShop", "989");
-    
   },
-  mounted() {
-    console.log(this.Commodity);
+  watch: {
+    Commodity: {
+      deep: true,
+      handler: function (val) {
+        this.imgList_init();
+      },
+    },
   },
 };
 </script>

@@ -1,5 +1,13 @@
+/*
+ * @Descripttion: 细节界面数据处理
+ * @version: 
+ * @Author: stride
+ * @Date: 2021-04-20 22:58:14
+ * @LastEditors: stride
+ * @LastEditTime: 2021-04-21 11:32:27
+ */
+
 import { getShopById } from "../../network/details"
-import axios from "axios"
 export default {
   state:()=>({
     Commodity:[]
