@@ -10,9 +10,11 @@
         <li
           v-for="(items, indexs) in $store.state.home.typeOne_list[index]"
           :key="indexs"
+          @click="handleDetail(items.id)"
         >
           <img :src="items.img" alt="" />
-          {{items}}
+         <h3>{{items.title}}</h3>
+         <p><span>￥{{items.price}}</span></p>
         </li>
       </ul>
     </van-tab>
@@ -30,7 +32,9 @@ export default {
     this.$store.dispatch("typeOne");
   },
   methods: {
-    click() {},
+    handleDetail(id){
+       this.$router.push(`/details/${id}`)
+    }
   },
 };
 </script>
@@ -68,6 +72,9 @@ padding: 10px;
 li:nth-of-type(1){
     margin-top: 0;
     height: 250px;
+    img{
+        height: 200px;
+    }
 //    height: 200px;
 }
 // li:nth-last-of-type()

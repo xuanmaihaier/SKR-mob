@@ -13,8 +13,12 @@ export default {
             state.typeOne = value
         },
         commitTypeOneList(state,value){
-            state.typeOne_list.push(value)
-            console.log( state.typeOne_list);
+            console.log(value);
+            value.forEach((item)=>{
+                 state.typeOne_list.push(item.res)
+            })
+           
+           
         },
       
     },
@@ -25,14 +29,14 @@ export default {
            let reslut = res.slice(0,4) 
             store.commit('commitTypeOne',reslut) 
             // console.log(store.state.typeOne,'454');
+            let resOne =[]
             reslut.forEach(async (item,index) => {
-                const resOne = await getTypeOneList(item)
-                // let obj = {}
-                // obj[item] = resOne.res
-                // console.log(obj);
-                store.commit('commitTypeOneList',resOne.res)
-            });
-            
+                
+                resOne.push( getTypeOneList(item))
+              
+            }); 
+            const resOnes= await Promise.all(resOne)
+            store.commit('commitTypeOneList',resOnes)
         },
        
     
