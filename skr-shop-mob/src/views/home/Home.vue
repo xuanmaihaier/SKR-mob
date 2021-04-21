@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <router-link to="/shopCar">购物车</router-link>
     <p>请阅读规范最后两条</p>
   </div>
 </template>
