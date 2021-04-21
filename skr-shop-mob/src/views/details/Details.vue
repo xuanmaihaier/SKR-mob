@@ -45,8 +45,9 @@ export default {
       console.log(this.imgList);
     },
   },
-  created() {
-    this.$store.dispatch("getShop", "989");
+  created() { 
+    this.$store.dispatch("getShop", "973");
+   
   },
   watch: {
     Commodity: {

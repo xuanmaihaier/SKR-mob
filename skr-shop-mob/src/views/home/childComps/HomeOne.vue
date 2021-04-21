@@ -15,10 +15,16 @@
     >
       <!-- {{ $store.state.home.typeOne_list[index] }} -->
       <ul class="list">
-        <li
-          v-for="(items, indexs) in $store.state.home.typeOne_list[index]"
+        <van-list
+          v-model="loading"
+          :finished="finished"
+          finished-text="没有更多了"
+          @load="onLoad"
+        >
+            <li
+          v-for="(items, indexs) in list[index]"
           :key="indexs"
-          @click="handleDetail(items.id)"
+          @click="handleDetail(items.id,item)"
         >
           <img :src="items.img" alt="" />
           <h3>{{ items.title }}</h3>
@@ -30,6 +36,7 @@
             <van-icon name="ellipsis" />
           </p>
         </li>
+        </van-list>
       </ul>
     </van-tab>
   </van-tabs>
@@ -39,17 +46,68 @@
 export default {
   data() {
     return {
+        lodingflag:false,
       active: 0,
+        list: [],
+      loading: false,
+      finished: false,
+      //数据总条数
+      listTotal:[],
+    //   分页渲染
+    page:30
     };
   },
+    props:{
+        List:{
+            type:Array,
+            default:()=>[]
+        }
+    },
+
   created() {
-    this.$store.dispatch("typeOne");
   },
   methods: {
-    handleDetail(id) {
-      this.$router.push(`/details/${id}`);
+    handleDetail(id,item) {
+        console.log(item);
+      this.$router.push({
+          path:`/details/${id}`,
+          params:{
+              item:item
+          }
+      });
+    },
+     onLoad() {
+      setTimeout(() => {
+        if(this.listTotal.length ==0) return
+       
+        this.page+=30
+        let arr =[]
+        this.listTotal.forEach((item,index)=>{
+            arr.push(item.slice(0,this.page))
+        })
+        this.list =arr
+        
+        // 加载状态结束
+        this.loading = false;
+        if(false){
+                this.finished = true;
+        }
+      }, 1000);
     },
   },
+  mounted() {
+  },
+  watch:{
+      List:{
+          deep:true,
+          handler:function(val){
+              this.listTotal = val
+              val.forEach(item => {
+                  this.list.push(item.slice(0,this.page))
+              });
+          }
+      }
+  }
 };
 </script>
 
@@ -88,7 +146,6 @@ export default {
         font-weight: 700;
         font-size: 18px;
         color: #b0b0b0;
-       
       }
     }
   }
@@ -100,18 +157,17 @@ li:nth-of-type(1) {
     height: 80%;
   }
 }
-.price_b{
-    display: flex;
-    span:nth-of-type(1){
-        color: red;
-    }
-     span:nth-of-type(2){
-         display: block;
-         transform: scale(0.9);
-        padding: 0 5px;
-        color: #b0b0b0;
-         text-decoration: line-through;
-    }
+.price_b {
+  display: flex;
+  span:nth-of-type(1) {
+    color: red;
+  }
+  span:nth-of-type(2) {
+    display: block;
+    transform: scale(0.9);
+    padding: 0 5px;
+    color: #b0b0b0;
+    text-decoration: line-through;
+  }
 }
-
 </style>
