@@ -3,7 +3,7 @@
     <router-link to="/shopCar">购物车</router-link>
       <HomeTop/>
       <IconWrapper/>
-      <HomeOne/>
+      <home-one :List="Lists"></home-one>
   </div>
 </template>
 
@@ -19,6 +19,28 @@ export default {
     IconWrapper,
     HomeOne
     
+  },
+  data() {
+    return {
+      Lists:[]
+    }
+  },
+  computed:{
+    List(){
+      return this.$store.state.home.typeOne_list
+    }
+  },
+  created() {
+     this.$store.dispatch("typeOne");
+  },
+  watch:{
+    List:{
+      deep:true,
+      handler:function(val){
+        this.Lists = val
+        this.Lists = this.Lists.slice(0,4)
+      }
+    }
   }
 }
 </script>
