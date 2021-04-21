@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-20 21:37:36
  * @LastEditors: stride
- * @LastEditTime: 2021-04-21 16:39:24
+ * @LastEditTime: 2021-04-21 16:52:16
 -->
 <template>
   <div class="Details">
@@ -62,7 +62,7 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch("getShop", "729");
+    this.$store.dispatch("getShop", this.$route.params.id);
   },
   watch: {
     Commodity: {
