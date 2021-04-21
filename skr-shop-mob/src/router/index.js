@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: stride
+ * @Date: 2021-04-20 10:47:29
+ * @LastEditors: stride
+ * @LastEditTime: 2021-04-21 16:51:32
+ */
 import Vue from "vue"
 import VueRouter from "vue-router"
 Vue.use(VueRouter)
@@ -20,6 +28,11 @@ const routes = [
     path:'/shopCar',
     name:'ShopCar',
     component:()=> import('@/views/shopCar/ShopCar.vue')
+  },
+  {
+    path: '/details/:id',
+    name: 'Details',
+    component: () => import("views/details/Details.vue"),
   }
 ]
 const router = new VueRouter({

@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: stride
+ * @Date: 2021-04-20 10:41:44
+ * @LastEditors: stride
+ * @LastEditTime: 2021-04-21 11:43:40
+ */
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'

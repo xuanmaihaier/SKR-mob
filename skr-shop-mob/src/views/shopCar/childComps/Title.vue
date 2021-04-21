@@ -1,7 +1,7 @@
 <template>
   <div>
     <header class="top_list">
-      <span ><van-icon name="arrow-left" color='#fff' class="icon" /></span>
+      <span ><van-icon name="arrow-left" color='#fff' class="icon" @click="back" /></span>
       <p class="title">购物车</p>
     </header>
     
@@ -9,7 +9,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods:{
+    back(){
+      history.go(-1);
+    }
+  }
+};
 </script>
 
 <style lang='less' scoped>
