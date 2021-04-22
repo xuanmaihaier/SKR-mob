@@ -1,32 +1,33 @@
 <!--
- * @Descripttion: 相关推荐
+ * @Descripttion: 
  * @version: 
  * @Author: stride
- * @Date: 2021-04-21 22:36:50
+ * @Date: 2021-04-22 14:38:58
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 13:38:59
+ * @LastEditTime: 2021-04-22 17:46:38
 -->
 <template>
-  <div class="Ranking">
-    <van-cell title="相关推荐" is-link value="查看更多" />
-    <div class="swiper">
-      <van-swipe :loop="false" :width="114" :show-indicators="false">
-        <van-swipe-item v-for="(item, index) in random" :key="index">
-          <img v-lazy="item.img" />
+  <div class="Recommendation">
+    <van-cell title="为你推荐" />
+    <ul>
+      <li v-for="(item, index) in random" :key="index">
+        <img :src="item.img"  @load="imgLoad"/>
+        <div class="Title">
           <p>{{ item.title }}</p>
-          <span>{{ item.price }}</span>
-        </van-swipe-item>
-      </van-swipe>
-    </div>
+          <p>{{ item.price }}</p>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Recommend",
+  name: "Recommendation",
   data() {
     return {
       random: [],
+      count:0
     };
   },
   computed: {
@@ -45,23 +46,41 @@ export default {
         this.random = arr;
       }
     },
+    imgLoad(){
+      this.$emit('imgLoad',++this.count,this.random.length)
+    }
   },
-  created() {},
+  mounted() {},
   watch: {
     Recommend: function () {
-      this.Random(7);
+      this.Random(39);
     },
   },
 };
 </script>
 
 <style lang="less" scoped>
-.Ranking {
+.Recommendation {
   padding: 14px;
   width: calc(100% - 16px - 18px);
-    border-bottom:1px solid #f5f4f9;
+  border-bottom: 10px solid #f5f4f9;
   .van-cell {
     padding: 3px;
+  }
+  ul {
+  
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f5f4f9;
+    justify-content: space-between;
+    li {
+      background-color: white;
+      width: calc((100% / 2) - 2px);
+      margin: 1px;
+      img {
+        width: 100%;
+      }
+    }
   }
 }
 /deep/ .van-cell__title {
@@ -76,30 +95,28 @@ export default {
     font-size: 12px;
   }
 }
-/deep/ .van-swipe-item {
-  img {
-    width: 100%;
-    height: 100%;
-  }
+.Title {
   p {
-    margin-top: 3px;
+    padding: 3px;
     font-size: 12px;
+    font-weight: 200;
     text-align: center;
-    color: #999;
+    letter-spacing: 1.5px;
+    color: #2f3640;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     zoom: 1;
   }
-  span {
-    display: block;
-    text-align: center;
-    
+  p:nth-child(2) {
+    padding-top: 0;
+    font-size: 18px;
+    font-weight: 600;
+      letter-spacing: -2px;
     &::before {
       content: "¥";
-      font-size: 12px;
+      font-size: 20px;
     }
   }
 }
 </style>
-

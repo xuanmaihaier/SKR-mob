@@ -12,8 +12,9 @@ import axios from "utils/request";
  * url: /type/getproduct
  * 参数：parent_name
  */
-export async function getTypeOneList(parent_name) {
-  return await axios({ method: "post", url: "/type/getproduct", data: { parent_name } })
+export async function getTypeOneList(parent_name,page) {
+  return await axios({ method: "post", url: "/type/getproduct", data: { parent_name,
+    page } })
 }
 /**
  * 获取二级列表

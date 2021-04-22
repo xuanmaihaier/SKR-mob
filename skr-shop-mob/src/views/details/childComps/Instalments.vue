@@ -1,13 +1,13 @@
 <!--
- * @Descripttion: 
+ * @Descripttion: 分期
  * @version: 
  * @Author: stride
  * @Date: 2021-04-21 16:39:29
  * @LastEditors: stride
- * @LastEditTime: 2021-04-21 22:22:59
+ * @LastEditTime: 2021-04-22 13:39:24
 -->
 <template>
-  <div class="Params" @click="ParamsClick">
+  <div class="Installment" @click="ParamsClick">
     <van-cell :value="`最低月付${Installment}元`" is-link>
       <!-- 使用 title 插槽来自定义标题 -->
       <template #title>
@@ -56,7 +56,6 @@ export default {
   },
   computed: {
     Installment() {
-      console.log(this.params);
       return (this.param.price / this.month[2]).toFixed(2);
     },
   },
@@ -81,9 +80,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.Params {
+.Installment {
   padding: 14px;
-  .van-cell{
+  border-bottom: 1px solid #f5f4f9;
+  .van-cell {
     padding: 3px;
   }
 }
@@ -120,5 +120,4 @@ export default {
 .active {
   border: 1px solid #2f3640 !important;
 }
-
 </style>

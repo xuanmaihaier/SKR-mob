@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-21 11:14:41
  * @LastEditors: stride
- * @LastEditTime: 2021-04-21 11:40:47
+ * @LastEditTime: 2021-04-22 00:10:48
 -->
 <template>
   <van-tabs v-model="active" :swipeable="true">
@@ -15,15 +15,28 @@
     >
       <!-- {{ $store.state.home.typeOne_list[index] }} -->
       <ul class="list">
-        <li
-          v-for="(items, indexs) in $store.state.home.typeOne_list[index]"
+        <van-list
+          v-model="loading"
+          :finished="finished"
+          finished-text="没有更多了"
+          @load="onLoad"
+        >
+            <li
+          v-for="(items, indexs) in list[index]"
           :key="indexs"
-          @click="handleDetail(items.id)"
+          @click="handleDetail(items.id,item)"
         >
           <img :src="items.img" alt="" />
-         <h3>{{items.title}}</h3>
-         <p><span>￥{{items.price}}</span></p>
+          <h3>{{ items.title }}</h3>
+          <p class="price">
+            <b class="price_b">
+                <span>￥{{items.special_price}}</span>
+                <span>￥{{ items.price }}</span>
+            </b>
+            <van-icon name="ellipsis" />
+          </p>
         </li>
+        </van-list>
       </ul>
     </van-tab>
   </van-tabs>
@@ -33,60 +46,127 @@
 export default {
   data() {
     return {
+        lodingflag:false,
       active: 0,
+        list: [],
+      loading: false,
+      finished: false,
+      //数据总条数
+      listTotal:[],
+    //   分页渲染
+    page:30
     };
   },
+    props:{
+        List:{
+            type:Array,
+            default:()=>[]
+        }
+    },
+
   created() {
-    this.$store.dispatch("typeOne");
-    console.log( this.$store);
   },
   methods: {
-    handleDetail(id){
-       this.$router.push(`/details/${id}`)
-    }
+    handleDetail(id,item) {
+      this.$router.push({
+          path:`/details/${id}`,
+          query:{
+              item:item
+          }
+      });
+    },
+     onLoad() {
+      setTimeout(() => {
+        if(this.listTotal.length ==0) return
+       
+        this.page+=30
+        let arr =[]
+        this.listTotal.forEach((item,index)=>{
+            arr.push(item.slice(0,this.page))
+        })
+        this.list =arr
+        
+        // 加载状态结束
+        this.loading = false;
+        if(false){
+                this.finished = true;
+        }
+      }, 1000);
+    },
   },
+  mounted() {
+  },
+  watch:{
+      List:{
+          deep:true,
+          handler:function(val){
+              this.listTotal = val
+              val.forEach(item => {
+                  this.list.push(item.slice(0,this.page))
+              });
+          }
+      }
+  }
 };
 </script>
 
 <style lang="less" scoped>
 .van-tab__pane {
-  background-color: aqua;
-  
+  background-color: white;
 }
 .list {
-//   width: 100vw;
-//   height: 100vh;
-//   display: flex;
-//   flex-flow: wrap;
-//  flex-flow:column wrap;
-//   justify-content: space-evenly;
-box-sizing: border-box;
-column-count: 2;
-padding: 10px;
+  box-sizing: border-box;
+  column-count: 2;
+  padding: 10px;
   li {
-//   width: calc(100% / 2 - 20px);
-// width: ;
-  height: 200px;
-  margin: 10px;
+    width: calc(100vw / 2 - 20px);
     break-inside: avoid;
-  img {
-    width: 100%;
-    // height: 100%;
-   
-  }
-  
-}
-
-}
-li:nth-of-type(1){
-    margin-top: 0;
-    height: 250px;
-    img{
-        height: 200px;
+    margin-top: 30px;
+    h3 {
+      margin: 8px 0 5px 0;
+      overflow: hidden;
+      white-space: nowrap; /* 设置文本是否换行 */
+      text-overflow: ellipsis; /* 超出文本出现省略号代替 */
+      transform: scale(0.9);
+      font-size: 12px;
     }
-//    height: 200px;
+    img {
+      width: 100%;
+      border: 1px solid #ccc;
+    }
+    .price {
+      padding: 0 5px;
+      display: flex;
+      justify-content: space-between;
+      span {
+        font-size: 12px;
+      }
+      i {
+        font-weight: 700;
+        font-size: 18px;
+        color: #b0b0b0;
+      }
+    }
+  }
 }
-// li:nth-last-of-type()
-
-
+li:nth-of-type(1) {
+  margin-top: 0;
+  height: calc(100vw / 2 + 100px);
+  img {
+    height: 80%;
+  }
+}
+.price_b {
+  display: flex;
+  span:nth-of-type(1) {
+    color: red;
+  }
+  span:nth-of-type(2) {
+    display: block;
+    transform: scale(0.9);
+    padding: 0 5px;
+    color: #b0b0b0;
+    text-decoration: line-through;
+  }
+}
 </style>

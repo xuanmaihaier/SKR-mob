@@ -1,10 +1,10 @@
 <!--
- * @Descripttion: 
+ * @Descripttion: 服务
  * @version: 
  * @Author: stride
  * @Date: 2021-04-21 20:19:18
  * @LastEditors: stride
- * @LastEditTime: 2021-04-21 22:24:15
+ * @LastEditTime: 2021-04-22 13:39:57
 -->
 <template>
   <div class="Params" @click="ParamsClick">
@@ -81,6 +81,7 @@ export default {
 <style lang="less" scoped>
 .Params {
   padding: 14px;
+  border-bottom:1px solid #f5f4f9;
     .van-cell{
     padding: 3px;
   }

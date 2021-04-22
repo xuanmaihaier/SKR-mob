@@ -1,10 +1,10 @@
 <!--
- * @Descripttion: 
+ * @Descripttion: Banner
  * @version: 
  * @Author: stride
  * @Date: 2021-04-21 14:46:15
  * @LastEditors: stride
- * @LastEditTime: 2021-04-21 21:10:29
+ * @LastEditTime: 2021-04-22 13:39:07
 -->
 <template>
   <div class="Banner">

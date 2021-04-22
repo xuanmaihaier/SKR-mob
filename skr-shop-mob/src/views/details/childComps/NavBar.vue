@@ -3,7 +3,7 @@
     <van-nav-bar left-arrow @click-left="onClickLeft">
       <template #right>
         <van-icon name="service" size="28"  ref="right"/>
-        <van-icon name="share" size="28" />
+        <van-icon @click.stop="starShare" name="share" size="28" />
         <van-icon @click.stop="starClick" :name="star" size="28" />
       </template>
     </van-nav-bar>
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import bus from "utils/bus"
 export default {
   data() {
     return {
@@ -22,6 +23,9 @@ export default {
     onClickLeft() {
       this.$router.go(-1);
     },
+    starShare(){
+      bus.$emit('starShare')
+    },
     // 收藏
     starClick() {
       if (this.star == "star-o") {
@@ -32,7 +36,6 @@ export default {
     },
   },
   mounted() {
-  console.log(this.$refs);
 },
 };
 
