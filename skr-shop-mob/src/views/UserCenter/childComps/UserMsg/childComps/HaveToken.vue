@@ -1,5 +1,5 @@
 <template>
-  <div class="HaveToken">
+  <div class="HaveToken" v-if="isToken">
     <section>
       <div class="information">
         <div class="information-img">
