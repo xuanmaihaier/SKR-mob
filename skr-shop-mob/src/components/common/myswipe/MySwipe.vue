@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-21 11:14:41
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 10:00:31
+ * @LastEditTime: 2021-04-22 19:58:22
 -->
 <template>
   <!-- :autoplay="" -->
@@ -35,6 +35,7 @@ export default {
     Preview_img(images, index) {
       this.$emit('Preview_img',images,index)
     },
+   
   },
   props: {
     imgList: {

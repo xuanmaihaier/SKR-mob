@@ -1,6 +1,6 @@
 <template>
-<!-- 首页 -->
   <div class="home">
+    <router-link to="/shopCar">购物车</router-link>
       <HomeTop/>
       <IconWrapper/>
       <home-one :List="Lists"></home-one>
@@ -11,7 +11,6 @@
 import HomeOne from './childComps/HomeOne.vue'
 import HomeTop from './childComps/HomeTop.vue'
 import IconWrapper from './childComps/IconWrapper.vue'
-
 export default {
   name: 'Home',
   components: {
@@ -46,5 +45,4 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
 </style>
