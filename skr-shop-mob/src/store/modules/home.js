@@ -19,30 +19,16 @@ export default {
             state.typeOne = value
         },
         commitTypeOneList(state,value){ 
-        //     if(state.page!=1){
-        //         value.forEach((item,index)=>{
-        //             if(state.typeOne_list[index].length==256){
-        //                 state.lodingflag = true
-        //                 return
-        //             };
-        //             state.typeOne_list[index]=[...state.typeOne_list[index],...item.res]
-        //             // console.log(res);
-        //         })
-        //     }
-        //    else{
+       
             value.forEach((item)=>{
-                 state.typeOne_list.push(item.res)
+                 state.typeOne_list = [...state.typeOne_list,item.res]
             })
-           
-            // state.page = state.page+1
-
-           
-        //    console.log(state.typeOne_list);
         },
         commitGetSpu(state,value){
             value.forEach((item)=>{ 
-                state.getSpuList.push(item.swiperImg)
-                state.getSpuId.push(item.id)
+                // state.getSpuList.push(item.swiperImg)
+                state.getSpuList =[...new Set([... state.getSpuList,item.swiperImg])]
+                state.getSpuId =[...new Set([...state.getSpuId,item.id])]
            })
         }
     },

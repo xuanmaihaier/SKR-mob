@@ -33,6 +33,7 @@ export default {
   methods: {
     // 轮播图预览
     Preview_img(images, index) {
+      // this.$router.push(`/details/${this.imgId[index]}`);
       ImagePreview({
         images: images, //图片数组
         showIndex: true,
@@ -40,6 +41,7 @@ export default {
         startPosition: index,
       });
     },
+   
   },
 
   props:{
@@ -56,11 +58,7 @@ export default {
       default:()=>[]
     },
   },
-  methods: {
-    handleId(index){
-        this.$router.push(`/details/${this.imgId[index]}`);
-    }
-  },
+ 
 
 };
 </script>
