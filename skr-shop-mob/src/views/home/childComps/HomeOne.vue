@@ -7,7 +7,9 @@
  * @LastEditTime: 2021-04-21 11:40:47
 -->
 <template>
-  <van-tabs v-model="active" :swipeable="true">
+  <van-tabs v-model="active" :swipeable="true" :sticky="true" :color="`#ccc`"
+  :lazy-render="true"
+  >
     <van-tab
       v-for="(item, index) in $store.state.home.typeOne"
       :title="item"
@@ -46,8 +48,11 @@
 export default {
   data() {
     return {
-        lodingflag:false,
+      // 显示   没有更多了
+      lodingflag:false,
+      //tab 的标记页
       active: 0,
+      //渲染的数据
         list: [],
       loading: false,
       finished: false,
@@ -68,7 +73,7 @@ export default {
   },
   methods: {
     handleDetail(id,item) {
-        console.log(item);
+        console.log(this.active);
       this.$router.push({
           path:`/details/${id}`,
           params:{
@@ -79,17 +84,19 @@ export default {
      onLoad() {
       setTimeout(() => {
         if(this.listTotal.length ==0) return
-       
         this.page+=30
         let arr =[]
         this.listTotal.forEach((item,index)=>{
-            arr.push(item.slice(0,this.page))
+            arr.push(item.slice(0,30))
         })
+        arr[this.active]= this.listTotal[this.active].slice(0,this.page)
         this.list =arr
-        
         // 加载状态结束
         this.loading = false;
-        if(false){
+        if(this.listTotal[this.active].length==arr[this.active].length){
+          this.lodingflag = true
+        }
+        if( this.lodingflag ){
                 this.finished = true;
         }
       }, 1000);
@@ -106,6 +113,12 @@ export default {
                   this.list.push(item.slice(0,this.page))
               });
           }
+      },
+      active:{
+          deep:true,
+          handler:function(val){
+             this.finished = false;
+          }
       }
   }
 };
@@ -116,13 +129,17 @@ export default {
   background-color: white;
 }
 .list {
-  box-sizing: border-box;
-  column-count: 2;
-  padding: 10px;
+  // box-sizing: border-box;
+  // column-count: 2;
+  // padding: 10px;
+  //  break-inside: avoid;
+
+        
   li {
+    margin: 10px 0;
     width: calc(100vw / 2 - 20px);
-    break-inside: avoid;
-    margin-top: 30px;
+    
+
     h3 {
       margin: 8px 0 5px 0;
       overflow: hidden;
@@ -151,11 +168,14 @@ export default {
   }
 }
 li:nth-of-type(1) {
-  margin-top: 0;
+  margin-top: 10px;
   height: calc(100vw / 2 + 100px);
   img {
     height: 80%;
   }
+}
+li:nth-of-type(2n + 4) {
+  transform: translateY(-8vh);
 }
 .price_b {
   display: flex;
@@ -170,4 +190,10 @@ li:nth-of-type(1) {
     text-decoration: line-through;
   }
 }
+/deep/.van-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 </style>
