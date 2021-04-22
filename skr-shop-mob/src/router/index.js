@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: stride
+ * @Date: 2021-04-20 10:47:29
+ * @LastEditors: stride
+ * @LastEditTime: 2021-04-21 16:51:32
+ */
 import Vue from "vue"
 import VueRouter from "vue-router"
 Vue.use(VueRouter)
@@ -6,8 +14,7 @@ const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 }
-const routes = [
-  {
+const routes = [{
     path: "/",
     redirect: "home"
   },
@@ -17,9 +24,14 @@ const routes = [
     component: () => import("views/home/Home.vue"),
   },
   {
-    path:'/detail',
-    name:'Detail',
-    component:()=>import("views/detail/Detail.vue")
+    path: '/details/:id',
+    name: 'Details',
+    component: () => import("views/details/Details.vue"),
+  },
+  {
+    path: '/stroll',
+    name: 'Stroll',
+    component: () => import("../views/stroll/Stroll.vue")
   }
 ]
 const router = new VueRouter({

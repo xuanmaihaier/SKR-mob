@@ -1,7 +1,7 @@
 <template>
     <div>
         <van-nav-bar
-            title="商品详情"
+            title="新品到着"
             right-icon="bars"
             left-arrow
             @click-left="onClickLeft"
@@ -23,7 +23,6 @@
 </template>
 
 <script>
-// import { Toast ,Icon} from "vant";
 export default {
     data(){
         return{
@@ -36,6 +35,7 @@ export default {
         },
         dropdown(){
             this.flag = !this.flag
+            console.log(this.flag);
         }
     },
 };
@@ -77,6 +77,7 @@ export default {
         z-index: 1111;
     }
     ul{
+        position: absolute;
         width: 40%;
         background-color: #323232;
         float: right;
@@ -85,6 +86,9 @@ export default {
         vertical-align: middle;
         margin-right: 6px;
         border-radius: 8px;
+        right: 0;
+        top: -4px;
+         z-index: 1111;
         li{
             font-size: 16px;
             padding: 14px;
