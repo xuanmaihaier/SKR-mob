@@ -42,12 +42,11 @@ export default {
   },
   methods: {
     similar(index) {
-      console.log("0.0");
       if(this.active == index || this.flag == false){
         this.flag = !this.flag;
-        console.log(this.flag);
       }
       this.active = index
+      // console.log(this.flag);
     },
     detail(id) {
       console.log("页面详情");
@@ -55,11 +54,11 @@ export default {
     },
     async getTypeOneList_(parent_name) {
       const res = await getTypeOneList(parent_name);
-      let data = res.res.slice(20, 30);
+      let data = res.res.slice(10, 20);
       this.listCar = this.listCar.concat(data);
     },
     onSimilar() {
-      console.log(1);
+      console.log('模糊搜索');
     },
   },
 };
@@ -84,7 +83,9 @@ export default {
     .cet-list {
       position: relative;
       width: 45%;
-      margin: 0 5px 10px 10px;
+      margin: 0 8px 10px 8px;
+      box-shadow: 0px 1px 2px #ccc;
+      // border: 1px solid #ccc;
       img {
         width: 100%;
       }
@@ -127,7 +128,7 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  height: 73%;
+  height: 80%;
   background-color: #626363;
   z-index: 10;
   opacity: 0.9;
