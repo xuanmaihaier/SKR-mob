@@ -27,7 +27,8 @@ module.exports = {
         "utils": resolve("src/utils"),
         "router": resolve("src/router"),
         "api": resolve("src/api"),
-        "network":resolve("src/network")
+        "network":resolve("src/network"),
+        "plugins":resolve("src/plugins")
       }
     }
   },

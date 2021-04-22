@@ -25,23 +25,41 @@ const routes = [
     component: () => import("views/home/Home.vue"),
   },
   {
+    path: '/search',
+    name: 'Search',
+    component: () => import("views/search/Search.vue"),
+  },
+  {
+    path: '/search/list',
+    name: 'SearchTwo',
+    component: () => import("views/search/childComps/SearchTwo.vue")
+  },
+  {
     path: '/userCenter',
     name: 'UserCenter',
     component: () => import("views/UserCenter/UserCenter.vue"),
   },
   {
-    path:'/shopCar',
-    name:'ShopCar',
-    component:()=> import('@/views/shopCar/ShopCar.vue')
+    path: '/shopCar',
+    name: 'ShopCar',
+    component: () => import('@/views/shopCar/ShopCar.vue')
   },
   {
     path: '/details/:id',
     name: 'Details',
     component: () => import("views/details/Details.vue"),
   }
+
 ]
 const router = new VueRouter({
   mode: 'history',
   routes,
+  scrollBehavior(to, from, savedPosition) { //页面跳转回到顶部
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 export default router

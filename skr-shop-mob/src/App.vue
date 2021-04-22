@@ -8,9 +8,9 @@
 -->
 <template>
   <div id="app">
-    <keep-alive exclude="Details">
-    <router-view/>
-    </keep-alive>
+    <keep-alive clude="Search,SearchTwo,Details">
+      <router-view />
+    </keep-alive> 
   </div>
 </template>
 
