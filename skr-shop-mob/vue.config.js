@@ -27,7 +27,8 @@ module.exports = {
         "utils": resolve("src/utils"),
         "router": resolve("src/router"),
         "api": resolve("src/api"),
-        "network":resolve("src/network")
+        "network":resolve("src/network"),
+        "plugins":resolve("src/plugins")
       }
     }
   },
@@ -36,7 +37,7 @@ module.exports = {
     open: true,
     proxy: {
       '/dev-api': {
-        target: 'http://192.168.1.121:3000/',
+        target: 'http://192.168.1.135:3000/',
         // target: 'http://192.168.1.144:3000/',
         // target:' http://www.stride.fun:80', 
         changeOrigin: true,

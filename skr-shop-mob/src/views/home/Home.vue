@@ -1,22 +1,15 @@
 <template>
   <div class="home">
-    <p>请阅读规范最后两条</p>
-    <h1>lsa</h1>
+    <router-link to="/search">点我</router-link>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'Home',
-  components: {
-    
-  }
-}
+  name: "Home",
+};
 </script>
 
-<style lang="less" scoped>
-p {
-  color: @color-high-text
-}
+<style>
+
 </style>

@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'normalize.css/normalize.css'
+import './plugins/vant'
 Vue.config.productionTip = false
 
 new Vue({

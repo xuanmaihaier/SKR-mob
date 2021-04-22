@@ -15,10 +15,28 @@ const routes = [
     path: '/home',
     name: 'Home',
     component: () => import("views/home/Home.vue"),
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: () => import("views/search/Search.vue"),
+  },
+  {
+    path: '/search/list',
+    name: 'SearchTwo',
+    component: () => import("views/search/childComps/SearchTwo.vue")
   }
+
 ]
 const router = new VueRouter({
   mode: 'history',
   routes,
+  scrollBehavior(to, from, savedPosition) { //页面跳转回到顶部
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 export default router
