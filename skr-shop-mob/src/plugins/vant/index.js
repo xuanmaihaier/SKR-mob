@@ -2,11 +2,15 @@
 // import 'vant/lib/button/style';
 import Vue from 'vue';
 import {
-    Button
+    Button,
+    Icon,
+    NavBar
 } from "vant"
 // use使用
 const vueUse = {
-    Button
+    Button,
+    Icon,
+    NavBar,
 }
 Object.keys(vueUse).forEach(item => {
     Vue.use(vueUse[item])
