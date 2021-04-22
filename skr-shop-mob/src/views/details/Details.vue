@@ -61,6 +61,8 @@ export default {
       console.log(this.Commodity[0]);
     },
   },
+
+
   created() {
     this.$store.dispatch("getShop", this.$route.params.id);
   },

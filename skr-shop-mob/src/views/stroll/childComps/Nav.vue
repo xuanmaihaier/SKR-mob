@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="nav">
         <van-nav-bar
             title="新品到着"
             right-icon="bars"

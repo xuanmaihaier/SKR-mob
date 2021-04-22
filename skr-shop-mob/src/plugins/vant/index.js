@@ -2,8 +2,7 @@
 
 import Vue from 'vue';
 import {
-    Button,NavBar,Icon,Swipe,SwipeItem,Lazyload,Tabs,Tab,GoodsAction,TreeSelect
-
+    Button,NavBar,Icon,Swipe,SwipeItem,Lazyload,Tabs,Tab,List,GoodsAction,TreeSelect
 } from "vant"
 // use使用
 Vue.use(GoodsAction);
@@ -11,7 +10,8 @@ Vue.use(NavBar);
 Vue.use(Icon);
 Vue.use(TreeSelect);
 const vueUse = {
-    Button,NavBar,Icon,Swipe,SwipeItem,Tabs,Tab 
+    Button,NavBar,Icon,Swipe,SwipeItem,Tabs,Tab,List
+
 }
 Object.keys(vueUse).forEach(item => {
     Vue.use(vueUse[item])
