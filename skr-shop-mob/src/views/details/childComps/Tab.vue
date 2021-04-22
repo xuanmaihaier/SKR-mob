@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-22 16:49:08
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 19:53:33
+ * @LastEditTime: 2021-04-22 22:27:24
 -->
 <!--
  * @Descripttion: 
@@ -15,12 +15,14 @@
  * @LastEditTime: 2021-04-22 16:27:28
 -->
 <template>
-  <div class="Tab">
-    <van-tabs color="#2f3640" v-model="page_init" @click="tabClick">
-      <van-tab v-for="(item, index) in title" :title="item" :key="index">
-      </van-tab>
-    </van-tabs>
-  </div>
+  <transition name="plus-icon" v-if="$store.state.details.show">
+    <div class="Tab">
+      <van-tabs color="#2f3640" v-model="page_init" @click="tabClick">
+        <van-tab v-for="(item, index) in title" :title="item" :key="index">
+        </van-tab>
+      </van-tabs>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -56,5 +58,17 @@ export default {
   left: 0;
   right: 0;
   z-index: 99;
+}
+.plus-icon-enter-active {
+  transition: opacity 0.5s;
+}
+.plus-icon-enter {
+  opacity: 0;
+}
+.plus-icon-leave-active {
+  transition: opacity 0.5s;
+}
+.plus-icon-leave-to {
+  opacity: 0;
 }
 </style>

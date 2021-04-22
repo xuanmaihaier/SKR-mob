@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-20 22:58:14
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 19:43:20
+ * @LastEditTime: 2021-04-22 21:51:34
  */
 
 import { getShopById, getRecommend } from "../../network/details"
@@ -15,7 +15,9 @@ export default {
     // 相似商品
     Recommend: [],
     // 当前tab选中
-    page:0
+    page:0,
+    // 细节界面的tab显示隐藏
+    show:false
   }),
   mutations: {
     getResult(state, val) {
@@ -26,6 +28,9 @@ export default {
     },
     setPage(state,val){
       state.page = val
+    },
+    setShow(state,val){
+      state.show = val
     }
   },
   actions: {
@@ -41,6 +46,9 @@ export default {
     },
     getPage(store,page){
       store.commit('setPage',page)
+    },
+    getShow(store,show){
+      store.commit('setShow',show)
     }
   },
 }
