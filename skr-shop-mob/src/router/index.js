@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: stride
+ * @Date: 2021-04-20 10:47:29
+ * @LastEditors: stride
+ * @LastEditTime: 2021-04-21 23:48:29
+ */
 import Vue from "vue"
 import VueRouter from "vue-router"
 Vue.use(VueRouter)
@@ -25,6 +33,21 @@ const routes = [
     path: '/search/list',
     name: 'SearchTwo',
     component: () => import("views/search/childComps/SearchTwo.vue")
+  },
+  {
+    path: '/userCenter',
+    name: 'UserCenter',
+    component: () => import("views/UserCenter/UserCenter.vue"),
+  },
+  {
+    path: '/shopCar',
+    name: 'ShopCar',
+    component: () => import('@/views/shopCar/ShopCar.vue')
+  },
+  {
+    path: '/details/:id',
+    name: 'Details',
+    component: () => import("views/details/Details.vue"),
   }
 
 ]

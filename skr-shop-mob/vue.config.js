@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: He Xiantao
  * @Date: 2021-04-12 17:42:12
- * @LastEditTime: 2021-04-19 17:30:39
- * @LastEditors: He Xiantao
+ * @LastEditTime: 2021-04-22 09:27:42
+ * @LastEditors: stride
  */
 const path = require('path')
 function resolve(dir) {
