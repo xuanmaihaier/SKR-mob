@@ -4,12 +4,13 @@
  * @Author: stride
  * @Date: 2021-04-20 21:37:36
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 19:54:09
+ * @LastEditTime: 2021-04-22 22:38:02
 -->
 <template>
   <div class="Details">
+     <NavBar />
     <div class="content" ref="content">
-      <NavBar />
+     
       <Tab v-if="loadOk" @tabClick="tabClick" :page="page"/>
       <Swiper :imgList="imgList" @Preview_img="Preview_img" ref="Swiper" />
       <Title :title="title" />
@@ -147,6 +148,11 @@ export default {
         if(top>=item-24){
           this.$store.dispatch('getPage',index)
         }
+        if(top>300){
+          this.$store.dispatch('getShow',true)
+        }else{
+          this.$store.dispatch('getShow',false)
+        }
       });
     },
   },
@@ -157,7 +163,7 @@ export default {
   mounted() {
     let that = this;
     const content = document.querySelector(".content");
-    content.addEventListener("scroll", debounce(this.Sroll_init, 20));
+    content.addEventListener("scroll", debounce(this.Sroll_init, 6));
   },
   watch: {
     Commodity: {
