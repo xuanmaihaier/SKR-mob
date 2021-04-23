@@ -13,7 +13,7 @@
       <p>抱歉，没有找到相关商品，为你推荐以下热门商品</p>
     </div>
     <ul v-show="noFinde">
-      <li v-for="(item, index) in hotList">
+      <li v-for="(item, index) in hotList"  @click="toDetail(item.id)">
         <img alt="" v-lazy="item.img" />
         <p>{{ item.title }}</p>
         <div class="priceText">
@@ -25,7 +25,7 @@
       </li>
     </ul>
     <ul v-show="!noFinde">
-      <li v-for="(item, index) in findList">
+      <li v-for="(item, index) in findList" @click="toDetail(item.id)">
         <img alt="" v-lazy="item.img" />
         <p>{{ item.title }}</p>
         <div class="priceText">
@@ -97,9 +97,25 @@ export default {
     getHotGoods() {
       // 推荐商品
       getTypeOneGoods({ parent_name: "服饰" }).then((res) => {
-        // console.log(res);
         this.hotList = JSON.parse(JSON.stringify(res.res));
       });
+    },
+    toDetail(id) {
+      if (this.noFinde) {
+        this.$router.push({
+          path: "/details/" + id,
+          query: {
+            item: '服饰',
+          },
+        });
+      } else {
+        this.$router.push({
+          path: "/details/" + id,
+          query: {
+            item: this.$route.query.name,
+          },
+        });
+      }
     },
   },
   watch: {

@@ -10,7 +10,7 @@ import Vue from "vue"
 import Vuex from 'vuex'
 import details from "./modules/details"
 import home from './modules/home'
-
+import loading from './modules/loading'
 Vue.use(Vuex)
 let store = new Vuex.Store({
   state: {},
@@ -18,7 +18,8 @@ let store = new Vuex.Store({
   actions: {},
   modules: {
     home,
-    details
+    details,
+    loading
   }
 })
 export default store

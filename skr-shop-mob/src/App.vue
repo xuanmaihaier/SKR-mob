@@ -8,12 +8,19 @@
 -->
 <template>
   <div id="app">
-    <keep-alive clude="Search,SearchTwo,Details">
+    <loading></loading>
+    <keep-alive clude="Search,SearchTwo" exclude="Details">
       <router-view />
     </keep-alive> 
   </div>
 </template>
-
+<script>
+import Loading from './components/common/loading/Loading.vue'
+export default {
+  components: { Loading },
+  name:'App',
+}
+</script>
 <style>
 @import url("./assets/css/params.less");
 </style>
