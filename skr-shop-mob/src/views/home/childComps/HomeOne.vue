@@ -4,11 +4,15 @@
  * @Author: stride
  * @Date: 2021-04-21 11:14:41
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 19:56:29
+ * @LastEditTime: 2021-04-23 15:32:06
 -->
 <template>
-  <van-tabs v-model="active" :swipeable="true" :sticky="true" :color="`#ccc`"
-  :lazy-render="true"
+  <van-tabs
+    v-model="active"
+    :swipeable="true"
+    :sticky="true"
+    :color="`#ccc`"
+    :lazy-render="true"
   >
     <van-tab
       v-for="(item, index) in $store.state.home.typeOne"
@@ -23,21 +27,21 @@
           finished-text="没有更多了"
           @load="onLoad"
         >
-            <li
-          v-for="(items, indexs) in list[index]"
-          :key="indexs"
-          @click="handleDetail(items.id,item)"
-        >
-          <img :src="items.img" alt="" />
-          <h3>{{ items.title }}</h3>
-          <p class="price">
-            <b class="price_b">
-                <span>￥{{items.special_price}}</span>
+          <li
+            v-for="(items, indexs) in list[index]"
+            :key="indexs"
+            @click="handleDetail(items.id, item)"
+          >
+            <img :src="items.img" alt="" />
+            <h3>{{ items.title }}</h3>
+            <p class="price">
+              <b class="price_b">
+                <span>￥{{ items.special_price }}</span>
                 <span>￥{{ items.price }}</span>
-            </b>
-            <van-icon name="ellipsis" />
-          </p>
-        </li>
+              </b>
+              <van-icon name="ellipsis" />
+            </p>
+          </li>
         </van-list>
       </ul>
     </van-tab>
@@ -49,77 +53,75 @@ export default {
   data() {
     return {
       // 显示   没有更多了
-      lodingflag:false,
+      lodingflag: false,
       //tab 的标记页
       active: 0,
       //渲染的数据
-        list: [],
+      list: [],
       loading: false,
       finished: false,
       //数据总条数
-      listTotal:[],
-    //   分页渲染
-    page:30
+      listTotal: [],
+      //   分页渲染
+      page: 30,
     };
   },
-    props:{
-        List:{
-            type:Array,
-            default:()=>[]
-        }
+  props: {
+    List: {
+      type: Array,
+      default: () => [],
     },
-
-  created() {
   },
+
+  created() {},
   methods: {
-    handleDetail(id,item) {
+    handleDetail(id, item) {
       this.$router.push({
-          path:`/details/${id}`,
-          query:{
-              item:item
-          }
+        path: `/details/${id}`,
+        query: {
+          type: item,
+        },
       });
     },
-     onLoad() {
+    onLoad() {
       setTimeout(() => {
-        if(this.listTotal.length ==0) return
-        this.page+=30
-        let arr =[]
-        this.listTotal.forEach((item,index)=>{
-            arr.push(item.slice(0,30))
-        })
-        arr[this.active]= this.listTotal[this.active].slice(0,this.page)
-        this.list =arr
+        if (this.listTotal.length == 0) return;
+        this.page += 30;
+        let arr = [];
+        this.listTotal.forEach((item, index) => {
+          arr.push(item.slice(0, 30));
+        });
+        arr[this.active] = this.listTotal[this.active].slice(0, this.page);
+        this.list = arr;
         // 加载状态结束
         this.loading = false;
-        if(this.listTotal[this.active].length==arr[this.active].length){
-          this.lodingflag = true
+        if (this.listTotal[this.active].length == arr[this.active].length) {
+          this.lodingflag = true;
         }
-        if( this.lodingflag ){
-                this.finished = true;
+        if (this.lodingflag) {
+          this.finished = true;
         }
       }, 1000);
     },
   },
-  mounted() {
-  },
-  watch:{
-      List:{
-          deep:true,
-          handler:function(val){
-              this.listTotal = val
-              val.forEach(item => {
-                  this.list.push(item.slice(0,this.page))
-              });
-          }
+  mounted() {},
+  watch: {
+    List: {
+      deep: true,
+      handler: function (val) {
+        this.listTotal = val;
+        val.forEach((item) => {
+          this.list.push(item.slice(0, this.page));
+        });
       },
-      active:{
-          deep:true,
-          handler:function(val){
-             this.finished = false;
-          }
-      }
-  }
+    },
+    active: {
+      deep: true,
+      handler: function (val) {
+        this.finished = false;
+      },
+    },
+  },
 };
 </script>
 
@@ -133,11 +135,9 @@ export default {
   // padding: 10px;
   //  break-inside: avoid;
 
-        
   li {
     margin: 10px 0;
     width: calc(100vw / 2 - 20px);
-    
 
     h3 {
       margin: 8px 0 5px 0;
@@ -189,10 +189,9 @@ li:nth-of-type(2n + 4) {
     text-decoration: line-through;
   }
 }
-/deep/.van-list{
+/deep/.van-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-
 </style>

@@ -4,17 +4,34 @@
  * @Author: stride
  * @Date: 2021-04-21 21:20:17
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 11:36:57
+ * @LastEditTime: 2021-04-23 15:33:42
 -->
 <template>
   <div class="Ranking">
-    <van-cell title="榜单" is-link value="「潮流新势力第3名」" />
+    <van-cell title="榜单" is-link :value="`「潮流新势力第${Ranking_num}名」`" @click="rankingClick"/>
   </div>
 </template>
 
 <script>
 export default {
   name: "Serve",
+  props:{
+    Ranking_num:{
+      type:Number,
+      default:()=>0
+    }
+  },
+  methods: {
+    rankingClick(){
+      this.$router.push({
+        path:"/ranking",
+        query:{
+          type:this.$route.query.type
+        }
+      })
+    },
+    
+  },
 };
 </script>
 

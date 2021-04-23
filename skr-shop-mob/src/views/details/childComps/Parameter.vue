@@ -4,11 +4,11 @@
  * @Author: stride
  * @Date: 2021-04-22 12:42:28
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 13:39:34
+ * @LastEditTime: 2021-04-23 15:22:45
 -->
 <template>
   <div class="Parameter">
-    <van-cell title="参数" is-link value="商品信息有疑问">
+    <van-cell title="参数" is-link value="商品信息有疑问" @click="showPopup">
       <template #right-icon>
         <van-icon name="question" />
       </template>
@@ -47,6 +47,42 @@
         </van-collapse-item>
       </van-collapse>
     </ul>
+    <van-popup
+      closeable
+      v-model="show"
+      :style="{ height: '46%', width: '80%' }"
+      @click-close-icon="clickIcon"
+      :safe-area-inset-bottom="true"
+    >
+      <div class="from">
+        <van-form @submit="onSubmit">
+          <van-field
+            v-model="name"
+            name="商品名称"
+            label="商品名称"
+            placeholder="请填写有疑问的商品名"
+            :rules="[{ required: true, message: '请填写商品名称' }]"
+          />
+          <van-field
+            v-model="remarks"
+            name="备注"
+            label="请填写留言备注"
+            placeholder="请填写有疑问的商品名"
+            :rules="[{ required: true, message: '请填写备注' }]"
+          />
+          <div style="margin: 16px">
+            <van-button
+              color="#2f3640"
+              round
+              block
+              type="info"
+              native-type="submit"
+              >提交给客服</van-button
+            >
+          </div>
+        </van-form>
+      </div>
+    </van-popup>
   </div>
 </template>
 
@@ -56,6 +92,9 @@ export default {
   data() {
     return {
       activeNames: [""],
+      show: false,
+      name: "",
+      remarks:""
     };
   },
   props: {
@@ -69,7 +108,15 @@ export default {
       return JSON.parse(this.Commodity.param).join(" ");
     },
   },
-  methods: {},
+  methods: {
+    showPopup() {
+      this.show = true;
+    },
+    clickIcon() {
+      this.show = false;
+    },
+    onSubmit() {},
+  },
   created() {},
   watch: {},
   mounted() {
@@ -129,6 +176,20 @@ export default {
       padding: 0;
       font-size: 12px;
     }
+  }
+}
+/deep/ .van-cell__title span {
+  font-size: 13px;
+}
+.from {
+  position: absolute;
+    top: 120px;
+    left: 10px;
+    right: 10px;
+    bottom: 30px;
+  overflow: hidden;
+  /deep/ .van-cell{
+    border-bottom: 1px solid #ccc;
   }
 }
 </style>

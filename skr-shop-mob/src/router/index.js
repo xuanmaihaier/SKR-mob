@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-20 10:47:29
  * @LastEditors: stride
- * @LastEditTime: 2021-04-21 23:48:29
+ * @LastEditTime: 2021-04-23 12:16:05
  */
 import Vue from "vue"
 import VueRouter from "vue-router"
@@ -48,6 +48,11 @@ const routes = [
     path: '/details/:id',
     name: 'Details',
     component: () => import("views/details/Details.vue"),
+  },
+  {
+    path: '/ranking',
+    name: 'Ranking',
+    component: () => import("views/ranking/Ranking.vue"),
   }
 
 ]

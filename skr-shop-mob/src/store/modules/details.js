@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-20 22:58:14
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 21:51:34
+ * @LastEditTime: 2021-04-23 11:32:29
  */
 
 import { getShopById, getRecommend } from "../../network/details"
@@ -14,10 +14,8 @@ export default {
     Commodity: [],
     // 相似商品
     Recommend: [],
-    // 当前tab选中
-    page:0,
-    // 细节界面的tab显示隐藏
-    show:false
+    // 销量排行版前10
+    height:[],
   }),
   mutations: {
     getResult(state, val) {
@@ -25,13 +23,10 @@ export default {
     },
     getResultSec(state, val) {
       state.Recommend = val
+      let height = JSON.parse(JSON.stringify(val))
+      height= height.sort((a,b)=>b.sale-a.sale).slice(0,10)
+      state.height = height
     },
-    setPage(state,val){
-      state.page = val
-    },
-    setShow(state,val){
-      state.show = val
-    }
   },
   actions: {
     async getShop(store, id) {
@@ -44,11 +39,5 @@ export default {
       if (result.code !== 200) throw new Error("getRecommend error")
       store.commit('getResultSec', result.res)
     },
-    getPage(store,page){
-      store.commit('setPage',page)
-    },
-    getShow(store,show){
-      store.commit('setShow',show)
-    }
   },
 }
