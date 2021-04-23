@@ -1,30 +1,35 @@
 <template>
   <div class="searchTop">
-    <van-icon name="arrow-left" size="30" color="#fff" @click="previousPage" />
+    <van-icon
+      name="arrow-left"
+      size="30"
+      color="#444a53"
+      @click="previousPage"
+    />
     <van-icon
       ref="meanBtn"
       name="apps-o"
       size="30"
-      color="#fff"
+      color="#444a53"
       @click="meanShow = !meanShow"
     />
     <span class="spanSearch">搜索</span>
     <div class="homebuttom" v-show="meanShow" ref="homebuttom">
       <ul>
-        <li>
-          <van-icon name="wap-home" size="20" color="#fff" />
+        <li @click="goHome">
+          <van-icon name="wap-home" size="20" color="#000" />
           <span>首页</span>
         </li>
-        <li>
-          <van-icon name="weapp-nav" size="20" color="#fff" />
+        <li @click="goClassification">
+          <van-icon name="weapp-nav" size="20" color="#000" />
           <span>分类</span>
         </li>
-        <li>
-          <van-icon name="shopping-cart" size="20" color="#fff" />
+        <li @click="goShopcart">
+          <van-icon name="shopping-cart" size="20" color="#000" />
           <span>购物车</span>
         </li>
-        <li>
-          <van-icon name="manager" size="20" color="#fff" />
+        <li @click="goMine">
+          <van-icon name="manager" size="20" color="#000" />
           <span>我的</span>
         </li>
       </ul>
@@ -46,6 +51,18 @@ export default {
     previousPage() {
       history.go(-1);
     },
+    goHome(){
+      this.$router.push('/home')
+    },
+    goClassification(){
+
+    },
+    goShopcart(){
+      this.$router.push('/shopCar')
+    },
+    goMine(){
+      this.$router.push('/userCenter')
+    }
   },
   mounted() {
     document.addEventListener("click", (e) => {
@@ -76,7 +93,8 @@ export default {
   height: @top-height;
   line-height: @top-height;
   text-align: center;
-  background-image: linear-gradient(#323232, #414141);
+  // background-image: linear-gradient(#323232, #414141);
+  background-color: #fff;
   /deep/ .van-icon-arrow-left {
     .iconStyle();
     left: 0.5rem;
@@ -87,7 +105,7 @@ export default {
   }
   span.spanSearch {
     font-size: 1.3rem;
-    color: #fff;
+    color: #444a53;
   }
   .homebuttom {
     position: absolute;
@@ -98,9 +116,10 @@ export default {
     z-index: 2;
     ul {
       width: 100%;
-      background-image: linear-gradient(#434343, #171717);
+      background-color: #fff;
       overflow: hidden;
       border-radius: 0.5rem;
+      box-shadow: 0px 0px 5px #ccc;
       li {
         display: flex;
         padding-left: 1rem;
@@ -114,10 +133,15 @@ export default {
         span {
           padding-left: 1rem;
           width: 5.6rem;
-          color: #fff;
+          color: #000;
           text-align: left;
-          border-bottom: 1px solid #444444;
+          // border-bottom: 1px solid #ccc;
           line-height: 2.8rem;
+        }
+        &:last-child {
+          span {
+            border: none;
+          }
         }
       }
     }
@@ -129,7 +153,7 @@ export default {
       right: 1.5rem;
       -webkit-transform: rotate(45deg);
       transform: rotate(45deg);
-      background-color: #434343;
+      background-color: #fff;
     }
   }
 }

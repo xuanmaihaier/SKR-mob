@@ -4,34 +4,44 @@
  * @Author: stride
  * @Date: 2021-04-20 21:37:36
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 22:38:02
+ * @LastEditTime: 2021-04-23 15:34:09
 -->
 <template>
   <div class="Details">
-     <NavBar />
+    <MyNavBar :right="true" />
     <div class="content" ref="content">
-     
-      <Tab v-if="loadOk" @tabClick="tabClick" :page="page"/>
-      <Swiper :imgList="imgList" @Preview_img="Preview_img" ref="Swiper" />
-      <Title :title="title" />
-      <Banner />
-      <Instalments :param="param" />
-      <Serve />
-      <Ranking />
-      <Freight />
-      <Recommend />
-      <Recent />
-      <Evaluate />
-      <Selected
-        :imgList="imgList"
-        @Previewsec_img="Preview_img"
-        ref="Selected"
-      />
-      <Parameter :Commodity="Commodity[0]" ref="Parameter" />
-      <Particulars :imgList="imgList" />
-      <Rules />
-      <Information />
-      <Recommendation ref="Recommendation" @imgLoad="imgLoad" />
+      <van-pull-refresh
+        v-model="isLoading"
+        success-text="刷新成功"
+        @refresh="onRefresh"
+      >
+        <Tab
+          v-if="loadOk"
+          @tabClick="tabClick"
+          :page="page"
+          :TabShow="TabShow"
+        />
+        <Swiper :imgList="imgList" @Preview_img="Preview_img" ref="Swiper" />
+        <Title :title="title" />
+        <Banner />
+        <Instalments :param="param" />
+        <Serve />
+        <Ranking v-if="isRanking" :Ranking_num="Ranking_num" />
+        <Freight />
+        <Recommend />
+        <Recent />
+        <Evaluate />
+        <Selected
+          :imgList="imgList"
+          @Previewsec_img="Preview_img"
+          ref="Selected"
+        />
+        <Parameter :Commodity="Commodity[0]" ref="Parameter" />
+        <Particulars :imgList="imgList" />
+        <Rules />
+        <Information />
+        <Recommendation ref="Recommendation" @imgLoad="imgLoad" />
+      </van-pull-refresh>
     </div>
     <Footer />
     <Share />
@@ -42,7 +52,7 @@
 import { debounce } from "utils/debounce";
 import { animateScroll } from "utils/animate";
 import { ImagePreview } from "vant"; //引入大图预览
-import NavBar from "./childComps/NavBar";
+import MyNavBar from "../../components/content/navbar/MyNavBar";
 import Swiper from "components/common/myswipe/MySwipe";
 import Title from "./childComps/Title";
 import Banner from "./childComps/Banner";
@@ -71,11 +81,15 @@ export default {
       param: {},
       offsetTop: [],
       loadOk: false,
-      page:0
+      isLoading: false,
+      isRanking: false,
+      page: 0,
+      Ranking_num: 0,
+      TabShow: false,
     };
   },
   components: {
-    NavBar,
+    MyNavBar,
     Swiper,
     Title,
     Banner,
@@ -143,22 +157,38 @@ export default {
     },
     Sroll_init() {
       const content = document.querySelector(".content");
-      let top = content.scrollTop
-      this.offsetTop.forEach((item,index) => {
-        if(top>=item-24){
-          this.$store.dispatch('getPage',index)
+      let top = content.scrollTop;
+      this.offsetTop.forEach((item, index) => {
+        if (top >= item - 24) {
+          this.page = index;
         }
-        if(top>300){
-          this.$store.dispatch('getShow',true)
-        }else{
-          this.$store.dispatch('getShow',false)
+        if (top > 300) {
+          this.TabShow = true;
+        } else {
+          this.TabShow = false;
+        }
+      });
+    },
+    onRefresh() {
+      setTimeout(() => {
+        this.$store.dispatch("getShop", this.$route.params.id);
+        this.$store.dispatch("getRecommend_init", this.$route.query.type);
+        this.isLoading = false;
+      }, 1000);
+    },
+    // 初始化排行榜
+    Ranking_init() {
+      this.$store.state.details.height.forEach((item, index) => {
+        if (item.id == this.$route.params.id) {
+          this.isRanking = true;
+          this.Ranking_num = index + 1;
         }
       });
     },
   },
   created() {
     this.$store.dispatch("getShop", this.$route.params.id);
-    this.$store.dispatch("getRecommend_init", this.$route.query.item);
+    this.$store.dispatch("getRecommend_init", this.$route.query.type);
   },
   mounted() {
     let that = this;
@@ -170,6 +200,7 @@ export default {
       deep: true,
       handler: function (val) {
         this.list_init();
+        this.Ranking_init();
       },
     },
     // 异步解决  最长的图片加载完毕才获取高度
@@ -182,6 +213,12 @@ export default {
       ];
       this.offsetTop = arr;
     },
+    // $route(to, from) {
+    //   if (to.path !== from.path) {
+    //     this.$store.dispatch("getShop", this.$route.params.id);
+    //     this.$store.dispatch("getRecommend_init", this.$route.query.type);
+    //   }
+    // },
   },
 };
 </script>

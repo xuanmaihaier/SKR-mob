@@ -91,15 +91,17 @@ export default {
       left: 0.4rem;
     }
     input {
-      width: 16rem;
+      width: 75vw;
       height: 2.5rem;
       padding-left: 2rem;
       background-color: #f5f5f9;
       border: none;
       border-radius: 19px;
+      font-size: 4vw;
     }
   }
   span {
+    font-size: 4vw;
     padding-left: 0.5rem;
     line-height: 2.5rem;
     font-weight: bold;
