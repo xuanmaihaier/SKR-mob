@@ -45,7 +45,6 @@ export default {
         },
         commitTypeList(state,value){
             state.typeTwoList = value
-            console.log( state.typeTwoList);
         }
        
     },

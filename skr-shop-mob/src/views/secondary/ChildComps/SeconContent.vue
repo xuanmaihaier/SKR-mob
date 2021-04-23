@@ -18,14 +18,14 @@
 <script>
 export default {
 created() {
-   console.log(this.$store.state.home.typeTwoList,'222');
+//    console.log(this.$store.state.home.typeTwoList,'222');
 },
 methods: {
-     handleDetail(id,item) {
+     handleDetail(id) {
       this.$router.push({
           path:`/details/${id}`,
           query:{
-              item:item
+             type:'鞋类'
           }
       });
     },
