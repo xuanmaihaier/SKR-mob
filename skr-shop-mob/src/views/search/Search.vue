@@ -28,6 +28,7 @@ export default {
 
 <style lang="less" scoped>
 .search {
+  width: 100vw;
   font-family: helvetica, Arial, "\9ED1\4F53", sans-serif;
 }
 </style>
