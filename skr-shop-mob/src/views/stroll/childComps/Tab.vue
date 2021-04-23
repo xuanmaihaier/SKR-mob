@@ -18,13 +18,21 @@
             </van-tab>
             <van-tab title="本周上新">
                 <ul class="weekend">
-                    <li class="good"  v-for="(item,index) in weekShop" :key="index"  @click="toDetail(item.id)">
-                        <img :src="item.img" alt="" />
+                    <li
+                        class="good"
+                        v-for="(item, index) in weekShop"
+                        :key="index"
+                        @click="toDetail(item.id)"
+                    >
+                            <img  :src="item.img" alt=""  />
+                            <div class="mask" v-show="!flag">
+                                <p class="similar">找相似</p>
+                            </div>
                         <div class="price">
                             <p>{{ item.title }}</p>
                             <p class="prices">
                                 <span>¥{{ item.price }}</span>
-                                <span>¥{{ item.special_price }}</span>
+                                <span>{{ item.special_price }}</span>
                                 <span>...</span>
                             </p>
                         </div>
@@ -33,13 +41,19 @@
             </van-tab>
             <van-tab title="销量">
                 <ul class="sorts">
-                    <li class="good" v-for="(item,index) in weekShop" :key="index"  @click="toDetail(item.id)">
+                    <li
+                        class="good"
+                        v-for="(item, index) in sortShop"
+                        :key="index"
+                        @click="toDetail(item.id)"
+                    >
                         <img :src="item.img" alt="" />
+                        
                         <div class="price">
                             <p>{{ item.title }}</p>
                             <p class="prices">
                                 <span>¥{{ item.price }}</span>
-                                <span>¥{{ item.special_price }}</span>
+                                <span>{{ item.special_price }}</span>
                                 <span>...</span>
                             </p>
                         </div>
@@ -48,7 +62,7 @@
             </van-tab>
             <van-tab title=""
                 ><template #title>筛选<van-icon name="play" /></template>
-                <template #default>
+                <template #default class="screen">
                     <van-tree-select
                         :items="items"
                         :active-id.sync="activeIds"
@@ -62,14 +76,14 @@
 
 <script>
 import { getTypeOneList } from "network/getList";
-import {getImg} from "network/getImg"
+import { getImg } from "network/getImg";
 export default {
     data() {
         return {
             active: 0,
             todayShop: [],
-            weekShop:[],
-
+            weekShop: [],
+            sortShop: [],
             items: [
                 {
                     // 导航名称
@@ -180,35 +194,49 @@ export default {
             ],
             activeIds: [0],
             activeIndex: 0,
+            flag:true,
+            show:null
         };
     },
     methods: {
+        // today
         async getTypeOneList_(parent_name) {
             const res = await getTypeOneList(parent_name);
             this.todayShop = res.res[0];
         },
-
-        async getImg_(parent_name,start,end,sort_){
-            const res = await getImg(parent_name,start,end,sort_);
-            this.weekShop = this.weekShop.concat(res)
-            console.log(this.weekShop);
+        // 本周上新
+        async getTypeOneList_w(parent_name) {
+            const res = await getTypeOneList(parent_name);
+            let data = res.res.slice(20, 25);
+            this.weekShop = this.weekShop.concat(data);
         },
-        toDetails(id){
-            this.$router.push(`/detail/${id}`)
+        // 销量
+        async getImg_(parent_name, start, end, sort_) {
+            const res = await getImg(parent_name, start, end, sort_);
+            this.sortShop = this.sortShop.concat(res);
         },
-        toDetail(id){
-            console.log(11);
-            this.$router.push(`/detail/${id}`)
-        }
+        toDetails(id) {
+            this.$router.push(`/details/${id}`);
+        },
+        toDetail(id) {
+            this.$router.push(`/details/${id}`);
+        },
+        // toSimilar(index){
+        //     console.log(index,'11--11');
+        //     this.show = !index
+        // }
     },
     created() {
         let dayGood = ["鞋类"];
         this.getTypeOneList_(dayGood);
-        let weekGood = ['鞋类','服饰','配件','儿童专区']
-        weekGood.forEach(item=>{
-            this.getImg_(item,1,2,'price')
-        })
-        
+        let weekGoods = ["鞋类", "服饰", "配件", "儿童专区"];
+        weekGoods.forEach((item) => {
+            this.getTypeOneList_w(item);
+        });
+        let sortGoods = ["鞋类", "服饰", "配件", "儿童专区"];
+        sortGoods.forEach((item) => {
+            this.getImg_(item, 1, 2, "price");
+        });
     },
 };
 </script>
@@ -238,7 +266,8 @@ export default {
 /deep/.van-tree-select__item--active {
     color: #000;
 }
-.todayGood{
+.van-tree-select,
+.todayGood {
     min-height: 50vh;
 }
 .weekend,
@@ -251,9 +280,29 @@ export default {
         width: 45%;
         height: 30vh;
         margin: 10px 5px 10px 10px;
-        img {
+        position: relative;
+            img {
             width: 100%;
+            }
+            .mask{
+                position: absolute;
+                width: 45vw;
+                height: 21vh;
+                background: rgba(0,0,0,.5); 
+                top: 0;
+            .similar{
+                width: 22vw;
+                height: 10vh;
+                background-color: #d0021b;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 10vh;
+                color: #fff;
+                margin: 50px auto;
+            }
+
         }
+
         .price {
             width: 100%;
             height: 10vh;
@@ -263,6 +312,7 @@ export default {
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 margin: 14px 0;
+                position: relative;
             }
             .prices {
                 :nth-child(1) {
@@ -274,11 +324,14 @@ export default {
                     margin-left: 6px;
                 }
                 :nth-child(3) {
-                    float: right;
+                    display: inline-block;
+                    width: 6vw;
+                    height: 2vh;
                     font-size: 20px;
                     color: #000;
-                    margin: 0 5px;
                     line-height: 10px;
+                    right: 0;
+                    position: absolute;
                 }
             }
         }

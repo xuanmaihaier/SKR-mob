@@ -9,7 +9,7 @@
         </div>
       </template>
       <template #right>
-        <van-icon name="search" size="18" />
+        <van-icon name="search" size="18" @click="toSearch"/>
       </template>
     </van-nav-bar>
     <my-swipe :imgList="$store.state.home.getSpuList" :imgStyle="{height: '20vh'}"
@@ -32,7 +32,11 @@ export default {
     // this.$store.dispatch("typeOne");
      this.$store.dispatch('getSpu_','休闲上衣')
   },
- 
+  methods: {
+    toSearch(){
+      this.$router.push('/search')
+    }
+  },
 };
 </script>
 

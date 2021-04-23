@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-21 11:14:41
  * @LastEditors: stride
- * @LastEditTime: 2021-04-21 11:40:47
+ * @LastEditTime: 2021-04-22 19:56:29
 -->
 <template>
   <van-tabs v-model="active" :swipeable="true" :sticky="true" :color="`#ccc`"
@@ -73,10 +73,9 @@ export default {
   },
   methods: {
     handleDetail(id,item) {
-        console.log(this.active);
       this.$router.push({
           path:`/details/${id}`,
-          params:{
+          query:{
               item:item
           }
       });

@@ -1,17 +1,17 @@
 <!--
- * @Descripttion: 
+ * @Descripttion: Banner
  * @version: 
  * @Author: stride
  * @Date: 2021-04-21 14:46:15
  * @LastEditors: stride
- * @LastEditTime: 2021-04-21 15:45:31
+ * @LastEditTime: 2021-04-22 13:39:07
 -->
 <template>
   <div class="Banner">
     <ul>
       <li>
         <van-icon name="gem" size="18px" />
-        <p>先鉴别后发货</p>
+        <p>鉴别后发货</p>
       </li>
       <li>
         <van-icon name="search" size="18px" />
@@ -20,7 +20,6 @@
       <li>
         <van-icon name="good-job" size="18px" />
         <p>正品保障</p>
-        <van-icon name="arrow" color="#999" />
       </li>
     </ul>
   </div>

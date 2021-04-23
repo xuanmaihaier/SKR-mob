@@ -12,6 +12,7 @@
     "babel-plugin-import": "^1.13.3",
     "core-js": "^3.6.5",
     "normalize.css": "^8.0.1",
+    "path": "^0.12.7",
     "vant": "^2.12.14",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",

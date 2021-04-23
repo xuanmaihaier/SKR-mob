@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-20 10:47:29
  * @LastEditors: stride
- * @LastEditTime: 2021-04-21 16:51:32
+ * @LastEditTime: 2021-04-21 23:48:29
  */
 import Vue from "vue"
 import VueRouter from "vue-router"
@@ -24,9 +24,24 @@ const routes = [{
     component: () => import("views/home/Home.vue"),
   },
   {
-    path:'/shopCar',
-    name:'ShopCar',
-    component:()=> import('@/views/shopCar/ShopCar.vue')
+    path: '/search',
+    name: 'Search',
+    component: () => import("views/search/Search.vue"),
+  },
+  {
+    path: '/search/list',
+    name: 'SearchTwo',
+    component: () => import("views/search/childComps/SearchTwo.vue")
+  },
+  {
+    path: '/userCenter',
+    name: 'UserCenter',
+    component: () => import("views/UserCenter/UserCenter.vue"),
+  },
+  {
+    path: '/shopCar',
+    name: 'ShopCar',
+    component: () => import('@/views/shopCar/ShopCar.vue')
   },
   {
     path: '/details/:id',
@@ -38,9 +53,17 @@ const routes = [{
     name: 'Stroll',
     component: () => import("../views/stroll/Stroll.vue")
   }
+
 ]
 const router = new VueRouter({
   mode: 'history',
   routes,
+  scrollBehavior(to, from, savedPosition) { //页面跳转回到顶部
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 export default router

@@ -13,10 +13,10 @@
         <div class="dropdown" v-show="flag">
             <div class="ul-arr"></div>
             <ul>
-                <li><van-icon name="wap-home" /><span>首页</span></li>
-                <li><van-icon name="todo-list" /><span>分类</span></li>
-                <li><van-icon name="cart" /><span>购物车</span></li>
-                <li><van-icon name="manager" /><span>我的</span></li>
+                <li @click="toHome"><van-icon name="wap-home" /><span>首页</span></li>
+                <li @click="toList"><van-icon name="todo-list" /><span>分类</span></li>
+                <li @click="toCart"><van-icon name="cart" /><span>购物车</span></li>
+                <li @click="toMine"><van-icon name="manager" /><span>我的</span></li>
             </ul>
         </div>
     </div>
@@ -36,6 +36,18 @@ export default {
         dropdown(){
             this.flag = !this.flag
             console.log(this.flag);
+        },
+        toHome(){
+            this.$router.push('/home')
+        },
+        toList(){
+            this.$router.push('/search/list')
+        },
+        toCart(){
+            this.$router.push('/shopCar')
+        },
+        toMine(){
+            this.$router.push('/userCenter')
         }
     },
 };

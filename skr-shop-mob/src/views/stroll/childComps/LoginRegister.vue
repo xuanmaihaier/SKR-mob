@@ -3,12 +3,12 @@
         <div id="login">
             <div class="login">
                 <div class="lore">
-                    <span>登录</span>
+                    <span @click="toLogin">登录</span>
                     <span>|</span>
-                    <span>注册</span>
+                    <span @click="toRegister">注册</span>
                 </div>
                 <div class="back">
-                    <span>回到顶部</span><van-icon name="arrow-up" />
+                    <span @click="backTop">回到顶部<van-icon name="arrow-up" /></span>
                 </div>
             </div>
             <footer>
@@ -19,7 +19,25 @@
 </template>
 
 <script>
-export default {};
+export default {
+//     data(){
+//         return{
+
+//         }        
+//    },
+   methods:{
+       backTop(){
+           window.scroll(0,0)
+       },
+       toLogin(){
+           console.log('login');
+       },
+       toRegister(){
+           console.log('toRegister');
+       }
+   }
+};
+
 </script>
 
 <style lang="less" scoped>

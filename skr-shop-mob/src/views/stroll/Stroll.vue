@@ -8,7 +8,7 @@
                 alt=""
         /></a>
         <Tab />
-        <a href="" class="shopCar"><van-icon name="cart" /></a>
+        <a href="#" class="shopCar" @click="toShopCar"><van-icon name="cart" /></a>
 
 
         <Lore />
@@ -26,12 +26,17 @@ export default {
         Tab,
         Lore,
     },
+    methods:{
+        toShopCar(){
+            this.$router.push('/shopCar')
+        }
+    }
 };
 </script>
 
 <style lang="less" scoped>
 #stroll {
-    height: 100vh;
+    width: 100%;
     a {
         width: 100%;
         img {

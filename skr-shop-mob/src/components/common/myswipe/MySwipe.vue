@@ -1,25 +1,25 @@
 <!--
- * @Descripttion: 带有点击预览的轮播图
+ * @Descripttion: 轮播图
  * @version: 
  * @Author: stride
  * @Date: 2021-04-21 11:14:41
  * @LastEditors: stride
- * @LastEditTime: 2021-04-21 15:38:22
+ * @LastEditTime: 2021-04-22 19:58:22
 -->
 <template>
   <!-- :autoplay="" -->
   <div class="my_swipe">
-       <van-swipe :style="imgStyle">
-      <van-swipe-item v-for="(image, index) in imgList" :key="index" @click="handleId(index)">
-        <img v-lazy="image" @click="Preview_img(imgList,index)"/>
-
+    <van-swipe :style="imgStyle">
+      <van-swipe-item
+        v-for="(image, index) in imgList" :key="index">
+        <img v-lazy="image" @click="Preview_img(imgList, index)" />
       </van-swipe-item>
     </van-swipe>
   </div>
 </template>
 
 <script>
-import { ImagePreview } from "vant"; //引入预览
+
 export default {
   data() {
     return {};
@@ -31,35 +31,26 @@ export default {
     },
   },
   methods: {
-    // 轮播图预览
+    // 轮播图预览功能
     Preview_img(images, index) {
-      // this.$router.push(`/details/${this.imgId[index]}`);
-      ImagePreview({
-        images: images, //图片数组
-        showIndex: true,
-        loop: false,
-        startPosition: index,
-      });
+      this.$emit('Preview_img',images,index)
     },
    
   },
-
-  props:{
-    imgList:{
-      type:Array,
-      default:()=>[]
+  props: {
+    imgList: {
+      type: Array,
+      default: () => [],
     },
-     imgStyle:{
-      type:Object,
-      default:()=>{}
+    imgStyle: {
+      type: Object,
+      default: () => {},
     },
-    imgId:{
-      type:Array,
-      default:()=>[]
+    imgId: {
+      type: Array,
+      default: () => [],
     },
   },
- 
-
 };
 </script>
 
@@ -67,13 +58,11 @@ export default {
 .my-swipe .van-swipe-item {
   color: #fff;
   font-size: 20px;
-
   text-align: center;
   background-color: #39a9ed;
 }
 .my_swipe {
   /deep/.van-swipe {
-   
   }
   img {
     width: 100%;

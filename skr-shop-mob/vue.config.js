@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: He Xiantao
  * @Date: 2021-04-12 17:42:12
- * @LastEditTime: 2021-04-19 17:30:39
- * @LastEditors: He Xiantao
+ * @LastEditTime: 2021-04-22 09:27:42
+ * @LastEditors: stride
  */
 const path = require('path')
 function resolve(dir) {
@@ -27,7 +27,8 @@ module.exports = {
         "utils": resolve("src/utils"),
         "router": resolve("src/router"),
         "api": resolve("src/api"),
-        "network":resolve("src/network")
+        "network":resolve("src/network"),
+        "plugins":resolve("src/plugins")
       }
     }
   },
@@ -36,7 +37,7 @@ module.exports = {
     open: true,
     proxy: {
       '/dev-api': {
-        target: 'http://192.168.1.135:3000/',
+        target: 'http://192.168.1.129:3000/',
         // target: 'http://192.168.1.144:3000/',
         // target:' http://www.stride.fun:80', 
         changeOrigin: true,
