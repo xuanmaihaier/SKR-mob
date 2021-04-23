@@ -72,11 +72,11 @@ export default {
   created() {
   },
   methods: {
-    handleDetail(id,item) {
+    handleDetail(id) {
       this.$router.push({
           path:`/details/${id}`,
           query:{
-              item:item
+              type:"鞋类"
           }
       });
     },

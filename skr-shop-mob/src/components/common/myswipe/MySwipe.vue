@@ -33,6 +33,7 @@ export default {
   methods: {
     // 轮播图预览功能
     Preview_img(images, index) {
+      this.$emit('previw_id',index)
       this.$emit('Preview_img',images,index)
     },
    
@@ -62,8 +63,7 @@ export default {
   background-color: #39a9ed;
 }
 .my_swipe {
-  /deep/.van-swipe {
-  }
+  
   img {
     width: 100%;
     height: 100%;

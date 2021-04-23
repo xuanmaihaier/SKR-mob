@@ -13,6 +13,7 @@ import home from './modules/home'
 
 Vue.use(Vuex)
 let store = new Vuex.Store({
+  
   state: {},
   mutations: {},
   actions: {},

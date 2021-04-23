@@ -38,7 +38,12 @@ const routes = [
     path: '/details/:id',
     name: 'Details',
     component: () => import("views/details/Details.vue"),
-  }
+  },
+  {
+    path: "/secondary/:id",
+    name: "SeconDary",
+    component: () => import("../views/secondary/SeconDary.vue")
+  },
 ]
 const router = new VueRouter({
   mode: 'history',

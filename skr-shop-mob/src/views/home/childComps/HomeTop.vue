@@ -13,26 +13,51 @@
       </template>
     </van-nav-bar>
     <my-swipe :imgList="$store.state.home.getSpuList" :imgStyle="{height: '20vh'}"
-      :imgId="$store.state.home.getSpuId"
+     @previw_id="previw_id"
     ></my-swipe>
-
   </div>
-</template>
 
+
+</template>
 <script>
 import MySwipe from 'components/common/myswipe/MySwipe.vue';
 export default {
   components: { MySwipe },
   name: "HomeTop",
   data() {
-    return {  
+    return { 
     }
   },
   created() {
-    // this.$store.dispatch("typeOne");
      this.$store.dispatch('getSpu_','休闲上衣')
   },
- 
+  methods: {
+    previw_id(index){
+      let params= JSON.parse(this.$store.state.home.getSpuId[index].params)
+     
+     this.$store.dispatch('typeTwo',`${params.name}_${params.series}`)
+      if(this.$store.state.home.getSpuId[index].spu_id==null){
+         this.$router.push({
+          //  name:`SeconDary`,
+          path:`/secondary/${params.series}`,
+           query:{
+             obj:`${params.name}_${params.series}`
+           }
+         })
+         
+        console.log('暂无跟新');
+        return
+      }else{
+         this.$router.push({path:`/details/${this.$store.state.home.getSpuId[index].spu_id}`,
+       query:{
+               item:'鞋类'
+             }
+      })
+      }
+     
+    }
+  },
+
 };
 </script>
 
@@ -73,4 +98,5 @@ width: 7rem;
     color: #fff;
     font-size: 20px;
 }
+
 </style>
