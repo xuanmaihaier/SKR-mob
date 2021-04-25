@@ -7,7 +7,7 @@
         </div>
         <div class="information-msg">
           <p><span>tzof</span></p>
-          <p># <span>GG54U12jnas</span> #&emsp;<van-icon name="records" /></p>
+          <p># <span>GG54U12jnas</span> #</p>
         </div>
       </div>
       <div class="qr">
@@ -60,7 +60,7 @@ export default {
       .information-img {
         border-radius: 50%;
         width: 13.33vw;
-        height: 6.15vh;
+        height: 13.33vw;
         overflow: hidden;
         margin-right: 2.66vw;
         img {
@@ -75,10 +75,6 @@ export default {
         font-size: 4.26vw;
         p {
           padding: 1.33vw 0;
-          i {
-            font-weight: bolder;
-            margin-left: 2.66vw;
-          }
         }
       }
     }
