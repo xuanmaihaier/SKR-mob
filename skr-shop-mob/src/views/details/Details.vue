@@ -4,12 +4,12 @@
  * @Author: stride
  * @Date: 2021-04-20 21:37:36
  * @LastEditors: stride
- * @LastEditTime: 2021-04-25 12:12:48
+ * @LastEditTime: 2021-04-25 15:47:24
 -->
 <template>
   <div class="Details">
     <MyNavBar :right="true" />
-    <div class="content" ref="content">
+    <div class="contented" ref="contented">
       <van-pull-refresh v-model="isLoading" success-text="刷新成功" @refresh="onRefresh">
         <Tab v-if="loadOk" @tabClick="tabClick" :page="page" :TabShow="TabShow" />
         <Swiper :imgList="imgList" @Preview_img="Preview_img" ref="Swiper" />
@@ -71,6 +71,7 @@ export default {
       isLoading: false,
       isRanking: false,
       page: 0,
+      top: 0,
       Ranking_num: 0,
       TabShow: false,
       stock: [],
@@ -136,9 +137,9 @@ export default {
       })
     },
     tabClick(index) {
-      const content = document.querySelector('.content')
-      let from = content.scrollTop
-      animateScroll(from, this.offsetTop[index], content)
+      const contented = document.querySelector('.contented')
+      let from = contented.scrollTop
+      animateScroll(from, this.offsetTop[index], contented)
     },
     animateScroll_init() { },
     imgLoad(count, length) {
@@ -147,8 +148,9 @@ export default {
       }
     },
     Sroll_init() {
-      const content = document.querySelector('.content')
-      let top = content.scrollTop
+      const contented = document.querySelector('.contented')
+      let top = contented.scrollTop
+      this.top = top
       this.offsetTop.forEach((item, index) => {
         if (top >= item - 24) {
           this.page = index
@@ -178,19 +180,20 @@ export default {
     },
   },
   created() {
+    console.log(1);
     this.$store.dispatch('getShop', this.$route.params.id)
     this.$store.dispatch('getRecommend_init', this.$route.query.type)
   },
   mounted() {
     let that = this
-    const content = document.querySelector('.content')
-    content.addEventListener('scroll', debounce(this.Sroll_init, 6))
+    const contented = document.querySelector('.contented')
+    contented.addEventListener('scroll', debounce(this.Sroll_init, 6))
+
   },
   watch: {
     Commodity: {
       deep: true,
       handler: function (val) {
-        console.log(val)
         this.list_init()
         this.Ranking_init()
       },
@@ -218,7 +221,7 @@ export default {
 <style lang="less" scoped>
 .Details {
   width: 100%;
-  .content {
+  .contented {
     position: absolute;
     top: 46px;
     bottom: 49px;

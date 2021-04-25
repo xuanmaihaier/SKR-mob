@@ -75,12 +75,14 @@ export default {
 
   created() {},
   methods: {
+
     handleDetail(id, item) {
       this.$router.push({
         path: `/details/${id}`,
         query: {
           type: item,
         },
+
       });
     },
     onLoad() {

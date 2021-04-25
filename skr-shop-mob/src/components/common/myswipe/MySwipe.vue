@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-21 11:14:41
  * @LastEditors: stride
- * @LastEditTime: 2021-04-25 11:07:31
+ * @LastEditTime: 2021-04-25 15:49:58
 -->
 <template>
   <!-- :autoplay="" -->
@@ -32,7 +32,8 @@ export default {
   methods: {
     // 轮播图预览功能
     Preview_img(images, index) {
-      this.$emit('Preview_img', images, index)
+      this.$emit('previw_id',index)
+      this.$emit('Preview_img',images,index)
     },
 
   },
@@ -61,8 +62,7 @@ export default {
   background-color: #39a9ed;
 }
 .my_swipe {
-  /deep/.van-swipe {
-  }
+  
   img {
     width: 100%;
     height: 100%;

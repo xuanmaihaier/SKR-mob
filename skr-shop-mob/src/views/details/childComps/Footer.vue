@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-22 15:04:35
  * @LastEditors: stride
- * @LastEditTime: 2021-04-25 13:12:49
+ * @LastEditTime: 2021-04-25 16:15:40
 -->
 <template>
   <div class="Footer">
@@ -115,6 +115,10 @@ export default {
       } else {
         this.$toast("请选择尺码")
         return
+      }
+      if(this.stock[this.colorActive]<=0){
+         this.$toast("暂时没有库存")
+         return
       }
       if (this.clickindex == 0) {
         this.$toast("加入购物车成功")

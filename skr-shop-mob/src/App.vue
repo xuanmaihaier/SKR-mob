@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-20 10:41:44
  * @LastEditors: stride
- * @LastEditTime: 2021-04-23 15:38:53
+ * @LastEditTime: 2021-04-25 15:49:05
 -->
 <template>
   <div id="app">
@@ -23,4 +23,5 @@ export default {
 </script>
 <style>
 @import url("./assets/css/params.less");
+
 </style>
