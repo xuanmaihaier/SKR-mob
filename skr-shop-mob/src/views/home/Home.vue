@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <router-link to="/shopCar">购物车</router-link>
+    <router-link to="/order">订单</router-link>
       <HomeTop/>
       <IconWrapper/>
       <home-one :List="Lists"></home-one>

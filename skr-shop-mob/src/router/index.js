@@ -48,6 +48,21 @@ const routes = [
     path: '/details/:id',
     name: 'Details',
     component: () => import("views/details/Details.vue"),
+  },
+  {
+    path: '/order',
+    name: 'Order',
+    component: () => import('views/confirmOrder/ConfirmOrder.vue')
+  },
+  {
+    path: '/selectAddress',
+    name: 'SelectAddress',
+    component: () => import('views/selectAddress/SelectAddress.vue')
+  },
+  {
+    path: '/addAddress',
+    name: 'AddAddress',
+    component: () => import('views/addAddress/AddAddress.vue')
   }
 
 ]
