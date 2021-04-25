@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-25 16:16:55
  * @LastEditors: stride
- * @LastEditTime: 2021-04-25 19:05:55
+ * @LastEditTime: 2021-04-25 19:13:21
 -->
 <template>
   <div class="serve">
@@ -41,7 +41,6 @@ export default {
     this.tim.on(this.TIM.EVENT.MESSAGE_RECEIVED, this.getMessage);
     this.login_init();
     this.tim.on(this.TIM.EVENT.MESSAGE_RECEIVED, this.getMessage);
-    console.log(this.TIM);
   },
   methods: {
     login_init() {

@@ -2,21 +2,18 @@
   <div class="SimilarShop">
     <h4><span>|</span> 为你优选</h4>
     <ul>
-      <li v-for="i in 30" :key="i">
+      <li v-for="item in shopList" :key="item.date">
         <div class="img-box">
-          <img
-            src="http://image.wconcept.co.kr/productimg/image/img1/87/301241387.jpg?RS=300"
-            alt=""
-          />
+          <img :src="item.img" alt="" />
         </div>
         <div class="msg-box">
           <div class="title">
-            <span>mardi mercredi</span>
+            <span>{{ item.title }}</span>
           </div>
           <div class="price">
             <p>
-              <span class="original">￥2480</span>
-              <span class="discount">￥3000</span>
+              <span class="original">￥{{ item.special_price }}</span>
+              <span class="discount">￥{{ item.price }}</span>
             </p>
             <p>
               <van-icon name="ellipsis" />
@@ -29,8 +26,29 @@
 </template>
 
 <script>
+import { getTypeOneList } from "network/getList.js";
 export default {
   name: "SimilarShop",
+  data: function () {
+    return {
+      shopList: [],
+    };
+  },
+  created() {
+    this.getShopList();
+  },
+  methods: {
+    getShopList() {
+      getTypeOneList("鞋类").then((res) => {
+        let arr = [];
+        for (let i = 0; i < 30; i++) {
+          let index = Math.floor(Math.random() * 101);
+          arr.push(res.res[index]);
+        }
+        this.shopList = arr;
+      });
+    },
+  },
 };
 </script>
 
@@ -77,27 +95,35 @@ export default {
         justify-content: center;
         font-size: 3.73vw;
         padding-left: 2.13vw;
-        .title{
-            padding-bottom: 0.3vh;
+        .title {
+          padding-bottom: 0.3vh;
+          width: 100%;
+          span {
+            display: inline-block;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
         }
         .price {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          .original{
-              font-size: 3.46vw;
-              color: #444;
+          .original {
+            font-size: 3.46vw;
+            color: #444;
           }
-          .discount{
-              font-size: 3.2vw;
-              color: #ccc;
-              text-decoration: line-through;
-              padding-left: 1.33vw;
+          .discount {
+            font-size: 3.2vw;
+            color: #ccc;
+            text-decoration: line-through;
+            padding-left: 1.33vw;
           }
-          i{
-              font-size: 4.8vw;
-              font-weight: bolder;
-              color: #ccc;
+          i {
+            font-size: 4.8vw;
+            font-weight: bolder;
+            color: #ccc;
           }
         }
       }

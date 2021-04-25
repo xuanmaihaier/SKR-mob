@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-20 21:37:36
  * @LastEditors: stride
- * @LastEditTime: 2021-04-25 15:47:24
+ * @LastEditTime: 2021-04-25 19:12:40
 -->
 <template>
   <div class="Details">
@@ -180,7 +180,6 @@ export default {
     },
   },
   created() {
-    console.log(1);
     this.$store.dispatch('getShop', this.$route.params.id)
     this.$store.dispatch('getRecommend_init', this.$route.query.type)
   },
