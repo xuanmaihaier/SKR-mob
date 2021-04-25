@@ -60,7 +60,7 @@ export default {
   props: {},
   computed: {},
   methods: {},
-  mounted() {},
+  mounted() { },
   watch: {},
 };
 </script>
@@ -79,11 +79,11 @@ export default {
     flex-wrap: wrap;
     li {
       margin-bottom: 3px;
-      p{
+      p {
         font-size: 14px;
         font-weight: 700;
       }
-      span{
+      span {
         font-size: 12px;
         color: #2f3640;
       }

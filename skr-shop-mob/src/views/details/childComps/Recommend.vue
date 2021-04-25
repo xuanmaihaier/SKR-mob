@@ -18,21 +18,9 @@
         </van-swipe-item>
       </van-swipe>
     </div>
-    <van-popup
-      closeable
-      @click-close-icon="clickIcon"
-      :safe-area-inset-bottom="true"
-      v-model="show"
-      round
-      position="bottom"
-      :style="{ height: '80%' }"
-    >
+    <van-popup closeable @click-close-icon="clickIcon" :safe-area-inset-bottom="true" v-model="show" round position="bottom" :style="{ height: '80%' }">
       <ul>
-        <li
-          v-for="(item, index) in $store.state.details.Recommend"
-          :key="index"
-          @click="itemclick(item.id)"
-        >
+        <li v-for="(item, index) in $store.state.details.Recommend" :key="index" @click="itemclick(item.id)">
           <img :src="item.img" />
           <div class="Title">
             <p>{{ item.title }}</p>
@@ -75,7 +63,7 @@ export default {
     clickIcon() {
       this.show = false;
     },
-    itemclick(id){
+    itemclick(id) {
       this.$router.push({
         path: `/details/${id}`,
         query: {

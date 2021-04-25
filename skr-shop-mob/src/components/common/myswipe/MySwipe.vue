@@ -4,14 +4,13 @@
  * @Author: stride
  * @Date: 2021-04-21 11:14:41
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 19:58:22
+ * @LastEditTime: 2021-04-25 11:07:31
 -->
 <template>
   <!-- :autoplay="" -->
   <div class="my_swipe">
     <van-swipe :style="imgStyle">
-      <van-swipe-item
-        v-for="(image, index) in imgList" :key="index">
+      <van-swipe-item v-for="(image, index) in imgList" :key="index">
         <img v-lazy="image" @click="Preview_img(imgList, index)" />
       </van-swipe-item>
     </van-swipe>
@@ -33,9 +32,9 @@ export default {
   methods: {
     // 轮播图预览功能
     Preview_img(images, index) {
-      this.$emit('Preview_img',images,index)
+      this.$emit('Preview_img', images, index)
     },
-   
+
   },
   props: {
     imgList: {
@@ -44,7 +43,7 @@ export default {
     },
     imgStyle: {
       type: Object,
-      default: () => {},
+      default: () => { },
     },
     imgId: {
       type: Array,

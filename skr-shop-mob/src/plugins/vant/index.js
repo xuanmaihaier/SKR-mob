@@ -4,15 +4,15 @@
  * @Author: stride
  * @Date: 2021-04-20 21:20:37
  * @LastEditors: stride
- * @LastEditTime: 2021-04-23 14:52:40
+ * @LastEditTime: 2021-04-25 11:24:22
  */
 import Vue from 'vue';
 import {
-  Button, NavBar, Icon, Swipe, SwipeItem, Lazyload, Dialog, Tabs, Tab, Cell, Toast, CellGroup, DropdownMenu, Popup, DropdownItem, List, Collapse, CollapseItem, GoodsAction, GoodsActionIcon, GoodsActionButton, ShareSheet,PullRefresh,Card,Form,Field  
+  Button, NavBar, Icon, Swipe, SwipeItem, Lazyload, Dialog, Tabs, Tab, Cell, Toast, CellGroup, DropdownMenu, Popup, DropdownItem, List, Collapse, CollapseItem, GoodsAction, GoodsActionIcon, GoodsActionButton, ShareSheet, PullRefresh, Card, Form, Field,Stepper
 } from "vant"
 // use使用
 const vueUse = {
-  Button, NavBar, Icon, Swipe, SwipeItem, Tabs, Tab, Cell, Dialog, CellGroup, Popup, Toast, List, Collapse, DropdownMenu, DropdownItem, CollapseItem, GoodsAction, GoodsActionIcon, GoodsActionButton, ShareSheet,PullRefresh,Card,Form,Field 
+  Button, NavBar, Icon, Swipe, SwipeItem, Tabs, Tab, Cell, Dialog, CellGroup, Popup, Toast, List, Collapse, DropdownMenu, DropdownItem, CollapseItem, GoodsAction, GoodsActionIcon, GoodsActionButton, ShareSheet, PullRefresh, Card, Form, Field,Stepper
 }
 
 Object.keys(vueUse).forEach(item => {

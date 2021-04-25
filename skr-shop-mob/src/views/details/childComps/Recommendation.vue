@@ -4,17 +4,13 @@
  * @Author: stride
  * @Date: 2021-04-22 14:38:58
  * @LastEditors: stride
- * @LastEditTime: 2021-04-23 15:24:07
+ * @LastEditTime: 2021-04-25 11:04:39
 -->
 <template>
   <div class="Recommendation">
     <van-cell title="为你推荐" />
     <ul>
-      <li
-        v-for="(item, index) in random"
-        :key="index"
-        @click="itemclick(item.id)"
-      >
+      <li v-for="(item, index) in random" :key="index" @click="itemclick(item.id)">
         <img :src="item.img" @load="imgLoad" />
         <div class="Title">
           <p>{{ item.title }}</p>
@@ -62,7 +58,7 @@ export default {
       });
     },
   },
-  mounted() {},
+  mounted() { },
   watch: {
     Recommend: function () {
       this.Random(39);

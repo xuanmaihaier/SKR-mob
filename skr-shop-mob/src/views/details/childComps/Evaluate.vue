@@ -4,32 +4,18 @@
  * @Author: stride
  * @Date: 2021-04-22 11:40:18
  * @LastEditors: stride
- * @LastEditTime: 2021-04-23 14:44:26
+ * @LastEditTime: 2021-04-25 13:20:05
 -->
 <template>
   <div class="Evaluate">
-    <van-cell
-      v-if="$store.state.details.Commodity[0]"
-      :title="`商品评价(99+)`"
-      is-link
-      value="查看更多"
-      @click="cellClick"
-    />
+    <van-cell v-if="$store.state.details.Commodity[0]" :title="`商品评价(99+)`" is-link value="查看更多" @click="cellClick" />
     <ul class="ul_Evaluate">
       <li v-for="item in 3">
         <p>偏小</p>
         <p>9</p>
       </li>
     </ul>
-    <van-popup
-      closeable
-      @click-close-icon="clickIcon"
-      :safe-area-inset-bottom="true"
-      v-model="show"
-      round
-      position="bottom"
-      :style="{ height: '80%' }"
-    >
+    <van-popup closeable @click-close-icon="clickIcon" :safe-area-inset-bottom="true" v-model="show" round position="bottom" :style="{ height: '80%' }">
       <ul class="ul_popup">
         <li class="li_popup" v-for="(item, index) in 20" :key="index">
           <div class="Title">
@@ -55,11 +41,11 @@ export default {
     cellClick() {
       this.show = true;
     },
-     clickIcon() {
+    clickIcon() {
       this.show = false;
     },
   },
-  created() {},
+  created() { },
   watch: {},
 };
 </script>
@@ -73,7 +59,7 @@ export default {
     padding: 3px;
   }
   .ul_Evaluate {
-    padding: 0 9px;
+    padding: 4px 9px;
     display: flex;
     justify-content: space-between;
     li {

@@ -8,7 +8,7 @@
 -->
 <template>
   <div class="Rules">
-    <van-cell title="尺码对照表"/>
+    <van-cell title="尺码对照表" />
     <table>
       <tbody>
         <tr>
@@ -27,21 +27,21 @@ export default {
   name: "Rules",
   data() {
     return {
-      thead:['EU','UK','CM','US'],
-      tbody:[
-       ['36','6.5','5.5','245'],
-        ['40','7','6','250'],
-        ['41','8','7','255'],
-        ['42','8.5','7.5','260'],
-        ['43','9','8','265'],
-        ['44','10','9','270'],
-        ['45','10.5','9.5','275'],
-        ['46','11','10','280'],
-        ['46','12','11','285'],
+      thead: ['EU', 'UK', 'CM', 'US'],
+      tbody: [
+        ['36', '6.5', '5.5', '245'],
+        ['40', '7', '6', '250'],
+        ['41', '8', '7', '255'],
+        ['42', '8.5', '7.5', '260'],
+        ['43', '9', '8', '265'],
+        ['44', '10', '9', '270'],
+        ['45', '10.5', '9.5', '275'],
+        ['46', '11', '10', '280'],
+        ['46', '12', '11', '285'],
       ]
     };
   },
-  props:{
+  props: {
 
   },
   computed: {},
@@ -59,7 +59,7 @@ export default {
 .Rules {
   padding: 14px;
   width: calc(100% - 16px - 18px);
-   border-bottom: 10px solid #f5f4f9;
+  border-bottom: 10px solid #f5f4f9;
   .van-cell {
     padding: 3px;
   }
@@ -74,13 +74,15 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
-table, th, td {
- text-align: center;
- padding: 4px;
- font-weight: 400;
- font-size: 14px;
+table,
+th,
+td {
+  text-align: center;
+  padding: 4px;
+  font-weight: 400;
+  font-size: 14px;
 }
-table tr:nth-child(odd){
+table tr:nth-child(odd) {
   background-color: #f5f4f9;
 }
 </style>

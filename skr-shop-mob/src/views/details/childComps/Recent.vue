@@ -4,17 +4,11 @@
  * @Author: stride
  * @Date: 2021-04-22 10:34:50
  * @LastEditors: stride
- * @LastEditTime: 2021-04-23 14:21:51
+ * @LastEditTime: 2021-04-25 11:04:51
 -->
 <template>
   <div class="Recent">
-    <van-cell
-      v-if="$store.state.details.Commodity[0]"
-      :title="`最近购买(${$store.state.details.Commodity[0].sale})`"
-      is-link
-      value="查看更多"
-      @click="cellClick"
-    />
+    <van-cell v-if="$store.state.details.Commodity[0]" :title="`最近购买(${$store.state.details.Commodity[0].sale})`" is-link value="查看更多" @click="cellClick" />
     <ul>
       <li v-for="item in 4">
         <p>崔*道</p>
@@ -23,15 +17,7 @@
         <p>5天前</p>
       </li>
     </ul>
-    <van-popup
-      closeable
-      @click-close-icon="clickIcon"
-      :safe-area-inset-bottom="true"
-      v-model="show"
-      round
-      position="bottom"
-      :style="{ height: '80%' }"
-    >
+    <van-popup closeable @click-close-icon="clickIcon" :safe-area-inset-bottom="true" v-model="show" round position="bottom" :style="{ height: '80%' }">
       <ul class="ul_popup">
         <li class="li_popup" v-for="(item, index) in 20" :key="index">
           <div class="Title">
@@ -64,7 +50,7 @@ export default {
       this.show = false;
     },
   },
-  created() {},
+  created() { },
   watch: {},
 };
 </script>

@@ -4,23 +4,14 @@
  * @Author: stride
  * @Date: 2021-04-23 12:14:41
  * @LastEditors: stride
- * @LastEditTime: 2021-04-23 15:30:59
+ * @LastEditTime: 2021-04-25 11:05:52
 -->
 <template>
   <div class="Ranking">
     <MyNavBar />
     <div class="item">
       <h3>{{this.$route.query.type}}新势力排行榜</h3>
-      <van-card
-        v-for="(item, index) in $store.state.details.height"
-        :key="index"
-        :num="`${item.sale}人已付款`"
-        :tag="`销量第${index + 1}`"
-        :price="item.price"
-        :title="item.title"
-        :thumb="item.img"
-        @click="itemclick(item.id,$route.query.type)"
-      />
+      <van-card v-for="(item, index) in $store.state.details.height" :key="index" :num="`${item.sale}人已付款`" :tag="`销量第${index + 1}`" :price="item.price" :title="item.title" :thumb="item.img" @click="itemclick(item.id,$route.query.type)" />
     </div>
   </div>
 </template>
@@ -42,7 +33,7 @@ export default {
         item.innerHTML = item.innerHTML.slice(1, card__num.length - 1);
       });
     },
-     itemclick(id,type){ 
+    itemclick(id, type) {
       this.$router.push({
         path: `/details/${id}`,
         query: {
@@ -68,7 +59,7 @@ export default {
     margin-top: 46px;
     padding: 0 10px;
   }
-  h3{
+  h3 {
     text-align: center;
     padding: 20px 0;
     letter-spacing: 2px;

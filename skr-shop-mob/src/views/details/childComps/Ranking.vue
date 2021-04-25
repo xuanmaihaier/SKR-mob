@@ -8,29 +8,29 @@
 -->
 <template>
   <div class="Ranking">
-    <van-cell title="榜单" is-link :value="`「潮流新势力第${Ranking_num}名」`" @click="rankingClick"/>
+    <van-cell title="榜单" is-link :value="`「潮流新势力第${Ranking_num}名」`" @click="rankingClick" />
   </div>
 </template>
 
 <script>
 export default {
   name: "Serve",
-  props:{
-    Ranking_num:{
-      type:Number,
-      default:()=>0
+  props: {
+    Ranking_num: {
+      type: Number,
+      default: () => 0
     }
   },
   methods: {
-    rankingClick(){
+    rankingClick() {
       this.$router.push({
-        path:"/ranking",
-        query:{
-          type:this.$route.query.type
+        path: "/ranking",
+        query: {
+          type: this.$route.query.type
         }
       })
     },
-    
+
   },
 };
 </script>

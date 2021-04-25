@@ -14,25 +14,14 @@
         <span class="custom-title">服务</span>
       </template>
     </van-cell>
-    <van-popup
-      round
-      get-container="body"
-      close-on-click-overlay
-      v-model="show"
-      closeable
-      :safe-area-inset-bottom="true"
-      position="bottom"
-      :style="{ height: '70%' }"
-      @click-close-icon="clickIcon"
-    >
+    <van-popup round get-container="body" close-on-click-overlay v-model="show" closeable :safe-area-inset-bottom="true" position="bottom" :style="{ height: '70%' }" @click-close-icon="clickIcon">
       <!-- 遮罩层 -->
       <div class="mask">
         <ul>
-          <li
-            v-for="(item, index) in serve"
-            :key="index"
-          >
-            <p><van-icon name="checked" size="20px" />{{ item.p }}</p>
+          <li v-for="(item, index) in serve" :key="index">
+            <p>
+              <van-icon name="checked" size="20px" />{{ item.p }}
+            </p>
             <span>{{ item.span }}</span>
           </li>
         </ul>
@@ -81,8 +70,8 @@ export default {
 <style lang="less" scoped>
 .Params {
   padding: 14px;
-  border-bottom:1px solid #f5f4f9;
-    .van-cell{
+  border-bottom: 1px solid #f5f4f9;
+  .van-cell {
     padding: 3px;
   }
 }

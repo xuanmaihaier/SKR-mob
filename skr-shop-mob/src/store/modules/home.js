@@ -1,16 +1,7 @@
-/*
- * @Descripttion: 
- * @version: 
- * @Author: stride
- * @Date: 2021-04-21 12:53:27
- * @LastEditors: stride
- * @LastEditTime: 2021-04-22 00:11:13
- */
 import {getTypeOne} from 'network/getNav.js'
 import {getTypeOneList} from 'network/getList.js'
 import {getSpu} from 'network/getHomeList'
 export default {
-   
     state:{
         // 轮播图图片
         getSpuList:[],
