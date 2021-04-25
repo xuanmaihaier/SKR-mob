@@ -4,7 +4,7 @@
  * @Author: zjjj
  * @Date: 2021-04-25 20:58:31
  * @LastEditors: zjjj
- * @LastEditTime: 2021-04-25 22:15:04
+ * @LastEditTime: 2021-04-25 22:25:16
 -->
 <template>
   <div class="sort">
@@ -83,12 +83,17 @@ export default {
   width: 100%;
 }
 .search {
+  position: fixed;
+  top: 0;
   width: 100%;
   height: 50px;
   margin: 0 auto;
   background-color: #f8f8f8;
   display: flex;
   align-items: center;
+  border-bottom: 2px solid #eee;
+  box-shadow: 1px 3px 10px 1px #eee;
+  z-index: 99;
   p {
     width: 80%;
     height: 70%;
@@ -119,6 +124,7 @@ export default {
   height: calc(100%-100px);
   overflow: hidden;
   display: flex;
+  margin-top: 50px;
   .van-sidebar {
     flex: 1;
     height: calc(100vh - 100px);
