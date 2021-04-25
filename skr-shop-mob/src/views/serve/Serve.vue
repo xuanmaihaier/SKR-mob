@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-25 16:16:55
  * @LastEditors: stride
- * @LastEditTime: 2021-04-25 19:13:21
+ * @LastEditTime: 2021-04-25 20:23:11
 -->
 <template>
   <div class="serve">
@@ -177,7 +177,6 @@ export default {
 .ser_text {
   position: relative;
   width: 100%;
-  height: 100vh;
   height: calc(@vh - 49px);
   overflow: auto;
   background-color: #ddd;

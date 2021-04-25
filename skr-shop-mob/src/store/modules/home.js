@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-21 12:53:27
  * @LastEditors: stride
- * @LastEditTime: 2021-04-25 13:29:41
+ * @LastEditTime: 2021-04-25 20:05:46
  */
 import {getTypeOne} from 'network/getNav.js'
 import {getTypeOneList,getTypeOTwoList} from 'network/getList.js'
@@ -29,7 +29,6 @@ export default {
             state.typeOne = value
         },
         commitTypeOneList(state,value){ 
-       
             value.forEach((item)=>{
                  state.typeOne_list = [...state.typeOne_list,item.res]
             })
@@ -37,8 +36,7 @@ export default {
         commitGetSpu(state,value){
             value.forEach((item)=>{ 
                 state.getSpuList =[...new Set([... state.getSpuList,item.swiperImg])]
-                state.getSpuId.push(item)
-                
+                state.getSpuId.push(item) 
            })
             state.getSpuId =state.getSpuId.slice(0,4)
         },

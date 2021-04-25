@@ -4,34 +4,15 @@
  * @Author: stride
  * @Date: 2021-04-21 11:14:41
  * @LastEditors: stride
- * @LastEditTime: 2021-04-23 15:32:06
+ * @LastEditTime: 2021-04-25 19:50:31
 -->
 <template>
-  <van-tabs
-    v-model="active"
-    :swipeable="true"
-    :sticky="true"
-    :color="`#ccc`"
-    :lazy-render="true"
-  >
-    <van-tab
-      v-for="(item, index) in $store.state.home.typeOne"
-      :title="item"
-      :key="index"
-    >
+  <van-tabs v-model="active" :swipeable="true" :sticky="true" :color="`#ccc`" :lazy-render="true" color="#323233">
+    <van-tab v-for="(item, index) in $store.state.home.typeOne" :title="item" :key="index">
       <!-- {{ $store.state.home.typeOne_list[index] }} -->
       <ul class="list">
-        <van-list
-          v-model="loading"
-          :finished="finished"
-          finished-text="没有更多了"
-          @load="onLoad"
-        >
-          <li
-            v-for="(items, indexs) in list[index]"
-            :key="indexs"
-            @click="handleDetail(items.id, item)"
-          >
+        <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
+          <li v-for="(items, indexs) in list[index]" :key="indexs" @click="handleDetail(items.id, item)">
             <img :src="items.img" alt="" />
             <h3>{{ items.title }}</h3>
             <p class="price">
@@ -72,10 +53,7 @@ export default {
       default: () => [],
     },
   },
-
-  created() {},
   methods: {
-
     handleDetail(id, item) {
       this.$router.push({
         path: `/details/${id}`,
@@ -106,7 +84,7 @@ export default {
       }, 1000);
     },
   },
-  mounted() {},
+  mounted() { },
   watch: {
     List: {
       deep: true,
@@ -140,7 +118,8 @@ export default {
   li {
     margin: 10px 0;
     width: calc(100vw / 2 - 20px);
-
+    background-color: white;
+    // box-shadow: 0px 1px 1px #ccc;
     h3 {
       margin: 8px 0 5px 0;
       overflow: hidden;
@@ -151,7 +130,7 @@ export default {
     }
     img {
       width: 100%;
-      border: 1px solid #ccc;
+      object-fit: cover;
     }
     .price {
       padding: 0 5px;
@@ -175,6 +154,9 @@ li:nth-of-type(1) {
     height: 80%;
   }
 }
+li:nth-of-type(2) {
+   height: calc(100vw / 2 + 30px);
+}
 li:nth-of-type(2n + 4) {
   transform: translateY(-8vh);
 }
@@ -192,6 +174,7 @@ li:nth-of-type(2n + 4) {
   }
 }
 /deep/.van-list {
+  background-color: #f5f4f9;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
