@@ -6,7 +6,7 @@
         <div @click.prevent="detail(item.id)">
           <div>
             <img :src="item.img" alt="" />
-            <div class="mask" v-show="index == active||flag==false?flag:!flag">
+            <div class="mask" v-show="index == active||flag == false?flag:!flag">
               <p @click.stop="onSimilar()">找相似</p>
             </div>
           </div>
@@ -25,7 +25,8 @@
 </template>
 
 <script>
-import { getTypeOneList } from "../../../network/getList.js";
+
+import { getTypeOneList } from "network/getList.js";
 export default {
   data() {
     return {
@@ -49,8 +50,8 @@ export default {
       // console.log(this.flag);
     },
     detail(id) {
-      console.log("页面详情");
-      //   this.$router.push(`/detail/${id}`)
+      // console.log("页面详情");
+        this.$router.push(`/details/${id}`)
     },
     async getTypeOneList_(parent_name) {
       const res = await getTypeOneList(parent_name);
@@ -66,10 +67,11 @@ export default {
 
 <style lang='less' scoped>
 .list {
-  width: 100%;
-  height: 30vh;
-  padding: 18px 0;
+  width: 100vw;
+  // margin-bottom: 20px;
+  padding: 18px 0 50px 0;
   background-color: #fff;
+  border-top: 1px solid #ccc;
   .title {
     text-align: center;
     padding: 20px 0;
@@ -129,9 +131,8 @@ export default {
   left: 0;
   width: 100%;
   height: 80%;
-  background-color: #626363;
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 10;
-  opacity: 0.9;
   > p {
     margin: auto;
     width: 80px;

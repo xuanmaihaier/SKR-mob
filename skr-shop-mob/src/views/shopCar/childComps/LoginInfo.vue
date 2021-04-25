@@ -26,7 +26,7 @@ export default {
 
 <style lang='less' scoped>
 .login-info {
-  width: 100%;
+  width: 100vw;
   background-color: #f0f0f0;
 }
 p {
