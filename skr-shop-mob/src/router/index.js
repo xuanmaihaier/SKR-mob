@@ -15,68 +15,65 @@ VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 }
 const routes = [{
-    path: "/",
-    redirect: "home"
-  },
-  {
-    path: '/home',
-    name: 'Home',
-    component: () => import("views/home/Home.vue"),
-  },
-  {
-    path: '/search',
-    name: 'Search',
-    component: () => import("views/search/Search.vue"),
-  },
-  {
-    path: '/search/list',
-    name: 'SearchTwo',
-    component: () => import("views/search/childComps/SearchTwo.vue")
-  },
-  {
-    path: '/userCenter',
-    name: 'UserCenter',
-    component: () => import("views/UserCenter/UserCenter.vue"),
-  },
-  {
-    path: '/shopCar',
-    name: 'ShopCar',
-    component: () => import('@/views/shopCar/ShopCar.vue')
-  },
-  {
-    path: '/details/:id',
-    name: 'Details',
-    component: () => import("views/details/Details.vue"),
-  },
-  {
-<<<<<<< HEAD
-    path: '/register',
-    name: 'Register',
-    component: () => import("views/Register/Register.vue"),
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: () => import("views/Login/Login.vue"),
-=======
-
-    path: "/secondary/:id",
-    name: "SeconDary",
-    component: () => import("../views/secondary/SeconDary.vue")
-  },
-
+  path: "/",
+  redirect: "home"
+},
 {
-    path: '/stroll',
-    name: 'Stroll',
-    component: () => import("../views/stroll/Stroll.vue")
-  },
-  {
-    path: '/ranking',
-    name: 'Ranking',
-    component: () => import("views/ranking/Ranking.vue"),
+  path: '/home',
+  name: 'Home',
+  component: () => import("views/home/Home.vue"),
+},
+{
+  path: '/search',
+  name: 'Search',
+  component: () => import("views/search/Search.vue"),
+},
+{
+  path: '/search/list',
+  name: 'SearchTwo',
+  component: () => import("views/search/childComps/SearchTwo.vue")
+},
+{
+  path: '/userCenter',
+  name: 'UserCenter',
+  component: () => import("views/UserCenter/UserCenter.vue"),
+},
+{
+  path: '/shopCar',
+  name: 'ShopCar',
+  component: () => import('@/views/shopCar/ShopCar.vue')
+},
+{
+  path: '/details/:id',
+  name: 'Details',
+  component: () => import("views/details/Details.vue"),
+},
+{
+  path: "/secondary/:id",
+  name: "SeconDary",
+  component: () => import("../views/secondary/SeconDary.vue")
+},
+{
+  path: '/stroll',
+  name: 'Stroll',
+  component: () => import("../views/stroll/Stroll.vue")
+},
+{
+  path: '/ranking',
+  name: 'Ranking',
+  component: () => import("views/ranking/Ranking.vue"),
 
->>>>>>> 7123f4a56f9a5ff864262b3fd92e3f1aff44a732
-  }
+},
+{
+  path: '/register',
+  name: 'Register',
+  component: () => import("views/Register/Register.vue"),
+},
+{
+  path: '/login',
+  name: 'Login',
+  component: () => import("views/Login/Login.vue"),
+}
 
 
 ]
