@@ -1,10 +1,10 @@
 <!--
- * @Descripttion: 
+ * @Descripttion: "分类"
  * @version: xxx
  * @Author: zjjj
  * @Date: 2021-04-25 20:58:31
  * @LastEditors: zjjj
- * @LastEditTime: 2021-04-25 22:25:16
+ * @LastEditTime: 2021-04-25 23:06:15
 -->
 <template>
   <div class="sort">
@@ -41,7 +41,6 @@
 
 <script>
 import getParentNameApi from "../../network/getParentName";
-import getSecondApi from "../../network/getSecond";
 export default {
   data() {
     return {
@@ -59,15 +58,9 @@ export default {
     //   获取一级分类
     async getFirstShopList() {
       const res = await getParentNameApi();
-      console.log(res);
+      // console.log(res);
       this.firstShopList = res.data;
       this.firstShopSort = res.result;
-    },
-    // 获取二级分类
-    getSecondShopList() {
-      getSecondApi().then((res) => {
-        // console.log(res);
-      });
     },
     // 监听切换事件
     onChange() {
