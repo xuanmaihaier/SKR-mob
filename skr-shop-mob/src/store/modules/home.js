@@ -1,8 +1,17 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: stride
+ * @Date: 2021-04-21 12:53:27
+ * @LastEditors: stride
+ * @LastEditTime: 2021-04-22 00:11:13
+ */
 import {getTypeOne} from 'network/getNav.js'
-import {getTypeOneList} from 'network/getList.js'
+import {getTypeOneList,getTypeOTwoList} from 'network/getList.js'
 import {getSpu} from 'network/getHomeList'
+
 export default {
-   
+
     state:{
         // 轮播图图片
         getSpuList:[],
@@ -12,7 +21,9 @@ export default {
         // 一级数据列表 
         typeOne_list:[],
         page:1,
-        lodingflag:false
+        lodingflag:false,
+        // 二级数据的参数
+        typeTwoList:[]
     },
     mutations: {
         commitTypeOne(state,value){
@@ -26,11 +37,16 @@ export default {
         },
         commitGetSpu(state,value){
             value.forEach((item)=>{ 
-                // state.getSpuList.push(item.swiperImg)
                 state.getSpuList =[...new Set([... state.getSpuList,item.swiperImg])]
-                state.getSpuId =[...new Set([...state.getSpuId,item.id])]
+                state.getSpuId.push(item)
+                
            })
+            state.getSpuId =state.getSpuId.slice(0,4)
+        },
+        commitTypeList(state,value){
+            state.typeTwoList = value
         }
+       
     },
     actions: {
         // 获取一级标题
@@ -51,10 +67,14 @@ export default {
         //获取轮播图图片
         async getSpu_(store,value){
             const reslut =await getSpu(value)
-            console.log(reslut);
             store.commit('commitGetSpu',reslut.res)
-        }  
-    
+        },
+        // 二级数据的参数
+        async typeTwo(store,value){
+            let index=value.indexOf('_');
+            let {data:res} = await getTypeOTwoList(value.substr(0,index),value.substr(index+1))
+            store.commit('commitTypeList',res)
+        }
     },
   
     getters: {
