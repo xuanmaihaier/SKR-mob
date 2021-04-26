@@ -3,8 +3,8 @@
  * @version: 
  * @Author: stride
  * @Date: 2021-04-20 10:47:29
- * @LastEditors: stride
- * @LastEditTime: 2021-04-25 20:14:46
+ * @LastEditors: zjjj
+ * @LastEditTime: 2021-04-25 22:16:36
  */
 import Vue from "vue"
 import VueRouter from "vue-router"
@@ -51,6 +51,15 @@ const routes = [{
   component: () => import("views/UserCenter/UserCenter.vue"),
   meta:{
     title:"个人中心",
+    showbar:true
+  }
+},
+{
+  path:'/sort',
+  name:'Sort',
+  component:()=>import('views/sort/Sort.vue'),
+  meta:{
+    title:"分类",
     showbar:true
   }
 },
