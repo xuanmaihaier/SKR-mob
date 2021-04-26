@@ -6,7 +6,7 @@
         <div @click.prevent="detail(item.id)">
           <div>
             <img :src="item.img" alt="" />
-            <div class="mask" v-show="index == active||flag==false?flag:!flag">
+            <div class="mask" v-show="index == active||flag == false?flag:!flag">
               <p @click.stop="onSimilar()">找相似</p>
             </div>
           </div>
@@ -25,7 +25,8 @@
 </template>
 
 <script>
-import { getTypeOneList } from "../../../network/getList.js";
+
+import { getTypeOneList } from "network/getList.js";
 export default {
   data() {
     return {
@@ -42,24 +43,22 @@ export default {
   },
   methods: {
     similar(index) {
-      console.log("0.0");
       if(this.active == index || this.flag == false){
         this.flag = !this.flag;
-        console.log(this.flag);
       }
       this.active = index
+      // console.log(this.flag);
     },
     detail(id) {
-      console.log("页面详情");
         this.$router.push(`/details/${id}`)
     },
     async getTypeOneList_(parent_name) {
       const res = await getTypeOneList(parent_name);
-      let data = res.res.slice(20, 30);
+      let data = res.res.slice(10, 20);
       this.listCar = this.listCar.concat(data);
     },
     onSimilar() {
-      console.log(1);
+      console.log('模糊搜索');
     },
   },
 };
@@ -67,10 +66,11 @@ export default {
 
 <style lang='less' scoped>
 .list {
-  width: 100%;
-  height: 30vh;
-  padding: 18px 0;
+  width: 100vw;
+  // margin-bottom: 20px;
+  padding: 18px 0 50px 0;
   background-color: #fff;
+  border-top: 1px solid #ccc;
   .title {
     text-align: center;
     padding: 20px 0;
@@ -84,7 +84,9 @@ export default {
     .cet-list {
       position: relative;
       width: 45%;
-      margin: 0 5px 10px 10px;
+      margin: 0 8px 10px 8px;
+      box-shadow: 0px 1px 2px #ccc;
+      // border: 1px solid #ccc;
       img {
         width: 100%;
       }
@@ -127,10 +129,9 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  height: 73%;
-  background-color: #626363;
+  height: 80%;
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 10;
-  opacity: 0.9;
   > p {
     margin: auto;
     width: 80px;

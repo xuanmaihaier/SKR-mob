@@ -3,8 +3,8 @@
  * @version: 
  * @Author: stride
  * @Date: 2021-04-20 10:47:29
- * @LastEditors: stride
- * @LastEditTime: 2021-04-25 20:14:46
+ * @LastEditors: zjjj
+ * @LastEditTime: 2021-04-25 22:16:36
  */
 import Vue from "vue"
 import VueRouter from "vue-router"
@@ -54,6 +54,17 @@ const routes = [{
     showbar: true
   }
 },
+{
+  path:'/sort',
+  name:'Sort',
+  component:()=>import('views/sort/Sort.vue'),
+  meta:{
+    title:"分类",
+    showbar:true
+  }
+},
+
+// 购物车
 {
   path: '/shopCar',
   name: 'ShopCar',
@@ -191,4 +202,5 @@ router.beforeEach((to, from, next) => {
   document.title = to.matched[0].meta.title
   next()
 })
+
 export default router

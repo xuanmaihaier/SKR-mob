@@ -23,11 +23,10 @@ export default {
 
 <style lang='less' scoped>
 .cen-car{
-    width: 100%;
+    width: 100vw;
     background-color: #f0f0f0;
     padding: 45px 0 75px;
     text-align: center;
-    box-shadow: 1px 2px 1px;
     .car{
         margin: 20px 0;
     }
