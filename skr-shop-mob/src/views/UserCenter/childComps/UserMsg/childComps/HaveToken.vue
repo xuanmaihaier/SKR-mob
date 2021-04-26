@@ -38,6 +38,11 @@ export default {
       }
     },
   },
+  watch: {
+    route: () => {
+        
+    }
+  }
 };
 </script>
 

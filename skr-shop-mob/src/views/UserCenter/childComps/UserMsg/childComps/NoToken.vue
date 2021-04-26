@@ -1,7 +1,7 @@
 <template>
   <div class="NoToken"  v-if="isToken">
       <div class="goLogin">
-        <span>登录 / 注册</span>
+        <span @click="goToLogin">登录 / 注册</span>
       </div>
   </div>
 </template>
@@ -27,6 +27,9 @@ export default {
         this.isToken = true;
       }
     },
+    goToLogin(){
+      this.$router.push("/login");
+    }
   },
 };
 </script>

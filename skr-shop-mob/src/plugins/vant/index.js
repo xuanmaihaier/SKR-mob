@@ -23,7 +23,7 @@ const vueUse = {
 
 Object.keys(vueUse).forEach(item => {
   Vue.use(vueUse[item])
-})
+})          
 // 图片懒加载
 Vue.use(Lazyload, {
   lazyComponent: true,

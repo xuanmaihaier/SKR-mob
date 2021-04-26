@@ -74,8 +74,6 @@ const routes = [{
   name: 'Login',
   component: () => import("views/Login/Login.vue"),
 }
-
-
 ]
 const router = new VueRouter({
   mode: 'history',
