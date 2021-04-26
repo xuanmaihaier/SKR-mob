@@ -15,7 +15,7 @@ export default {
     },
     methods:{
         onNew(){
-            console.log('跳转随便逛逛');
+            this.$router.push('/stroll')
         }
     }
 }

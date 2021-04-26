@@ -1,10 +1,10 @@
 <!--
- * @Descripttion: 
+ * @Descripttion: 标题
  * @version: 
  * @Author: stride
  * @Date: 2021-04-21 14:15:32
  * @LastEditors: stride
- * @LastEditTime: 2021-04-21 15:46:28
+ * @LastEditTime: 2021-04-25 11:04:05
 -->
 <template>
   <div class="Title">
@@ -19,7 +19,7 @@ export default {
   props: {
     title: {
       type: Object,
-      default: () => {},
+      default: () => { },
     },
   },
 };
@@ -40,7 +40,7 @@ export default {
     padding-top: 0;
     font-size: 30px;
     font-weight: 600;
-      letter-spacing: -2px;
+    letter-spacing: -2px;
     &::before {
       content: "¥";
       font-size: 20px;

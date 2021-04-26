@@ -1,0 +1,99 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: stride
+ * @Date: 2021-04-22 19:56:15
+ * @LastEditors: stride
+ * @LastEditTime: 2021-04-25 19:57:52
+-->
+<template>
+  <div class="HaveToken" v-if="isToken">
+    <section>
+      <div class="information">
+        <div class="information-img">
+          <img src="assets/tzof.png" />
+        </div>
+        <div class="information-msg">
+          <p><span>tzof</span></p>
+          <p># <span>GG54U12jnas</span> #</p>
+        </div>
+      </div>
+      <div class="qr">
+        <van-icon name="qr" />
+      </div>
+    </section>
+  </div>
+</template>
+
+<script>
+import { getLocalStorage } from "utils/storage.js";
+export default {
+  name: "HaveToken",
+  data: function () {
+    return {
+      isToken: false,
+    };
+  },
+  created() {
+    this.ifToken();
+  },
+  methods: {
+    ifToken() {
+      if (getLocalStorage("token")) {
+        this.isToken = true;
+      } else {
+        this.isToken = false;
+      }
+    },
+  },
+};
+</script>
+
+<style lang="less" scoped>
+.HaveToken {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4vw;
+  section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    .information {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .information-img {
+        border-radius: 50%;
+        width: 13.33vw;
+        height: 13.33vw;
+        overflow: hidden;
+        margin-right: 2.66vw;
+        img {
+          width: 100%;
+        }
+      }
+      .information-msg {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: white;
+        font-size: 4.26vw;
+        p {
+          padding: 1.33vw 0;
+        }
+      }
+    }
+    .qr {
+      align-self: flex-start;
+      i {
+        font-size: 4.26vw;
+        font-weight: bolder;
+        color: white;
+      }
+    }
+  }
+}
+</style>

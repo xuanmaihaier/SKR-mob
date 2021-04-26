@@ -32,12 +32,13 @@ export default {
     };
   },
   created() {
-    if(sessionStorage.getItem('token')){
+    if(localStorage.getItem('token')){
       this.token = false
     }else{
       this.token = true
     }
   },
+
 };
 </script>
 

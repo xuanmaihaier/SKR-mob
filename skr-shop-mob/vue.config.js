@@ -1,9 +1,10 @@
 /*
- * @Description: 
- * @Author: He Xiantao
- * @Date: 2021-04-12 17:42:12
- * @LastEditTime: 2021-04-19 17:30:39
- * @LastEditors: He Xiantao
+ * @Descripttion: 
+ * @version: 
+ * @Author: stride
+ * @Date: 2021-04-20 10:42:52
+ * @LastEditors: stride
+ * @LastEditTime: 2021-04-25 19:10:58
  */
 const path = require('path')
 function resolve(dir) {
@@ -27,7 +28,8 @@ module.exports = {
         "utils": resolve("src/utils"),
         "router": resolve("src/router"),
         "api": resolve("src/api"),
-        "network":resolve("src/network")
+        "network": resolve("src/network"),
+        "plugins": resolve("src/plugins")
       }
     }
   },

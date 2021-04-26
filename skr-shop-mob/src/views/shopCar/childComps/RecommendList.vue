@@ -50,7 +50,6 @@ export default {
       // console.log(this.flag);
     },
     detail(id) {
-      // console.log("页面详情");
         this.$router.push(`/details/${id}`)
     },
     async getTypeOneList_(parent_name) {

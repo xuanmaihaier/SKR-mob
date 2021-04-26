@@ -18,7 +18,7 @@ export default {
     },
     methods:{
         longin(){
-            console.log('登录');
+          this.$router.push('/login')
         }
     }
 };
