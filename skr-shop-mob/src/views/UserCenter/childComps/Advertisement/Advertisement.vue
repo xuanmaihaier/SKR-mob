@@ -9,10 +9,10 @@
 <template>
   <div class="Advertisement">
     <div class="img-one">
-      <img src="assets/活动1.jpg" />
+      <img src="../../../../assets/img/usercenter/活动1.jpg" />
     </div>
     <div class="img-two">
-      <img src="assets/活动2.jpg" />
+      <img src="../../../../assets/img/usercenter/活动2.jpg" />
     </div>
   </div>
 </template>

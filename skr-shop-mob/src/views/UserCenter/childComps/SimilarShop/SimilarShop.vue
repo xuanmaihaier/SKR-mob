@@ -2,7 +2,7 @@
   <div class="SimilarShop">
     <h4><span>|</span> 为你优选</h4>
     <ul>
-      <li v-for="item in shopList" :key="item.date" >
+      <li v-for="item in shopList" :key="item.date" @click="ondetails(item.id)">
         <div class="img-box">
           <img :src="item.img" alt="" />
         </div>
@@ -48,6 +48,9 @@ export default {
         this.shopList = arr;
       });
     },
+    ondetails(id){
+      this.$router.push(`/details/${id}`);
+    }
   },
 };
 </script>

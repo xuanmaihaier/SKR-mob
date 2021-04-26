@@ -63,6 +63,8 @@ const routes = [{
     showbar:true
   }
 },
+
+// 购物车
 {
   path: '/shopCar',
   name: 'ShopCar',
@@ -155,4 +157,5 @@ router.beforeEach((to, from, next) => {
   document.title = to.matched[0].meta.title
   next()
 })
+
 export default router

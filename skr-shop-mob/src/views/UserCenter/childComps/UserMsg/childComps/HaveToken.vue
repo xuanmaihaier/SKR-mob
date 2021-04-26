@@ -11,7 +11,7 @@
     <section>
       <div class="information">
         <div class="information-img">
-          <img src="assets/tzof.png" />
+      <img src="../../../../../assets/img/usercenter/tzof.png" />
         </div>
         <div class="information-msg">
           <p><span>tzof</span></p>
