@@ -1,6 +1,6 @@
 <template>
   <div class="OrderAdmin">
-    <ul class="myOrder">
+    <ul class="myOrder" @click="goMyOrder">
       <li>
         <p>我的订单</p>
         <p>全部订单<van-icon name="arrow" /></p>
@@ -40,6 +40,11 @@
 <script>
 export default {
   name: "OrderAdmin",
+  methods: {
+    goMyOrder(){
+      this.$router.push('/myOrder')
+    }
+  },
 };
 </script>
 

@@ -12,6 +12,7 @@ import persistedState from 'vuex-persistedstate'
 import details from "./modules/details"
 import home from './modules/home'
 import loading from './modules/loading'
+import address from './modules/address'
 Vue.use(Vuex)
 let store = new Vuex.Store({
   
@@ -21,7 +22,8 @@ let store = new Vuex.Store({
   modules: {
     home,
     details,
-    loading
+    loading,
+    address
   },
   plugins: [persistedState()]
 

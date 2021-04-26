@@ -129,6 +129,7 @@ export default {
       else{
        this.$router.push("/addCart")
       }
+      this.$router.push('/order')
       console.log(addCart);
     }
   },
