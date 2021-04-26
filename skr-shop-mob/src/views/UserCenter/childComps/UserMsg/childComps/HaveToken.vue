@@ -39,10 +39,10 @@ export default {
     },
   },
   watch: {
-    route: () => {
-        
-    }
-  }
+    $route: function ()  {
+      this.ifToken();
+    },
+  },
 };
 </script>
 

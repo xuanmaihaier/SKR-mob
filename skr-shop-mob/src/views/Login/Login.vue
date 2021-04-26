@@ -26,6 +26,9 @@
           v-model="password"
         />
       </div>
+      <section>
+        <VerificationImg/>
+      </section>
       <button @click="onLogin">登录</button>
       <p>忘记密码？</p>
     </main>
@@ -36,8 +39,12 @@
 import getLogin from "network/getLogin.js";
 import { Dialog } from "vant";
 import { setLocalStorage } from "utils/storage.js";
+import VerificationImg from 'components/common/VerificationImg/VerificationImg.vue'
 export default {
   name: "Login",
+  components: {
+    VerificationImg,
+  },
   data: function () {
     return {
       user: "",
@@ -57,7 +64,7 @@ export default {
         password: this.password,
       }).then((res) => {
         if (res.code == 200) {
-          setLocalStorage('token',res.token);
+          setLocalStorage('token',res.data.token);
           Dialog.alert({
             message: "登录成功，点击确定返回上一页",
           }).then(() => {
@@ -97,7 +104,7 @@ export default {
     align-items: center;
     justify-content: space-between;
     margin-top: 3vh;
-    div {
+    &>div {
       width: 4.53vw;
       display: flex;
       align-items: center;
@@ -126,7 +133,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    div {
+    &>div {
       margin-top: 5.33vw;
       padding: 1.23vh 0;
       display: flex;

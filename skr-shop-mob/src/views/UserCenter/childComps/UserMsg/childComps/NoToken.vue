@@ -1,8 +1,8 @@
 <template>
-  <div class="NoToken"  v-if="isToken">
-      <div class="goLogin">
-        <span @click="goToLogin">登录 / 注册</span>
-      </div>
+  <div class="NoToken" v-if="isToken">
+    <div class="goLogin">
+      <span @click="goToLogin">登录 / 注册</span>
+    </div>
   </div>
 </template>
 
@@ -22,14 +22,18 @@ export default {
     ifToken() {
       if (getLocalStorage("token")) {
         this.isToken = false;
-      }
-      else{
+      } else {
         this.isToken = true;
       }
     },
-    goToLogin(){
+    goToLogin() {
       this.$router.push("/login");
-    }
+    },
+  },
+  watch: {
+    $route: function ()  {
+      this.ifToken();
+    },
   },
 };
 </script>
@@ -40,7 +44,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  .goLogin{
+  .goLogin {
     width: 34.6vw;
     height: 4.3vh;
     display: flex;

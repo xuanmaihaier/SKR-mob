@@ -8,8 +8,8 @@
     </ul>
     <ul class="state">
       <li>
-        <van-icon name="ecard-pay" />
-        <span>待付款</span>
+        <van-icon name="shopping-cart-o" />
+        <span>购物车</span>
       </li>
       <li>
         <van-icon name="send-gift-o" />
@@ -23,15 +23,15 @@
     <ul class="history">
       <li>
         <span>0</span>
-        <span>商品收藏</span>
+        <span>购物车</span>
       </li>
       <li>
         <span>0</span>
-        <span>品牌收藏</span>
+        <span>待发货</span>
       </li>
       <li>
         <span>0</span>
-        <span>游览记录</span>
+        <span>待收货</span>
       </li>
     </ul>
   </div>
