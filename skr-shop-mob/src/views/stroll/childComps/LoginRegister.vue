@@ -20,20 +20,15 @@
 
 <script>
 export default {
-//     data(){
-//         return{
-
-//         }        
-//    },
    methods:{
        backTop(){
            window.scroll(0,0)
        },
        toLogin(){
-           console.log('login');
+           this.$router.push('/login');
        },
        toRegister(){
-           console.log('toRegister');
+           this.$router.push('/register');
        }
    }
 };

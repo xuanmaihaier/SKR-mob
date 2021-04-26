@@ -12,6 +12,7 @@
     "babel-plugin-import": "^1.13.3",
     "core-js": "^3.6.5",
     "cos-js-sdk-v5": "^1.2.9",
+    "moment": "^2.29.1",
     "normalize.css": "^8.0.1",
     "path": "^0.12.7",
     "tim-js-sdk": "^2.10.1",
