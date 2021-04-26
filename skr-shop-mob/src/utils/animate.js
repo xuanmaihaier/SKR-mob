@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-22 17:59:27
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 19:09:43
+ * @LastEditTime: 2021-04-25 13:33:55
  */
 export function animateScroll(from, to,dom,callback) {
   let timer = setInterval(function () {

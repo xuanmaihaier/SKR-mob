@@ -4,16 +4,14 @@
  * @Author: stride
  * @Date: 2021-04-22 13:41:17
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 13:45:18
+ * @LastEditTime: 2021-04-25 11:05:01
 -->
 <template>
   <div class="Particulars">
-    <van-cell
-      title="细节展示"
-    />
+    <van-cell title="细节展示" />
     <ul>
       <li v-for="(item,index) in imgList" :key="index">
-       <img :src="item">
+        <img :src="item">
       </li>
     </ul>
   </div>
@@ -25,10 +23,10 @@ export default {
   data() {
     return {};
   },
-  props:{
-    imgList:{
-      type:Array,
-      default:()=>[]
+  props: {
+    imgList: {
+      type: Array,
+      default: () => []
     }
   },
   computed: {},
@@ -46,7 +44,7 @@ export default {
 .Particulars {
   padding: 14px;
   width: calc(100% - 16px - 18px);
-   border-bottom: 10px solid #f5f4f9;
+  border-bottom: 10px solid #f5f4f9;
   .van-cell {
     padding: 3px;
   }
@@ -55,10 +53,10 @@ export default {
     display: flex;
     flex-wrap: wrap;
     li {
-     margin-bottom: 3px;
-     img{
-       width: 100%;
-     }
+      margin-bottom: 3px;
+      img {
+        width: 100%;
+      }
     }
   }
 }

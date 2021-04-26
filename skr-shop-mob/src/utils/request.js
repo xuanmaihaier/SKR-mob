@@ -11,11 +11,8 @@ instance.interceptors.request.use(config => {
   return config
 })
 
-instance.interceptors.response.use(response => {
-  setTimeout(() => {    
-    store.dispatch('commitChange',false)
-  }, 1000);
-
+instance.interceptors.response.use(response => { 
+  store.dispatch('commitChange',false)
   return response.data
 },
   error => {

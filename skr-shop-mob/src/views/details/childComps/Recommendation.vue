@@ -4,14 +4,14 @@
  * @Author: stride
  * @Date: 2021-04-22 14:38:58
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 17:46:38
+ * @LastEditTime: 2021-04-25 14:47:57
 -->
 <template>
   <div class="Recommendation">
     <van-cell title="为你推荐" />
     <ul>
-      <li v-for="(item, index) in random" :key="index">
-        <img :src="item.img"  @load="imgLoad"/>
+      <li v-for="(item, index) in random" :key="index" @click="itemclick(item.id)">
+        <img :src="item.img" @load="imgLoad" />
         <div class="Title">
           <p>{{ item.title }}</p>
           <p>{{ item.price }}</p>
@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       random: [],
-      count:0
+      count: 0,
     };
   },
   computed: {
@@ -46,11 +46,19 @@ export default {
         this.random = arr;
       }
     },
-    imgLoad(){
-      this.$emit('imgLoad',++this.count,this.random.length)
-    }
+    imgLoad() {
+      this.$emit("imgLoad", ++this.count, this.random.length);
+    },
+    itemclick(id) {
+      this.$router.push({
+        path: `/details/${id}`,
+        query: {
+          type: this.$route.query.type,
+        },
+      });
+    },
   },
-  mounted() {},
+  mounted() { },
   watch: {
     Recommend: function () {
       this.Random(39);
@@ -68,7 +76,6 @@ export default {
     padding: 3px;
   }
   ul {
-  
     display: flex;
     flex-wrap: wrap;
     background-color: #f5f4f9;
@@ -112,7 +119,7 @@ export default {
     padding-top: 0;
     font-size: 18px;
     font-weight: 600;
-      letter-spacing: -2px;
+    letter-spacing: -2px;
     &::before {
       content: "¥";
       font-size: 20px;

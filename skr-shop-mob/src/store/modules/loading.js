@@ -1,6 +1,6 @@
 export default{
   state:{
-    loadingStatus:false
+    loadingStatus:false,
   },
   mutations:{
     changeLoading(state,payload){

@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-21 16:39:29
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 13:39:24
+ * @LastEditTime: 2021-04-25 11:05:11
 -->
 <template>
   <div class="Installment" @click="ParamsClick">
@@ -14,26 +14,11 @@
         <span class="custom-title">分期</span>
       </template>
     </van-cell>
-    <van-popup
-      round
-      get-container="body"
-      close-on-click-overlay
-      v-model="show"
-      closeable
-      :safe-area-inset-bottom="true"
-      position="bottom"
-      :style="{ height: '40%' }"
-      @click-close-icon="clickIcon"
-    >
+    <van-popup round get-container="body" close-on-click-overlay v-model="show" closeable :safe-area-inset-bottom="true" position="bottom" :style="{ height: '40%' }" @click-close-icon="clickIcon">
       <!-- 遮罩层 -->
       <div class="mask">
         <ul>
-          <li
-            v-for="(item, index) in month"
-            :key="index"
-            @click="liClick(index)"
-            :class="{ active: index == page }"
-          >
+          <li v-for="(item, index) in month" :key="index" @click="liClick(index)" :class="{ active: index == page }">
             <p>{{ item }}期分期</p>
             <span>每期仅需¥{{ (param.price / item).toFixed(2) }}</span>
           </li>
@@ -73,7 +58,7 @@ export default {
   props: {
     param: {
       type: Object,
-      default: () => {},
+      default: () => { },
     },
   },
 };

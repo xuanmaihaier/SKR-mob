@@ -30,19 +30,12 @@ export default {
 <style lang="less" scoped>
 .loading {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
-  z-index: 999;
-  background: url('~assets/img/loading.gif') no-repeat center center #fff;
-  opacity: .9;
-  img {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-  }
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("~assets/img/loading/loading.gif") center center no-repeat #fff;
 }
 .loading-enter,
 .loading-leave-to {

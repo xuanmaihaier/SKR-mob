@@ -4,17 +4,11 @@
  * @Author: stride
  * @Date: 2021-04-22 15:23:26
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 15:56:23
+ * @LastEditTime: 2021-04-25 11:04:18
 -->
 <template>
   <div class="Share">
-    <van-share-sheet
-   get-container="body" 
-      v-model="showShare"
-      title="立即分享给好友"
-      :options="options"
-      @select="onSelect"
-    />
+    <van-share-sheet get-container="body" v-model="showShare" title="立即分享给好友" :options="options" @select="onSelect" />
   </div>
 </template>
 
@@ -35,7 +29,7 @@ export default {
     };
   },
   methods: {
-     onSelect() {
+    onSelect() {
       this.showShare = true;
     },
   },

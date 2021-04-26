@@ -51,7 +51,7 @@ export default {
     },
     detail(id) {
       console.log("页面详情");
-      //   this.$router.push(`/detail/${id}`)
+        this.$router.push(`/details/${id}`)
     },
     async getTypeOneList_(parent_name) {
       const res = await getTypeOneList(parent_name);

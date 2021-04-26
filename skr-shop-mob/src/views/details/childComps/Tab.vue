@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-22 16:49:08
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 22:27:24
+ * @LastEditTime: 2021-04-23 11:58:43
 -->
 <!--
  * @Descripttion: 
@@ -15,9 +15,9 @@
  * @LastEditTime: 2021-04-22 16:27:28
 -->
 <template>
-  <transition name="plus-icon" v-if="$store.state.details.show">
+  <transition name="plus-icon" v-if="TabShow">
     <div class="Tab">
-      <van-tabs color="#2f3640" v-model="page_init" @click="tabClick">
+      <van-tabs color="#2f3640" v-model="page_init" @click="tabClick" lazy-render>
         <van-tab v-for="(item, index) in title" :title="item" :key="index">
         </van-tab>
       </van-tabs>
@@ -33,13 +33,23 @@ export default {
       title: ["商品", "穿搭", "详情", "推荐"],
     };
   },
+  props: {
+    page: {
+      type: Number,
+      default: () => 0
+    },
+    TabShow: {
+      type: Boolean,
+      default: () => false
+    }
+  },
   computed: {
     page_init: {
       get() {
-        return this.$store.state.details.page;
+        return this.page;
       },
-      set(newValue) {
-        this.$store.state.details.page = newValue;
+      set() {
+        // 占位 防止报错
       },
     },
   },

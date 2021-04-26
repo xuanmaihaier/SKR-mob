@@ -1,10 +1,18 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: stride
+ * @Date: 2021-04-22 19:56:15
+ * @LastEditors: stride
+ * @LastEditTime: 2021-04-25 19:57:19
+-->
 <template>
   <div class="Advertisement">
     <div class="img-one">
-      <img src="../../../../assets/活动1.jpg" />
+      <img src="assets/活动1.jpg" />
     </div>
     <div class="img-two">
-      <img src="../../../../assets/活动2.jpg" />
+      <img src="assets/活动2.jpg" />
     </div>
   </div>
 </template>
