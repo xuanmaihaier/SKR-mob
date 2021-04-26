@@ -1,9 +1,17 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: stride
+ * @Date: 2021-04-22 19:56:15
+ * @LastEditors: stride
+ * @LastEditTime: 2021-04-25 19:57:52
+-->
 <template>
   <div class="HaveToken" v-if="isToken">
     <section>
       <div class="information">
         <div class="information-img">
-          <img src="../../../../../assets/tzof.png" />
+          <img src="assets/tzof.png" />
         </div>
         <div class="information-msg">
           <p><span>tzof</span></p>

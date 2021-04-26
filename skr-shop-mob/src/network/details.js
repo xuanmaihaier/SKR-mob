@@ -3,7 +3,7 @@
  * @Author: stride
  * @Date: 2021-04-20 23:06:51
  * @LastEditors: stride
- * @LastEditTime: 2021-04-21 23:56:55
+ * @LastEditTime: 2021-04-25 11:06:06
  */
 
 /**
@@ -14,11 +14,11 @@
  * @return {*}
  */
 import axios from "utils/request";
-export async function getShopById(spu_id){
+export async function getShopById(spu_id) {
   return await axios({
     method: 'post',
-    url:"/store/getSku",
-    data:{spu_id}
+    url: "/store/getSku",
+    data: { spu_id }
   })
 }
 
@@ -29,10 +29,10 @@ export async function getShopById(spu_id){
  * @param {*}
  * @return {*}
  */
- export async function getRecommend(parent_name){
-   return await axios({
-     method: 'post',
-     url:"/type/getproduct",
-     data:{parent_name}
-   })
- }
+export async function getRecommend(parent_name) {
+  return await axios({
+    method: 'post',
+    url: "/type/getproduct",
+    data: { parent_name }
+  })
+}

@@ -1,9 +1,10 @@
 /*
- * @Description: 
- * @Author: He Xiantao
- * @Date: 2021-04-12 17:42:12
- * @LastEditTime: 2021-04-23 11:57:20
+ * @Descripttion: 
+ * @version: 
+ * @Author: stride
+ * @Date: 2021-04-20 10:42:52
  * @LastEditors: stride
+ * @LastEditTime: 2021-04-25 19:10:58
  */
 const path = require('path')
 function resolve(dir) {
@@ -38,8 +39,8 @@ module.exports = {
     proxy: {
       '/dev-api': {
         target: 'https://stride.fun/',
-        // target: 'http://192.168.1.144:3000/',
-        // target:' http://www.stride.fun:80', 
+        // // target: 'http://192.168.1.144:3000/',
+        // target:' http://stride.fun:3000', 
         changeOrigin: true,
         pathRewrite: {
           '^/dev-api': ''

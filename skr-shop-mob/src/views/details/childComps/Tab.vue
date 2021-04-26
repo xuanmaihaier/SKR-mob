@@ -33,14 +33,14 @@ export default {
       title: ["商品", "穿搭", "详情", "推荐"],
     };
   },
-  props:{
-    page:{
-      type:Number,
-      default:()=>0
+  props: {
+    page: {
+      type: Number,
+      default: () => 0
     },
-    TabShow:{
-      type:Boolean,
-      default:()=>false
+    TabShow: {
+      type: Boolean,
+      default: () => false
     }
   },
   computed: {

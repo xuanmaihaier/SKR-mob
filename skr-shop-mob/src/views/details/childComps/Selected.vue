@@ -4,16 +4,14 @@
  * @Author: stride
  * @Date: 2021-04-22 11:57:49
  * @LastEditors: stride
- * @LastEditTime: 2021-04-22 13:10:15
+ * @LastEditTime: 2021-04-25 11:04:31
 -->
 <template>
   <div class="Selected">
-    <van-cell
-      :title="`穿搭精选(${imgList.length})`"
-    />
+    <van-cell :title="`穿搭精选(${imgList.length})`" />
     <ul>
       <li v-for="(item,index) in imgList" :key="index">
-       <img :src="item" @click="Previewsec_img(imgList,index)">
+        <img :src="item" @click="Previewsec_img(imgList,index)">
       </li>
     </ul>
   </div>
@@ -25,16 +23,16 @@ export default {
   data() {
     return {};
   },
-  props:{
-    imgList:{
-      type:Array,
-      default:()=>[]
+  props: {
+    imgList: {
+      type: Array,
+      default: () => []
     }
   },
   computed: {},
   methods: {
-    Previewsec_img(imgList,index){
-      this.$emit('Previewsec_img',imgList,index)
+    Previewsec_img(imgList, index) {
+      this.$emit('Previewsec_img', imgList, index)
     }
   },
   mounted() {
@@ -47,7 +45,7 @@ export default {
 .Selected {
   padding: 14px;
   width: calc(100% - 16px - 18px);
-   border-bottom: 10px solid #f5f4f9;
+  border-bottom: 10px solid #f5f4f9;
   .van-cell {
     padding: 3px;
   }
@@ -58,9 +56,9 @@ export default {
     li {
       width: calc((100% / 3) - 6px);
       margin: 3px;
-     img{
-       width: 100%;
-     }
+      img {
+        width: 100%;
+      }
     }
   }
 }

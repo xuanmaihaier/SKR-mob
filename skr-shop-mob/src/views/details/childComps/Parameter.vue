@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-22 12:42:28
  * @LastEditors: stride
- * @LastEditTime: 2021-04-23 15:22:45
+ * @LastEditTime: 2021-04-25 13:19:10
 -->
 <template>
   <div class="Parameter">
@@ -47,38 +47,13 @@
         </van-collapse-item>
       </van-collapse>
     </ul>
-    <van-popup
-      closeable
-      v-model="show"
-      :style="{ height: '46%', width: '80%' }"
-      @click-close-icon="clickIcon"
-      :safe-area-inset-bottom="true"
-    >
+    <van-popup get-container="body" closeable v-model="show" round :style="{ height: '48%', width: '80%' }" @click-close-icon="clickIcon" :safe-area-inset-bottom="true">
       <div class="from">
         <van-form @submit="onSubmit">
-          <van-field
-            v-model="name"
-            name="商品名称"
-            label="商品名称"
-            placeholder="请填写有疑问的商品名"
-            :rules="[{ required: true, message: '请填写商品名称' }]"
-          />
-          <van-field
-            v-model="remarks"
-            name="备注"
-            label="请填写留言备注"
-            placeholder="请填写有疑问的商品名"
-            :rules="[{ required: true, message: '请填写备注' }]"
-          />
+          <van-field v-model="name" name="商品名称" label="商品名称" placeholder="请填写有疑问的商品名" :rules="[{ required: true, message: '请填写商品名称' }]" />
+          <van-field v-model="remarks" name="备注" label="请填写留言备注" placeholder="请填写有疑问的商品名" :rules="[{ required: true, message: '请填写备注' }]" />
           <div style="margin: 16px">
-            <van-button
-              color="#2f3640"
-              round
-              block
-              type="info"
-              native-type="submit"
-              >提交给客服</van-button
-            >
+            <van-button color="#2f3640" round block type="info" native-type="submit">提交给客服</van-button>
           </div>
         </van-form>
       </div>
@@ -94,13 +69,13 @@ export default {
       activeNames: [""],
       show: false,
       name: "",
-      remarks:""
+      remarks: ""
     };
   },
   props: {
     Commodity: {
       type: Object,
-      default: () => {},
+      default: () => { },
     },
   },
   computed: {
@@ -115,9 +90,9 @@ export default {
     clickIcon() {
       this.show = false;
     },
-    onSubmit() {},
+    onSubmit() { },
   },
-  created() {},
+  created() { },
   watch: {},
   mounted() {
     // console.log(this.Commodity);
@@ -183,12 +158,12 @@ export default {
 }
 .from {
   position: absolute;
-    top: 120px;
-    left: 10px;
-    right: 10px;
-    bottom: 30px;
+  top: 100px;
+  left: 10px;
+  right: 10px;
+  bottom: 30px;
   overflow: hidden;
-  /deep/ .van-cell{
+  /deep/ .van-cell {
     border-bottom: 1px solid #ccc;
   }
 }

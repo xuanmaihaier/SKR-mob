@@ -4,7 +4,7 @@
  * @Author: stride
  * @Date: 2021-04-23 12:38:32
  * @LastEditors: stride
- * @LastEditTime: 2021-04-23 12:39:07
+ * @LastEditTime: 2021-04-25 11:06:52
 -->
 
 <template>
@@ -30,7 +30,7 @@ export default {
   text-align: center;
   font-size: 14px;
   background-color: #fff;
-  box-shadow: 0px -2px 3px rgba(0, 0, 0, .2);
+  box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.2);
   z-index: 10;
 }
 </style>
