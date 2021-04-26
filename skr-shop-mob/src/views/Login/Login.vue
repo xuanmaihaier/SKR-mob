@@ -57,7 +57,8 @@ export default {
         password: this.password,
       }).then((res) => {
         if (res.code == 200) {
-          setLocalStorage('token',res.token);
+          setLocalStorage('token',res.data.token);
+          setLocalStorage('customer_id',res.data.userInfo.id)
           Dialog.alert({
             message: "登录成功，点击确定返回上一页",
           }).then(() => {
