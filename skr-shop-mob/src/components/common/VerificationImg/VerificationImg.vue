@@ -33,6 +33,7 @@ export default {
   },
   created() {
     this.onRefresh();
+    this.$store.dispatch("commitVerificationImg", false);
   },
   methods: {
     onRefresh() {
@@ -53,7 +54,7 @@ export default {
               return;
             }
           });
-          if(flag){
+          if (flag) {
             this.$store.dispatch("commitVerificationImg", true);
           }
           this.imgs = arr;
@@ -82,7 +83,6 @@ export default {
       e.currentTarget.className = reg;
       let liArr = document.querySelectorAll(".VerificationImg main ul li");
       liArr = Array.from(liArr);
-      // let flag = false;
       for (let i = 0; i < liArr.length; i++) {
         console.log(liArr[i]);
         if (liArr[i].className == "north") {
@@ -99,6 +99,11 @@ export default {
           this.$store.dispatch("commitVerificationImg", true);
         }
       }
+    },
+  },
+  watch: {
+    $route: function () {
+      this.$store.dispatch("commitVerificationImg", false);
     },
   },
 };

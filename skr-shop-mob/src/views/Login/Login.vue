@@ -51,9 +51,6 @@ export default {
       password: "",
     };
   },
-  created() {
-    this.$store.dispatch("commitVerificationImg", false);
-  },
   methods: {
     balck() {
       this.$router.go(-1);
@@ -94,16 +91,13 @@ export default {
   watch: {
     judge() {
       let btn = document.querySelector(".btn");
-      if (this.$store.state.verificationImg.allNorth == true) {
+      if (this.$store.state.verificationImg.allNorth === true) {
         btn.disabled = "";
         btn.style.backgroundColor = "#444";
       } else {
         btn.disabled = "disabled";
         btn.style.backgroundColor = "#ccc";
       }
-    },
-    $route: function () {
-      this.$store.dispatch("commitVerificationImg", false);
     },
   },
 };

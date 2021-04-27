@@ -49,7 +49,7 @@
       <section>
         <VerificationImg />
       </section>
-      <button @click="onRegister" class="btn" disabled>注册</button>
+      <button @click="onRegister" class="btn" disabled='disabled'>注册</button>
     </main>
     <footer>
       <p>注册即表示您已阅读并同意</p>
@@ -80,9 +80,6 @@ export default {
       pShow: false,
       mShow: false,
     };
-  },
-  created() {
-    this.$store.dispatch("commitVerificationImg", false);
   },
   methods: {
     balck() {
@@ -167,9 +164,6 @@ export default {
         btn.disabled = "disabled";
         btn.style.backgroundColor = "#ccc";
       }
-    },
-    $route: function () {
-      this.$store.dispatch("commitVerificationImg", false);
     },
   },
 };
@@ -285,7 +279,7 @@ export default {
       margin-top: 3.1vh;
       border: none;
       outline: none;
-      background-color: #444;
+      background-color: #ccc;
       color: white;
       width: 80vw;
       height: 4.3vh;
