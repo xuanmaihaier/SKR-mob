@@ -14,8 +14,8 @@
       <img src="../../../../../assets/img/usercenter/tzof.png" />
         </div>
         <div class="information-msg">
-          <p><span>tzof</span></p>
-          <p># <span>GG54U12jnas</span> #</p>
+          <p><span>{{userInfo.username}}</span></p>
+          <p># <span>{{userInfo.email}}</span> #</p>
         </div>
       </div>
       <div class="qr">
@@ -32,6 +32,7 @@ export default {
   data: function () {
     return {
       isToken: false,
+      userInfo: {},
     };
   },
   created() {
@@ -44,6 +45,7 @@ export default {
       } else {
         this.isToken = false;
       }
+      this.userInfo = this.$store.state.login.userInfo;
     },
   },
   watch: {

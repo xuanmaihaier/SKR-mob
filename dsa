@@ -1,0 +1,310 @@
+[33mcommit c26fa183f11aef24b64d4ce3bee1de5fcdf57564[m[33m ([m[1;36mHEAD -> [m[1;32mtzof[m[33m)[m
+Author: tzof <470255350@qq.com>
+Date:   Mon Apr 26 15:26:11 2021 +0800
+
+    更新个人中心
+
+[33mcommit 3006dde9be60aca8b5895ade22ccd767aa3c509b[m
+Author: tzof <470255350@qq.com>
+Date:   Mon Apr 26 09:19:45 2021 +0800
+
+    2021-04-26 09:19
+
+[33mcommit 1e70f8e59dea9462ba5c3f614db8b799092b18a3[m
+Author: tzof <470255350@qq.com>
+Date:   Sun Apr 25 17:06:17 2021 +0800
+
+    注册/登录功能完成 个人中心推荐商品动态渲染
+
+[33mcommit abe3afd66ed61b4ee9682efcd05502e146106084[m
+Merge: af5a747 7123f4a
+Author: tzof <470255350@qq.com>
+Date:   Sun Apr 25 17:01:11 2021 +0800
+
+    注册/登录功能完成 个人中心推荐商品动态渲染
+
+[33mcommit af5a747d8fb963e83ea4f3102d160b98f2da0b69[m
+Author: tzof <470255350@qq.com>
+Date:   Sun Apr 25 16:56:06 2021 +0800
+
+    登录/注册功能完成 个人中心推荐商品动态渲染
+
+[33mcommit 7123f4a56f9a5ff864262b3fd92e3f1aff44a732[m
+Merge: e350486 1bceaa4
+Author: 麻泰彪 <8082648+ma-taibiao@user.noreply.gitee.com>
+Date:   Fri Apr 23 16:54:27 2021 +0800
+
+    The secondary details
+
+[33mcommit e35048697cb72dd7d3ea7c7696bd58780063ad18[m
+Author: 麻泰彪 <8082648+ma-taibiao@user.noreply.gitee.com>
+Date:   Fri Apr 23 16:44:31 2021 +0800
+
+    The secondary details
+
+[33mcommit 1bceaa4b00c8e201e3d198ab0e8d72160cfbc77f[m
+Merge: fd7a81b 0c7caf9
+Author: lium-20 <994545476@qq.com>
+Date:   Fri Apr 23 16:36:46 2021 +0800
+
+    stroll
+
+[33mcommit fd7a81b740ecb7cc9b2d82f046c75b9f1e2157f0[m
+Merge: e2e9ef6 76af5d9
+Author: lium-20 <994545476@qq.com>
+Date:   Fri Apr 23 16:24:25 2021 +0800
+
+    stroll dt渲染
+
+[33mcommit 0c7caf940278974ece9b8419c3deca6ff3b6944d[m
+Merge: ee071f3 f5db77a
+Author: xuanmaihaier <1404111969@qq.com>
+Date:   Fri Apr 23 15:41:08 2021 +0800
+
+    detail add some
+
+[33mcommit ee071f35acdd7867f1c1898f4266f4248bd71f6d[m
+Author: xuanmaihaier <1404111969@qq.com>
+Date:   Fri Apr 23 15:37:53 2021 +0800
+
+    details add
+
+[33mcommit f5db77ac6b4751022408e73c72361bad5bf5ffc2[m
+Merge: 3572882 76af5d9
+Author: XXX-lsa <303195840@qq.com>
+Date:   Fri Apr 23 10:10:30 2021 +0800
+
+    Merge branch 'master' of https://github.com/xuanmaihaier/skr-mob
+
+[33mcommit 357288277ea85e04d5605dc263731267fd52b302[m
+Author: XXX-lsa <303195840@qq.com>
+Date:   Fri Apr 23 10:10:19 2021 +0800
+
+    add-loading
+
+[33mcommit e2e9ef6beceeeb70e59c7fc25a8bcc3437d53fe1[m
+Merge: 02a3518 701471c
+Author: lium-20 <994545476@qq.com>
+Date:   Thu Apr 22 23:26:04 2021 +0800
+
+    more 动态
+
+[33mcommit 76af5d9008e51806af6665d0b49c77157100cea9[m
+Merge: c8433f8 9042113
+Author: xuanmaihaier <1404111969@qq.com>
+Date:   Thu Apr 22 22:41:50 2021 +0800
+
+    Merge branch 'master' of https://github.com/xuanmaihaier/skr-mob
+
+[33mcommit c8433f85dd6c11aa9bf5a6be75459578daba7037[m
+Author: xuanmaihaier <1404111969@qq.com>
+Date:   Thu Apr 22 22:41:13 2021 +0800
+
+    add some
+
+[33mcommit 9042113aa3b9c74f12c56db5a6ba5c00179e7c97[m
+Merge: aecc38b aee59ef
+Author: XXX-lsa <303195840@qq.com>
+Date:   Thu Apr 22 22:33:19 2021 +0800
+
+    add-search
+
+[33mcommit aecc38bc999043275f020bab0800a18a49936c37[m
+Author: XXX-lsa <303195840@qq.com>
+Date:   Thu Apr 22 21:55:11 2021 +0800
+
+    add-search
+
+[33mcommit aee59ef8454171bdb0a1ecafba6c6cab22d1f902[m
+Merge: 8663898 2f06b0c
+Author: xuanmaihaier <1404111969@qq.com>
+Date:   Thu Apr 22 20:02:23 2021 +0800
+
+    details add some
+
+[33mcommit 86638987c787a8e24838f7253437d6767fd5a034[m
+Merge: bc909f7 a406eaf
+Author: xuanmaihaier <1404111969@qq.com>
+Date:   Thu Apr 22 19:55:43 2021 +0800
+
+    add detail animals
+
+[33mcommit b2d5ebff52cbe1398ef70297c7e3831dc4ef0cf7[m
+Author: tzof <470255350@qq.com>
+Date:   Thu Apr 22 19:34:34 2021 +0800
+
+    修复个人中心显示bug
+
+[33mcommit 2f06b0c841e8c46cd82a669907f77dcd421f39a4[m
+Merge: 6704fc5 701471c
+Author: tzof <470255350@qq.com>
+Date:   Thu Apr 22 19:31:14 2021 +0800
+
+    个人中心静态完成
+
+[33mcommit 6704fc50120e8afcbe695c044478430a379af6d8[m
+Author: tzof <470255350@qq.com>
+Date:   Thu Apr 22 19:23:27 2021 +0800
+
+    个人中心静态完成
+
+[33mcommit 02a3518b28d0d0eaa990dba730a03997d5c7e43d[m
+Merge: 226f84a 4f3c0b9
+Author: lium-20 <994545476@qq.com>
+Date:   Thu Apr 22 16:07:30 2021 +0800
+
+    stroll
+
+[33mcommit 701471c559296c20355fc8bc2605fccb5ac9ffbb[m
+Merge: ba89bfc 7408526
+Author: 麻泰彪 <8082648+ma-taibiao@user.noreply.gitee.com>
+Date:   Thu Apr 22 11:40:47 2021 +0800
+
+    Merge branch 'master' of https://github.com/xuanmaihaier/skr-mob
+    home
+
+[33mcommit ba89bfc9f25b6772a02de9ead2453553b2c7dbc8[m
+Author: 麻泰彪 <8082648+ma-taibiao@user.noreply.gitee.com>
+Date:   Thu Apr 22 11:40:06 2021 +0800
+
+    home
+
+[33mcommit 74085265897df284878a1d7d899cd93100bf0b37[m
+Merge: 5c90ecd a406eaf
+Author: xk-king <1305006090@qq.com>
+Date:   Wed Apr 21 23:49:50 2021 +0800
+
+    Merge branch 'master' of https://github.com/xuanmaihaier/skr-mob
+
+[33mcommit 5c90ecdf56ff4efb1e2670a98e02efe3e1d789a7[m
+Merge: af695e6 4f3c0b9
+Author: xk-king <1305006090@qq.com>
+Date:   Wed Apr 21 23:49:08 2021 +0800
+
+    购物车静态完成
+
+[33mcommit a406eaf7f9d0a6a182a821a0f6df753fd4b2998e[m
+Merge: 9ae6294 4f3c0b9
+Author: 麻泰彪 <8082648+ma-taibiao@user.noreply.gitee.com>
+Date:   Wed Apr 21 23:35:29 2021 +0800
+
+    Lists
+
+[33mcommit bc909f7d6031977ed87387471da742da63d1988c[m
+Merge: f6c030a 4f3c0b9
+Author: xuanmaihaier <1404111969@qq.com>
+Date:   Wed Apr 21 23:21:35 2021 +0800
+
+    solve
+
+[33mcommit 9ae6294f48dd0b1fe17af2f2254460bd9a8e9bfc[m
+Author: 麻泰彪 <8082648+ma-taibiao@user.noreply.gitee.com>
+Date:   Wed Apr 21 23:20:34 2021 +0800
+
+    List
+
+[33mcommit af695e6583b8c6f46e928a672851ad2ed99bf6c8[m
+Author: xk-king <1305006090@qq.com>
+Date:   Wed Apr 21 21:44:28 2021 +0800
+
+    购物车静态
+
+[33mcommit 226f84a73419c6e69e559d81c3690b340fdb4da5[m
+Author: lium-20 <994545476@qq.com>
+Date:   Wed Apr 21 20:49:16 2021 +0800
+
+    navbar
+
+[33mcommit 2a21832b29dd295a3a4e84d78ec72682f7d4c976[m
+Author: 麻泰彪 <8082648+ma-taibiao@user.noreply.gitee.com>
+Date:   Wed Apr 21 20:46:35 2021 +0800
+
+    swipe
+
+[33mcommit f6c030acea6c59df28120844be050e01003f9a49[m
+Author: xuanmaihaier <1404111969@qq.com>
+Date:   Wed Apr 21 17:20:08 2021 +0800
+
+    solve
+
+[33mcommit 4f3c0b9cd42d9343d93956e2acce5d9101d7b0dc[m
+Author: xuanmaihaier <1404111969@qq.com>
+Date:   Wed Apr 21 16:58:51 2021 +0800
+
+    home to detail
+
+[33mcommit ab55b2d20fa05b0c26ca61f2c9e05fe7838f6488[m
+Merge: d700d9c 313b45b
+Author: xuanmaihaier <1404111969@qq.com>
+Date:   Wed Apr 21 16:49:28 2021 +0800
+
+    Merge branch 'master' of https://github.com/xuanmaihaier/skr-mob
+
+[33mcommit d700d9ce81fd6058b95e0385e0bed7125ff0169b[m
+Author: xuanmaihaier <1404111969@qq.com>
+Date:   Wed Apr 21 16:47:05 2021 +0800
+
+    some change
+
+[33mcommit 313b45b75d90eb42824961b277d3096c94412b00[m
+Merge: 98bf933 9e2ecbf
+Author: 麻泰彪 <8082648+ma-taibiao@user.noreply.gitee.com>
+Date:   Wed Apr 21 16:45:09 2021 +0800
+
+    Merge branch 'master' of https://github.com/xuanmaihaier/skr-mob
+    clickdetails
+
+[33mcommit 98bf933bd9875dfad23d4c9e7222e7861fb9fd7a[m
+Author: 麻泰彪 <8082648+ma-taibiao@user.noreply.gitee.com>
+Date:   Wed Apr 21 16:44:44 2021 +0800
+
+    ClickDetails
+
+[33mcommit 9e2ecbf0154155673efb10ab09d19ca17ef0bbe4[m
+Merge: 4ee3a4f 51c699c
+Author: xuanmaihaier <1404111969@qq.com>
+Date:   Wed Apr 21 12:51:46 2021 +0800
+
+    add swiper
+
+[33mcommit 4ee3a4fdd71ab795c490dd95bdac7bc14ff9aef8[m
+Author: xuanmaihaier <1404111969@qq.com>
+Date:   Wed Apr 21 11:08:55 2021 +0800
+
+    add detail
+
+[33mcommit 51c699c0c179c2a52e967b440b600d3fd5902dcb[m
+Author: 麻泰彪 <8082648+ma-taibiao@user.noreply.gitee.com>
+Date:   Wed Apr 21 11:07:33 2021 +0800
+
+    Skemob.mtb
+
+[33mcommit 64d8ce0fb0e75514e51ab1ecff4213034547b5e4[m[33m ([m[1;31morigin/tzof[m[33m)[m
+Author: tzof <470255350@qq.com>
+Date:   Tue Apr 20 22:36:44 2021 +0800
+
+    2021-04-20 22:36
+
+[33mcommit 6ba844b3f93dd7d7fb200ef6b64def281f9312eb[m[33m ([m[1;31morigin/dev[m[33m, [m[1;32mmaster[m[33m)[m
+Author: 麻泰彪 <8082648+ma-taibiao@user.noreply.gitee.com>
+Date:   Tue Apr 20 19:31:36 2021 +0800
+
+    The template is set up
+
+[33mcommit e842c15f79b09351caaf52e60b4cfaf046bf7496[m[33m ([m[1;31morigin/xxx-lsa[m[33m)[m
+Author: XXX-lsa <303195840@qq.com>
+Date:   Tue Apr 20 11:50:17 2021 +0800
+
+    frist
+
+[33mcommit e93ce8a265033d418e1b48d9ae73ae3ecf521db9[m
+Author: stride <74178717+xuanmaihaier@users.noreply.github.com>
+Date:   Tue Apr 20 11:36:30 2021 +0800
+
+    Update 项目规范.md
+
+[33mcommit b8889e8e64de0e904dbb08bf833428de7d90f28d[m
+Author: xuanmaihaier <1404111969@qq.com>
+Date:   Tue Apr 20 11:25:10 2021 +0800
+
+    first commit

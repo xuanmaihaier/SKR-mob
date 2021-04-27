@@ -6,8 +6,13 @@
     </header>
     <main>
       <ul>
-        <li v-for="(item,index) in imgs" :key="item.id" :class="rotates[index]">
-          <img :src="item" alt="noimg">
+        <li
+          v-for="(item, index) in imgs"
+          :key="item.id"
+          :class="rotates[index]"
+          @click="onReg"
+        >
+          <img :src="item" alt="noimg" />
         </li>
       </ul>
     </main>
@@ -17,54 +22,131 @@
 <script>
 import { getTypeOneList } from "network/getList.js";
 export default {
-    name: 'VerificationImg',
-    data: function () {
-      return {
-        imgs: [],
-        rotates: ['north','east','south','west'],
-      }
-    },
-    methods: {
-      onRefresh(){
-        getTypeOneList("鞋类").then((res) => {
-          if(res.code === 200){
-            let arr = [];
-            for(let i = 0; i < 4; i++){
-              let index = Math.floor(Math.random() * 101);
-              arr.push(res.res[index].img)
-            }
-            this.imgs = arr;
+  name: "VerificationImg",
+  data: function () {
+    return {
+      imgs: [],
+      default: ["north", "east", "south", "west"],
+      rotates: ["north", "east", "south", "west"],
+      flag: false,
+    };
+  },
+  created() {
+    this.onRefresh();
+  },
+  methods: {
+    onRefresh() {
+      this.$store.dispatch("commitVerificationImg", false);
+      getTypeOneList("鞋类").then((res) => {
+        if (res.code === 200) {
+          let arr = [];
+          let reg = [];
+          for (let i = 0; i < 4; i++) {
+            let index = Math.floor(Math.random() * 100);
+            arr.push(res.res[index].img);
+            reg.push(this.default[Math.floor(Math.random() * 4)]);
           }
-        })
+          let flag = true;
+          reg.forEach((item) => {
+            if (item !== "north") {
+              flag = false;
+              return;
+            }
+          });
+          if(flag){
+            this.$store.dispatch("commitVerificationImg", true);
+          }
+          this.imgs = arr;
+          this.rotates = reg;
+        }
+      });
+    },
+    onReg(e) {
+      let reg = 0;
+      let direction = e.currentTarget.className;
+      switch (direction) {
+        case "north":
+          reg = "east";
+          break;
+        case "east":
+          reg = "south";
+          break;
+        case "south":
+          reg = "west";
+          break;
+        case "west":
+          reg = "north";
+          break;
+      }
+      direction = reg;
+      e.currentTarget.className = reg;
+      let liArr = document.querySelectorAll(".VerificationImg main ul li");
+      liArr = Array.from(liArr);
+      // let flag = false;
+      for (let i = 0; i < liArr.length; i++) {
+        console.log(liArr[i]);
+        if (liArr[i].className == "north") {
+          this.flag = true;
+        } else {
+          this.flag = false;
+          this.$store.dispatch(
+            "commitVerificationImg",
+            false + new Date().getTime()
+          );
+          return;
+        }
+        if (this.flag) {
+          this.$store.dispatch("commitVerificationImg", true);
+        }
       }
     },
-}
+  },
+};
 </script>
 
 <style lang="less" scoped>
-.VerificationImg{
+.VerificationImg {
   margin-top: 3vh;
-  header{
+  box-sizing: border-box;
+  header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 3.2vw;
-    p{
-      color: red;
+    p {
+      color: #d0021b;
       display: flex;
       align-items: center;
     }
   }
-  .north{
+  main {
+    ul {
+      margin-top: 2.5vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      li {
+        width: 23%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #ccc;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .north {
     transform: rotate(0deg);
   }
-  .east{
+  .east {
     transform: rotate(90deg);
   }
-  .south{
+  .south {
     transform: rotate(180deg);
   }
-  .west{
+  .west {
     transform: rotate(270deg);
   }
 }

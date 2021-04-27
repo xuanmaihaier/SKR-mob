@@ -29,7 +29,7 @@
       <section>
         <VerificationImg />
       </section>
-      <button @click="onLogin">登录</button>
+      <button @click="onLogin" class="btn" disabled="disabled">登录</button>
       <p>忘记密码？</p>
     </main>
   </div>
@@ -51,6 +51,9 @@ export default {
       password: "",
     };
   },
+  created() {
+    this.$store.dispatch("commitVerificationImg", false);
+  },
   methods: {
     balck() {
       this.$router.go(-1);
@@ -65,6 +68,8 @@ export default {
       }).then((res) => {
         if (res.code == 200) {
           setLocalStorage("customer_id", res.data.userInfo.id);
+          setLocalStorage("token", res.data.token);
+          this.$store.dispatch("commitUserInfo", res.data.userInfo);
           Dialog.alert({
             message: "登录成功，点击确定返回上一页",
           }).then(() => {
@@ -79,6 +84,26 @@ export default {
           });
         }
       });
+    },
+  },
+  computed: {
+    judge() {
+      return this.$store.state.verificationImg.allNorth;
+    },
+  },
+  watch: {
+    judge() {
+      let btn = document.querySelector(".btn");
+      if (this.$store.state.verificationImg.allNorth == true) {
+        btn.disabled = "";
+        btn.style.backgroundColor = "#444";
+      } else {
+        btn.disabled = "disabled";
+        btn.style.backgroundColor = "#ccc";
+      }
+    },
+    $route: function () {
+      this.$store.dispatch("commitVerificationImg", false);
     },
   },
 };
@@ -160,7 +185,7 @@ export default {
       margin-top: 3.1vh;
       border: none;
       outline: none;
-      background-color: #444;
+      background-color: #ccc;
       color: white;
       width: 80vw;
       height: 4.3vh;

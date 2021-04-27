@@ -46,7 +46,10 @@
         />
         <p v-if="mShow">验证码输入错误</p>
       </div>
-      <button @click="onRegister">注册</button>
+      <section>
+        <VerificationImg />
+      </section>
+      <button @click="onRegister" class="btn" disabled>注册</button>
     </main>
     <footer>
       <p>注册即表示您已阅读并同意</p>
@@ -59,8 +62,12 @@
 import getRegister from "network/getRegister.js";
 import getMessage from "network/getMessage.js";
 import { Dialog } from "vant";
+import VerificationImg from "components/common/VerificationImg/VerificationImg.vue";
 export default {
   name: "Register",
+  components: {
+    VerificationImg,
+  },
   data: function () {
     return {
       user: "",
@@ -73,6 +80,9 @@ export default {
       pShow: false,
       mShow: false,
     };
+  },
+  created() {
+    this.$store.dispatch("commitVerificationImg", false);
   },
   methods: {
     balck() {
@@ -96,7 +106,7 @@ export default {
               this.$refs.msgBtn.style.backgroundColor = "#444";
               this.$refs.msgBtn.disabled = "";
               clearInterval(timer);
-              return
+              return;
             }
           }, 1000);
         });
@@ -142,6 +152,26 @@ export default {
       }
     },
   },
+  computed: {
+    judge() {
+      return this.$store.state.verificationImg.allNorth;
+    },
+  },
+  watch: {
+    judge() {
+      let btn = document.querySelector(".btn");
+      if (this.$store.state.verificationImg.allNorth == true) {
+        btn.disabled = "";
+        btn.style.backgroundColor = "#444";
+      } else {
+        btn.disabled = "disabled";
+        btn.style.backgroundColor = "#ccc";
+      }
+    },
+    $route: function () {
+      this.$store.dispatch("commitVerificationImg", false);
+    },
+  },
 };
 </script>
 
@@ -151,7 +181,7 @@ export default {
   nav {
     position: relative;
     margin-top: 3vh;
-    div {
+    & > div {
       width: 4.53vw;
       display: flex;
       align-items: center;
@@ -176,7 +206,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    div {
+    & > div {
       margin-top: 5.33vw;
       padding: 1.23vh 0;
       display: flex;

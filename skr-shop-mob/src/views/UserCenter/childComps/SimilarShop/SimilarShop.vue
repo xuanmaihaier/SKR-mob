@@ -42,14 +42,14 @@ export default {
       getTypeOneList("鞋类").then((res) => {
         let arr = [];
         for (let i = 0; i < 30; i++) {
-          let index = Math.floor(Math.random() * 101);
+          let index = Math.floor(Math.random() * 100);
           arr.push(res.res[index]);
         }
         this.shopList = arr;
       });
     },
     ondetails(id){
-      this.$router.push(`/details/${id}`);
+      this.$router.push({path: `/details/${id}`, query:{type: '鞋类'}});
     }
   },
 };
