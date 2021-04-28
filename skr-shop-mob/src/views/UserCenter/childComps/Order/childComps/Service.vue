@@ -8,7 +8,7 @@
           <van-icon name="arrow" />
         </p>
       </li>
-      <li class="support">
+      <li class="support" @click="onServe">
         <van-icon name="service-o" />
         <p>
           <span>服务与支持</span>
@@ -22,6 +22,11 @@
 <script>
 export default {
   name: "Service",
+  methods: {
+    onServe(){
+      this.$router.push('/serve');
+    }
+  },
 };
 </script>
 

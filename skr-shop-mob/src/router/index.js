@@ -183,6 +183,33 @@ const routes = [{
     showbar: false
   }
 },
+{
+  path: '/myCode',
+  name: 'MyCode',
+  component: () => import("views/MyCode/MyCode.vue"),
+  meta: {
+    title: "我的二维码",
+    showbar: false
+  }
+},
+{
+  path: '/personalData',
+  name: 'PersonalData',
+  component: () => import("views/PersonalData/PersonalData.vue"),
+  meta: {
+    title: "个人资料",
+    showbar: false
+  }
+},
+{
+  path: '/changePassword',
+  name: 'ChangePassword',
+  component: () => import("views/ChangePassword/ChangePassword.vue"),
+  meta: {
+    title: "修改密码",
+    showbar: false
+  }
+},
 ]
 const router = new VueRouter({
   mode: 'history',

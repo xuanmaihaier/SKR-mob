@@ -1,48 +1,45 @@
 <template>
-  <div class="Login">
-    <div class="bgi">
-      <img
-        src="http://img11.static.yhbimg.com/yhb-img01/2018/03/26/10/01cf2c685c5d7ddbb21b7c7b961da77454.jpg?imageView2/2/w/750/h/290"
-        alt=""
-      />
-    </div>
-    <nav>
-      <div>
-        <van-icon name="arrow-left" @click="balck" />
-      </div>
-      <p @click="goToRegister">注册</p>
-    </nav>
+  <div class="ChangePassword">
+    <TopNav />
     <main>
       <div class="user">
         <van-icon name="manager" />
-        <input type="text" name="" placeholder="请输入账号" v-model="user" />
+        <input
+          type="text"
+          name=""
+          placeholder="请输入要修改密码的账号"
+          v-model="user"
+        />
       </div>
       <div class="password">
         <van-icon name="lock" />
         <input
           type="password"
           name=""
-          placeholder="请输入密码"
+          placeholder="请输入修改后密码"
           v-model="password"
         />
       </div>
       <section>
         <VerificationImg />
       </section>
-      <button @click="onLogin" class="btn" disabled="disabled">登录</button>
-      <p @click="onChangePassword">忘记密码？</p>
+      <button @click="onChange" class="btn" disabled="disabled">
+        修改密码
+      </button>
     </main>
   </div>
 </template>
 
 <script>
-import getLogin from "network/getLogin.js";
-import { Dialog } from "vant";
-import { setLocalStorage } from "utils/storage.js";
+import TopNav from "views/UserCenter/childComps/TopNav/TopNav.vue";
 import VerificationImg from "components/common/VerificationImg/VerificationImg.vue";
+import changePassword from "network/changePassword.js";
+import { Dialog } from "vant";
+import { removeLocalStorage } from "utils/storage.js";
 export default {
-  name: "Login",
+  name: "ChangePassword",
   components: {
+    TopNav,
     VerificationImg,
   },
   data: function () {
@@ -53,34 +50,26 @@ export default {
     };
   },
   created() {
-    this.flag = false;
     this.flagTrue();
   },
   methods: {
-    balck() {
-      this.$router.go(-1);
-    },
-    goToRegister() {
-      this.$router.push("/Register");
-    },
-    onLogin() {
-      getLogin({
+    onChange() {
+      changePassword({
         username: this.user,
         password: this.password,
       }).then((res) => {
-        if (res.code == 200) {
-          setLocalStorage("customer_id", res.data.userInfo.id);
-          setLocalStorage("token", res.data.token);
-          this.$store.dispatch("commitUserInfo", res.data.userInfo);
+        if (res.code === 200) {
           Dialog.alert({
-            message: "登录成功，点击确定返回主页",
+            message: "修改密码成功，点击确定返回登录页面",
           }).then(() => {
-            this.$router.push('/home');
+            this.$store.dispatch("commitUserInfo", "");
+            removeLocalStorage("token");
+            this.$router.push('/login');
             return;
           });
         } else {
           Dialog.alert({
-            message: "登录失败请重新登录",
+            message: "修改密码失败请确认账号是否正确",
           }).then(() => {
             return;
           });
@@ -91,9 +80,6 @@ export default {
       window.addEventListener("click", () => {
         this.flag = true;
       });
-    },
-    onChangePassword(){
-      this.$router.push("/changePassword");
     },
   },
   computed: {
@@ -123,48 +109,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.Login {
-  padding: 0 8vw;
-  .bgi {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    z-index: -1;
-    img {
-      width: 100vw;
-    }
-  }
-  nav {
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 3vh;
-    & > div {
-      width: 4.53vw;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      border: 0.1rem solid white;
-      padding: 0.5vh;
-      i {
-        font-size: 4.53vw;
-      }
-    }
-    p {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 14.66vw;
-      font-size: 4.53vw;
-      border: 0.1rem solid white;
-      padding: 0.5vh 0;
-      border-radius: 2rem;
-    }
-  }
+.ChangePassword {
   main {
+    padding: 0 8vw;
     position: relative;
     margin-top: 14.7vh;
     display: flex;
@@ -207,15 +154,6 @@ export default {
       &:active {
         background-color: rgb(19, 18, 18);
       }
-    }
-    & > p {
-      font-size: 3.2vw;
-      color: #444;
-      position: absolute;
-      right: 1vw;
-      bottom: 0;
-      transform: translate(0, 200%);
-      text-decoration: underline;
     }
   }
 }

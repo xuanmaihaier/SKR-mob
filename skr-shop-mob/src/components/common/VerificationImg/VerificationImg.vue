@@ -84,7 +84,6 @@ export default {
       let liArr = document.querySelectorAll(".VerificationImg main ul li");
       liArr = Array.from(liArr);
       for (let i = 0; i < liArr.length; i++) {
-        console.log(liArr[i]);
         if (liArr[i].className == "north") {
           this.flag = true;
         } else {

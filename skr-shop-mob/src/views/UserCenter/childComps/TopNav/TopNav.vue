@@ -1,7 +1,7 @@
 <template>
   <div class="TopNav">
     <van-nav-bar
-      title="个人中心"
+      :title="changeTitleValue"
       left-arrow
       @click-left="onClickLeft"
       @click-right="onClickRight"
@@ -39,9 +39,12 @@ export default {
   data: function () {
     return {
       menuShow: false, // 控制下拉菜单的显示
+      changeTitleValue: "个人中心",
     };
   },
-  created() {},
+  created() {
+    this.changeTitle();
+  },
   methods: {
     onClickLeft() {
       this.$router.go(-1);
@@ -64,6 +67,30 @@ export default {
     },
     onMy() {
       this.$router.push("/userCenter");
+    },
+    changeTitle() {
+      let routeName = this.$route.name;
+      let title = "";
+      switch (routeName) {
+        case "UserCenter":
+          title = "个人中心";
+          break;
+        case "MyCode":
+          title = "我的二维码";
+          break;
+        case "PersonalData":
+          title = "个人资料";
+          break;
+        case "ChangePassword":
+          title = "修改密码";
+          break;
+      }
+      this.changeTitleValue = title;
+    },
+  },
+  watch: {
+    $route: function () {
+      this.changeTitle();
     },
   },
 };

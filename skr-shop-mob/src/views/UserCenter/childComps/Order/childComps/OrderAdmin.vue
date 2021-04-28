@@ -7,30 +7,30 @@
       </li>
     </ul>
     <ul class="state">
-      <li>
-        <van-icon name="shopping-cart-o" />
-        <span>购物车</span>
+      <li @click="goMyOrder">
+        <van-icon name="ecard-pay" />
+        <span>待付款</span>
       </li>
-      <li>
+      <li @click="goMyOrder">
         <van-icon name="send-gift-o" />
         <span>待发货</span>
       </li>
-      <li>
+      <li @click="goMyOrder">
         <van-icon name="logistics" />
         <span>待收货</span>
       </li>
     </ul>
     <ul class="history">
-      <li>
-        <span>0</span>
-        <span>购物车</span>
+      <li @click="goMyOrder">
+        <span>{{pay}}</span>
+        <span>待付款</span>
       </li>
-      <li>
-        <span>0</span>
+      <li @click="goMyOrder">
+        <span>{{deliver}}</span>
         <span>待发货</span>
       </li>
-      <li>
-        <span>0</span>
+      <li @click="goMyOrder">
+        <span>{{Receiving}}</span>
         <span>待收货</span>
       </li>
     </ul>
@@ -38,12 +38,45 @@
 </template>
 
 <script>
+import getUserOrder from "network/getUserOrder.js";
 export default {
   name: "OrderAdmin",
+  data: function () {
+    return {
+      pay: 0,// 待支付
+      deliver: 0,// 待发货
+      Receiving: 0,// 待收货
+    };
+  },
+  created() {
+    this.onGetOrder();
+  },
   methods: {
-    goMyOrder(){
-      this.$router.push('/myOrder')
-    }
+    goMyOrder() {
+      this.$router.push("/myOrder");
+    },
+    onGetOrder() {
+      getUserOrder({
+        customer_id: this.$store.state.login.userInfo.id
+      }).then((res) => {
+        if (res.code === 200) {
+          let data = res.data[0];
+          Array.from(data).forEach((item) => {
+            switch (item.status) {
+              case 0:
+                this.pay++;
+                break;
+              case 1:
+                this.deliver++;
+                break;
+              case 2:
+                this.Receiving++;
+                break;
+            }
+          });
+        }
+      });
+    },
   },
 };
 </script>
@@ -76,10 +109,11 @@ export default {
       }
     }
   }
-  .state,.history {
+  .state,
+  .history {
     border-bottom: 1px solid rgb(206, 206, 206);
-    &:last-of-type{
-        border-bottom: none;
+    &:last-of-type {
+      border-bottom: none;
     }
     display: flex;
     align-items: center;
@@ -91,15 +125,15 @@ export default {
       align-items: center;
       padding: 1.8vh 0;
       cursor: pointer;
-      i{
-          font-size: 6.6vw;
+      i {
+        font-size: 6.6vw;
       }
-      span:first-of-type{
-          font-size: 4vw;
+      span:first-of-type {
+        font-size: 4vw;
       }
-      span:last-of-type{
-          margin-top: 1.23vh;
-          font-size: 3.2vw;
+      span:last-of-type {
+        margin-top: 1.23vh;
+        font-size: 3.2vw;
       }
     }
   }

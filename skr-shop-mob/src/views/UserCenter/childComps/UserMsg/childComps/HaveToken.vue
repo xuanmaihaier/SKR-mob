@@ -9,7 +9,7 @@
 <template>
   <div class="HaveToken" v-if="isToken">
     <section>
-      <div class="information">
+      <div class="information" @click="onInfo">
         <div class="information-img">
       <img src="../../../../../assets/img/usercenter/tzof.png" />
         </div>
@@ -18,7 +18,7 @@
           <p># <span>{{userInfo.email}}</span> #</p>
         </div>
       </div>
-      <div class="qr">
+      <div class="qr" @click="onQr">
         <van-icon name="qr" />
       </div>
     </section>
@@ -47,6 +47,12 @@ export default {
       }
       this.userInfo = this.$store.state.login.userInfo;
     },
+    onQr(){
+      this.$router.push('/myCode');
+    },
+    onInfo(){
+      this.$router.push('/personalData');
+    }
   },
   watch: {
     $route: function ()  {
