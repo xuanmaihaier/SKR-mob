@@ -1,7 +1,7 @@
 <template>
     <div class="tabs">
         <van-tabs v-model="active" color="#fff">
-            <van-tab title="today">
+            <van-tab :title="today">
                 <ul class="todayGood">
                     <li class="good" @click="toDetails(todayShop.id)">
                         <img :src="todayShop.img" alt="" />
@@ -81,6 +81,7 @@ export default {
     data() {
         return {
             active: 0,
+            today:'',
             todayShop: [],
             weekShop: [],
             sortShop: [],
@@ -200,6 +201,7 @@ export default {
     },
     methods: {
         // today
+        
         async getTypeOneList_(parent_name) {
             const res = await getTypeOneList(parent_name);
             this.todayShop = res.res[0];
@@ -221,10 +223,6 @@ export default {
         toDetail(id) {
             this.$router.push(`/details/${id}`);
         },
-        // toSimilar(index){
-        //     console.log(index,'11--11');
-        //     this.show = !index
-        // }
     },
     created() {
         let dayGood = ["鞋类"];
@@ -237,6 +235,8 @@ export default {
         sortGoods.forEach((item) => {
             this.getImg_(item, 1, 2, "price");
         });
+        // 实时时间
+        this.today = this.$moment().format("MM月DD日");
     },
 };
 </script>
@@ -268,7 +268,7 @@ export default {
 }
 .van-tree-select,
 .todayGood {
-    min-height: 50vh;
+    min-height: 60vh;
 }
 .weekend,
 .todayGood,

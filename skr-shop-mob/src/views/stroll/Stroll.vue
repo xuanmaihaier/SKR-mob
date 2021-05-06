@@ -1,6 +1,5 @@
 <template>
     <div id="stroll">
-        <h1>详情</h1>
         <Nav />
         <a href=""
             ><img
@@ -37,6 +36,7 @@ export default {
 <style lang="less" scoped>
 #stroll {
     width: 100%;
+    scroll-behavior: smooth; 
     a {
         width: 100%;
         img {

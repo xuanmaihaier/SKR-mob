@@ -36,5 +36,8 @@ export default {
 }
 html {
   font-size: 10px;
+  .UserCenter {
+    padding-bottom: 7.4vh;
+  }
 }
 </style>

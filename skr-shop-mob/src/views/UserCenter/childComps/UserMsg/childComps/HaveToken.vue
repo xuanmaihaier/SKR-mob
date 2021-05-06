@@ -9,16 +9,16 @@
 <template>
   <div class="HaveToken" v-if="isToken">
     <section>
-      <div class="information">
+      <div class="information" @click="onInfo">
         <div class="information-img">
-          <img src="assets/tzof.png" />
+      <img src="../../../../../assets/img/usercenter/tzof.png" />
         </div>
         <div class="information-msg">
-          <p><span>tzof</span></p>
-          <p># <span>GG54U12jnas</span> #</p>
+          <p><span>{{userInfo.username}}</span></p>
+          <p># <span>{{userInfo.email}}</span> #</p>
         </div>
       </div>
-      <div class="qr">
+      <div class="qr" @click="onQr">
         <van-icon name="qr" />
       </div>
     </section>
@@ -32,6 +32,7 @@ export default {
   data: function () {
     return {
       isToken: false,
+      userInfo: {},
     };
   },
   created() {
@@ -44,6 +45,18 @@ export default {
       } else {
         this.isToken = false;
       }
+      this.userInfo = this.$store.state.login.userInfo;
+    },
+    onQr(){
+      this.$router.push('/myCode');
+    },
+    onInfo(){
+      this.$router.push('/personalData');
+    }
+  },
+  watch: {
+    $route: function ()  {
+      this.ifToken();
     },
   },
 };

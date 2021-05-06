@@ -42,7 +42,7 @@ export default {
 };
 </script>
 
-<style >
+<style lang="less" scoped>
 html,
 body {
   padding: 0;

@@ -2,7 +2,7 @@
   <div class="SimilarShop">
     <h4><span>|</span> 为你优选</h4>
     <ul>
-      <li v-for="item in shopList" :key="item.date">
+      <li v-for="item in shopList" :key="item.date" @click="ondetails(item.id)">
         <div class="img-box">
           <img :src="item.img" alt="" />
         </div>
@@ -42,12 +42,15 @@ export default {
       getTypeOneList("鞋类").then((res) => {
         let arr = [];
         for (let i = 0; i < 30; i++) {
-          let index = Math.floor(Math.random() * 101);
+          let index = Math.floor(Math.random() * 100);
           arr.push(res.res[index]);
         }
         this.shopList = arr;
       });
     },
+    ondetails(id){
+      this.$router.push({path: `/details/${id}`, query:{type: '鞋类'}});
+    }
   },
 };
 </script>

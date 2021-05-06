@@ -1,7 +1,7 @@
 <template>
   <div class="TopNav">
     <van-nav-bar
-      title="个人中心"
+      :title="changeTitleValue"
       left-arrow
       @click-left="onClickLeft"
       @click-right="onClickRight"
@@ -10,19 +10,19 @@
         <van-icon name="wap-nav" />
         <section class="menu" v-if="menuShow">
           <ul>
-            <li>
+            <li @click="onHome">
               <van-icon name="wap-home" />
               <span>首页</span>
             </li>
-            <li>
+            <li @click="onSort">
               <van-icon name="cluster" />
               <span>分类</span>
             </li>
-            <li>
+            <li @click="onCar">
               <van-icon name="cart" />
               <span>购物车</span>
             </li>
-            <li>
+            <li @click="onMy">
               <van-icon name="manager" />
               <span>我的</span>
             </li>
@@ -39,9 +39,11 @@ export default {
   data: function () {
     return {
       menuShow: false, // 控制下拉菜单的显示
+      changeTitleValue: "个人中心",
     };
   },
   created() {
+    this.changeTitle();
   },
   methods: {
     onClickLeft() {
@@ -50,9 +52,45 @@ export default {
     onClickRight(e) {
       e.stopImmediatePropagation();
       this.menuShow = true;
-      window.addEventListener('click', () => {
-          this.menuShow = false;
+      window.addEventListener("click", () => {
+        this.menuShow = false;
       });
+    },
+    onHome() {
+      this.$router.push("/home");
+    },
+    onSort() {
+      this.$router.push("/sort");
+    },
+    onCar() {
+      this.$router.push("/shopCar");
+    },
+    onMy() {
+      this.$router.push("/userCenter");
+    },
+    changeTitle() {
+      let routeName = this.$route.name;
+      let title = "";
+      switch (routeName) {
+        case "UserCenter":
+          title = "个人中心";
+          break;
+        case "MyCode":
+          title = "我的二维码";
+          break;
+        case "PersonalData":
+          title = "个人资料";
+          break;
+        case "ChangePassword":
+          title = "修改密码";
+          break;
+      }
+      this.changeTitleValue = title;
+    },
+  },
+  watch: {
+    $route: function () {
+      this.changeTitle();
     },
   },
 };
@@ -62,8 +100,8 @@ export default {
 .TopNav {
   /deep/ .van-nav-bar {
     // 去除底部白线
-    &::after{
-        opacity: 0;
+    &::after {
+      opacity: 0;
     }
     position: relative;
     background-color: #353535;
@@ -111,20 +149,20 @@ export default {
             text-align: left;
             position: relative;
             padding-left: 3.4vw;
-            &::after{
-                content: '';
-                box-sizing: border-box;
-                display: inline-block;
-                width: 100%;
-                height: 0.2px;
-                background: rgba(168, 168, 168, 0.274);
-                position: absolute;
-                left: 0;
-                bottom: -2vw;
+            &::after {
+              content: "";
+              box-sizing: border-box;
+              display: inline-block;
+              width: 100%;
+              height: 0.2px;
+              background: rgba(168, 168, 168, 0.274);
+              position: absolute;
+              left: 0;
+              bottom: -2vw;
             }
           }
-          &:last-of-type span::after{
-              opacity: 0;
+          &:last-of-type span::after {
+            opacity: 0;
           }
         }
       }
