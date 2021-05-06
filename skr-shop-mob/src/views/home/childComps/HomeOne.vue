@@ -1,13 +1,6 @@
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: stride
- * @Date: 2021-04-21 11:14:41
- * @LastEditors: stride
- * @LastEditTime: 2021-04-25 19:50:31
--->
+
 <template>
-  <van-tabs v-model="active" :swipeable="true" :sticky="true" :color="`#ccc`" :lazy-render="true" color="#323233">
+  <van-tabs v-model="active" :swipeable="true" :sticky="true" :color="`#ccc`" :lazy-render="true" >
     <van-tab v-for="(item, index) in $store.state.home.typeOne" :title="item" :key="index">
       <!-- {{ $store.state.home.typeOne_list[index] }} -->
       <ul class="list">
@@ -67,6 +60,7 @@ export default {
       setTimeout(() => {
         if (this.listTotal.length == 0) return;
         this.page += 30;
+        
         let arr = [];
         this.listTotal.forEach((item, index) => {
           arr.push(item.slice(0, 30));
@@ -110,10 +104,7 @@ export default {
   background-color: white;
 }
 .list {
-  // box-sizing: border-box;
-  // column-count: 2;
-  // padding: 10px;
-  //  break-inside: avoid;
+padding-bottom:49px;
 
   li {
     margin: 10px 0;

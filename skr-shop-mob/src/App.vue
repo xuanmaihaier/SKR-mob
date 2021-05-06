@@ -9,7 +9,7 @@
 <template>
   <div id="app">
     <loading></loading>
-    <keep-alive clude="Search,SearchTwo" exclude="Details">
+    <keep-alive clude="Search,SearchTwo" exclude="Details,AddAddress">
       <router-view :key="$route.fullPath" />
     </keep-alive>
      <MainTabBar v-show="$route.meta.showbar" />
@@ -22,7 +22,7 @@ export default {
   components: { Loading, MainTabBar },
   name: "App",
   created() {
-    console.log(this.$route.meta.showbar);
+    // console.log(this.$route.meta.showbar);
   },
 };
 </script>

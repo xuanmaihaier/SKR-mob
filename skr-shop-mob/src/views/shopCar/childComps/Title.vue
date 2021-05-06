@@ -1,18 +1,20 @@
 <template>
   <div>
-    <header class="top_list">
-      <span ><van-icon name="arrow-left" color='#fff' class="icon" @click="back" /></span>
-      <p class="title">购物车</p>
-    </header>
-    
+    <van-nav-bar
+            title="购物车"
+            right-icon="bars"
+            left-arrow
+            @click-left="onClickLeft"
+        >
+    </van-nav-bar>
   </div>
 </template>
 
 <script>
 export default {
   methods:{
-    back(){
-      history.go(-1);
+    onClickLeft(){
+      this.$router.push('/home');
     }
   }
 };
@@ -26,32 +28,26 @@ export default {
   box-sizing: border-box;
 }
 
-.top_list {
-  display: flex;
-  width: 100vw;
-  height: 7vh;
-  background-color: #383838;
-  span {
-    display: inline-block;
-    width: 7vh;
+/deep/.van-nav-bar__content {
+    width: 100%;
     height: 7vh;
-    text-align: center;
-    .icon {
-      line-height: 7vh;
-      font-weight: bold;
-      font-size: 1.5rem;
+    background-color: #3b3b3b;
+    font-size: 20px;
+    border-bottom: none;
+    .van-nav-bar__title {
+        font-size: 22px;
+        font-weight: 600;
     }
-  }
-  .title{
-      display: inline-block;
-      text-align: center;
-      line-height: 7vh;
-      font-weight: 500;
-      width: 75%;
-      height: 100%;
-      color: #fff;
-      font-size: 20px;
-  }
 }
-
+.van-nav-bar {
+    background-color: #000;
+    /deep/.van-icon {
+        color: #fff;
+        font-size: 22px;
+        font-weight: bold;
+    }
+    /deep/.van-nav-bar__title {
+        color: #fff;
+    }
+}
 </style>
