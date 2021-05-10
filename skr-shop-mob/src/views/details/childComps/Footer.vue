@@ -4,13 +4,13 @@
  * @Author: stride
  * @Date: 2021-04-22 15:04:35
  * @LastEditors: stride
- * @LastEditTime: 2021-04-25 19:25:39
+ * @LastEditTime: 2021-05-06 16:43:36
 -->
 <template>
   <div class="Footer">
     <van-goods-action>
-      <van-goods-action-icon icon="chat-o" text="客服" @click="serveClick"/>
-      <van-goods-action-icon icon="cart-o" text="购物车" badge="5" />
+      <van-goods-action-icon icon="chat-o" text="客服" @click="serveClick" />
+      <van-goods-action-icon icon="cart-o" text="购物车" :badge="$store.state.login.userInfo?parseInt($store.state.details.cartLength):0" @click="badgeClick" />
       <van-goods-action-button color="#718093" type="warning" text="加入购物车" @click="addClick" />
       <van-goods-action-button color="#2f3640" type="danger" text="立即购买" @click="buyClick" />
     </van-goods-action>
@@ -35,17 +35,18 @@
             </template>
           </van-field>
         </div>
-       <div class="sub">
+        <div class="sub">
           <van-button round block type="primary" native-type="submit" color="#2f3640" @click="subClick">
-          {{sub[clickindex]}} <span v-if="special_price!=undefined&&clickindex==1">现在购买仅需{{special_price}}元</span>
-        </van-button>
-       </div>
+            {{sub[clickindex]}} <span v-if="special_price!=undefined&&clickindex==1">现在购买仅需{{special_price}}元</span>
+          </van-button>
+        </div>
       </div>
     </van-popup>
   </div>
 </template>
 
 <script>
+import { getLocalStorage } from "utils/storage.js";
 export default {
   name: "Footer",
   data() {
@@ -56,7 +57,10 @@ export default {
       colorActive: 0,
       value: 0,
       sub: ['加入购物车', '立即购买'],
-      clickindex: -1
+      clickindex: -1,
+      customer_id: getLocalStorage('customer_id'),
+      params: []
+      // sku_id:this.$store
     };
   },
   props: {
@@ -95,45 +99,78 @@ export default {
     colorClick(index) {
       this.colorActive = index;
     },
-    serveClick(){
+    serveClick() {
       this.$router.push("/serve")
+    },
+    badgeClick() {
+      this.$router.push("/shopCar")
     },
     subClick() {
       let addCart = {}
       if (this.value > 0) {
-        addCart.value = this.value
+        addCart.num = this.value
       }
       else {
         this.$toast("购买数量需要大于0")
         return
       }
       if (this.param.msg[this.colorActive] != undefined) {
-        addCart.color = this.param.msg[this.colorActive]
+        this.params.push(this.param.msg[this.colorActive])
       } else {
         this.$toast("请选择颜色")
         return
       }
       if (this.rule[this.page] > 0) {
-        addCart.page = this.rule[this.page]
+        this.params.push(this.rule[this.page])
       } else {
         this.$toast("请选择尺码")
         return
       }
-      if(this.stock[this.colorActive]<=0){
-         this.$toast("暂时没有库存")
-         return
+      if (this.stock[this.colorActive] <= 0) {
+        this.$toast("暂时没有库存")
+        return
       }
       if (this.clickindex == 0) {
+        if (!this.$store.state.login.userInfo) {
+          this.$toast("请先登录")
+          setTimeout(() => {
+            this.$router.push("/login")
+          }, 200);
+          return
+        }
         this.$toast("加入购物车成功")
+        addCart.customer_id = this.customer_id
+        addCart.sku_id = this.$store.state.details.Commodity[0].id
+        this.params = JSON.stringify(this.params)
+        addCart.params = this.params
+        // console.log(this.customer_id);
+        this.$store.dispatch('setLength', this.customer_id)
+        this.$store.dispatch('addCart', addCart)
       }
-      else{
-       this.$router.push("/addCart")
+      else {
+        if (!this.$store.state.login.userInfo) {
+          this.$toast("请先登录")
+          setTimeout(() => {
+            this.$router.push("/login")
+          }, 200);
+          return
+        }
+        this.$router.push('/order')
       }
-      this.$router.push('/order')
-      console.log(addCart);
+      this.params = []
     }
   },
-  mounted() { },
+  computed: {
+    cartLength() {
+      return { ...this.$store.state.details.cartLength }
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    console.log(this.$store.state.details.cartLength);
+  },
 };
 </script>
 
@@ -177,13 +214,13 @@ export default {
 .colorActive {
   border: 1px solid #000 !important;
 }
-.van-button--small{
+.van-button--small {
   padding: 0 10px;
 }
-.sub{
+.sub {
   position: absolute;
-  bottom:30px;
+  bottom: 30px;
   left: 10px;
-  right:10px
+  right: 10px;
 }
 </style>

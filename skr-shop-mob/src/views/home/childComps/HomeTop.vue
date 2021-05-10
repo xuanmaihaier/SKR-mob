@@ -74,7 +74,7 @@ export default {
 .home_log {
   width: 7rem;
   height: 46px;
-  left: 50vw;
+  left: 47vw;
   transition: all 3s;
    transform-style: preserve-3d;
     transform: rotateX(0deg) ;

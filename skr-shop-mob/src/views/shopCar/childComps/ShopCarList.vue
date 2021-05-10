@@ -73,7 +73,7 @@ export default {
     this.getShopCar_({ customer_id: this.Id });
   },
   methods: {
-    // 获取购物车商品
+    // 获取购物车商品 
     async getShopCar_({ customer_id }) {
       let res = await getShopCar({ customer_id });
       if (res.code == 200) {
