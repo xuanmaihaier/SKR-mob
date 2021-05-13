@@ -15,6 +15,7 @@ import loading from './modules/loading'
 import address from './modules/address'
 import login from './modules/login.js';
 import verificationImg from './modules/verificationImg.js';
+import token from './modules/token.js'
 Vue.use(Vuex)
 let store = new Vuex.Store({
   
@@ -27,7 +28,8 @@ let store = new Vuex.Store({
     loading,
     address,
     login,
-    verificationImg
+    verificationImg,
+    token,
   },
   plugins: [persistedState()]
 

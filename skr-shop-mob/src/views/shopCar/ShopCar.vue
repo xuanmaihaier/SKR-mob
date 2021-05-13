@@ -1,13 +1,12 @@
 <template>
   <div class="shopCar">
     <Title></Title>
-    <div v-if="token">
+    <div v-if="this.$store.state.token.token">
       <login-info></login-info>
       <cen-car></cen-car>
     </div>
     <shop-car-list v-else></shop-car-list>
     <recommend-list></recommend-list>
-    
   </div>
 </template>
 
@@ -24,21 +23,25 @@ export default {
     CenCar,
     RecommendList,
     ShopCarList,
-    
   },
   data() {
     return {
-      token: '',
+      token:''
     };
   },
-  created() {
-    if(localStorage.getItem('token')){
-      this.token = false
-    }else{
-      this.token = true
-    }
-  },
-
+  // created() {
+  //   console.log(this.token);
+  //   if (localStorage.getItem("token")) {
+  //     this.token = false;
+  //   } else {
+  //     this.token = true;
+  //   }
+  // },
+  // computed:{
+  //   getToken(){
+  //     this.token = this.$store.state.token.token
+  //   }
+  // }
 };
 </script>
 

@@ -65,6 +65,7 @@ export default {
       checkAll: false,
       arr: [],
       settlement: 0,
+      flag: true,
     };
   },
   created() {
@@ -73,16 +74,17 @@ export default {
     this.getShopCar_({ customer_id: this.Id });
   },
   methods: {
-    // 获取购物车商品 
+    // 获取购物车商品
     async getShopCar_({ customer_id }) {
       let res = await getShopCar({ customer_id });
       if (res.code == 200) {
         this.list = res.data;
+          this.flag=true
       }
-      if(res.code == 402){
+      if (res.code == 402) {
         this.list = [];
         this.empty = true;
-        
+
         // console.log(this.empty);
       }
       // console.log(res);
@@ -96,6 +98,8 @@ export default {
     // 添加购物车
     async addShopCar_({ customer_id, sku_id, num, params }) {
       let res = await addShopCar({ customer_id, sku_id, num, params });
+       this.getShopCar_({ customer_id: this.Id });
+      
       // console.log(res,sku_id);
     },
     // 点击删除商品
@@ -120,10 +124,12 @@ export default {
     // 数量加1
     addNum(val) {
       // ++val;
-      ++this.list[val].num;
-        this.addShopList()
+      if (this.flag) {
+        this.flag = false;
+        ++this.list[val].num;
+        this.addShopList();
         this.calcTotalPrice();
-        // console.log(1);
+      }
     },
     // 数量减1
     redu(val) {
@@ -131,8 +137,8 @@ export default {
       // this.arr = this.list;
       // this.calcTotalPrice();
       // if(val>=1){
-        this.addShopList()
-        this.calcTotalPrice();
+      this.addShopList();
+      this.calcTotalPrice();
       // }
     },
     // 结算跳转
@@ -152,15 +158,12 @@ export default {
     addShopList() {
       this.list.forEach((item) => {
         this.deleteShopCar_({ id: item.id });
-        setTimeout(() => {
-          this.addShopCar_({
+        this.addShopCar_({
           customer_id: item.customer_id,
           sku_id: item.sku_id,
           num: item.num,
           params: JSON.parse(item.params),
-        });
-        });
-        
+        })
       });
     },
   },
